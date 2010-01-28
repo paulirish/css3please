@@ -23,13 +23,13 @@
   #codeContainer{position: fixed;top: 205px;right: 0px;width: 350px;height: 200px;background: #f4f4f4;}
   #codeButton{position: absolute;top: 0px;left: 0px;width: 35px;height: 200px;background: #c4c4c4;cursor: pointer;}
   #codeButtonText{position: absolute; margin: 0; padding: 0;color: #000;top: 80px;left:-5px;transform: rotate(90deg);-moz-transform: rotate(90deg);-o-transform: rotate(90deg);-webkit-transform: rotate(90deg);filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=1);-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";}
-  #code {position: absolute;top: 0px;left: 25px;width: 325px;height: 200px;background: #f4f4f4;}
+  #code {position: absolute;top: 0px;left: 25px;width: 325px;height: 200px;margin: 0; padding: 0;font-size:12px;background: #777;}
   /*... classes for previewBox, hard coded for now ...*/
 	#previewBox.box_round {-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
 	#previewBox.box_shadow {-moz-box-shadow: 2px 2px 1px #000;-webkit-box-shadow: 2px 2px 1px #000;box-shadow: 2px 2px 1px #000;filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=2px, OffY=2px, Color='#000000');-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=2px, OffY=2px, Color='#000000')";}
 	/*...! the code for the webkit gradient is NOT the code from the text, that code didn't work for me at all !...*/
 	#previewBox.box_gradient {background-image: -moz-linear-gradient(top, #FFF, #000);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(255,255,255)),color-stop(1, rgb(0,0,0)));filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#000000');-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#000000')";}
-	#previewBox.box_rgba {background-color: transparent;background-color: rgba(255, 0, 255, 0.5);filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF00FF80',endColorstr='#FF00FF80');-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF00FF80',endColorstr='#FF00FF80')";}
+	#previewBox.box_rgba {background-color: transparent;background-color: rgba(255, 0, 255, 0.5);filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF00FF80',endColorstr='#FF00FF80');-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF00FF',endColorstr='#FF00FF')";}
 	#previewBox.box_rotate {transform: rotate(90deg);-moz-transform: rotate(90deg);-o-transform: rotate(90deg);-webkit-transform: rotate(90deg);filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=1);-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";}
 </style> 
 
@@ -89,8 +89,14 @@ cssfn = {
 function previewBox(){
 	$("input:checkbox").click(function(){
 		$("#previewBox").attr('class',"");
+		$(this).parent().css('background','transparent');
+		$("#code").html('');
 		$("input:checked").each(function(){
 			$("#previewBox").addClass($(this).parent().attr("class"));
+			$(this).parent().css('background','#666666');
+			$(this).parent().find('span').each(function(){
+				$("#code").append($(this).html()+'<br/>');
+			})
 		});
 	});	
 }
@@ -173,52 +179,52 @@ $(function () {
 <pre class="box_round">
 <input type="checkbox"/>
 <u>.box_round</u> {
-     <b>-moz-border-radius</b>: <i group="1">5px</i>;
-  <b>-webkit-border-radius</b>: <i group="1">5px</i>;
-          <b>border-radius</b>: <i group="1">5px</i>;
+     <span><b>-moz-border-radius</b>: <i group="1">5px</i>;</span>
+  <span><b>-webkit-border-radius</b>: <i group="1">5px</i>;</span>
+          <span><b>border-radius</b>: <i group="1">5px</i>;</span>
 }
 </pre> 
  
 <pre class="box_shadow">
 <input type="checkbox"/>
 <u>.box_shadow</u> {
-        <b>-moz-box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;
-     <b>-webkit-box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;
-             <b>box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;
-                 <b>filter</b>:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<i group="1">2px</i>, OffY=<i group="2">2px</i>, Color='<i group="4" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>');
-             <b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<i group="1">2px</i>, OffY=<i group="2">2px</i>, Color='<i group="4" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>')";
+       <span><b>-moz-box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;</span>
+     <span><b>-webkit-box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;</span>
+            <span><b>box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;</span>
+                 <span><b>filter</b>:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<i group="1">2px</i>, OffY=<i group="2">2px</i>, Color='<i group="4" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>');</span>
+             <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<i group="1">2px</i>, OffY=<i group="2">2px</i>, Color='<i group="4" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>')";</span>
 }
 </pre> 
  
 <pre class="box_gradient">
 <input type="checkbox"/>
 <u>.box_gradient</u> {
-       <b>background-image</b>: -moz-linear-gradient(top, <i group="1" is="cssfn.shortHex(val)">#FFF</i>, <i group="2" is="cssfn.shortHex(val)">#000</i>);
-       <b>background-image</b>: -webkit-gradient(linear, left top, left bottom, from(<i group="1" is="cssfn.shortHex(val)">#FFF</i>) to(<i group="2" is="cssfn.shortHex(val)">#000</i>);
-                 <b>filter</b>:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#FFFFFF</i>', endColorstr='<i group="2" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>');
-             <b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#FFFFFF</i>', endColorstr='<i group="2" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>')";
+       <span><b>background-image</b>: -moz-linear-gradient(top, <i group="1" is="cssfn.shortHex(val)">#FFF</i>, <i group="2" is="cssfn.shortHex(val)">#000</i>);</span>
+       <span><b>background-image</b>: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(255,255,255)),color-stop(1, rgb(0,0,0)));</span>
+                 <span><b>filter</b>:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#FFFFFF</i>', endColorstr='<i group="2" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>');</span>
+             <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#FFFFFF</i>', endColorstr='<i group="2" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>')";</span>
 }
 </pre> 
  
 <pre class="box_rgba">
 <input type="checkbox"/>
 <u>.box_rgba</u> {
-       <b>background-color</b>: transparent;
-       <b>background-color</b>: <i group="1" is="cssfn.rgbaToHexa(val)" to="cssfn.hexaToRgba(val)">rgba(255, 0, 255, 128)</i>;
-                 <b>filter</b>:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1">#FF00FF80</i>',endColorstr='<i group="1">#FF00FF80</i>');
-             <b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1">#FF00FF80</i>',endColorstr='<i group="1">#FF00FF80</i>')";
+       <span><b>background-color</b>: transparent;</span>
+       <span><b>background-color</b>: <i group="1" is="cssfn.rgbaToHexa(val)" to="cssfn.hexaToRgba(val)">rgba(255, 0, 255, 0.5)</i>;</span>
+                 <span><b>filter</b>:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1">#FF00FF</i>',endColorstr='<i group="1">#FF00FF</i>');</span>
+             <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1">#FF00FF</i>',endColorstr='<i group="1">#FF00FF</i>')";</span>
 }
 </pre> 
  
 <pre class="box_rotate">
 <input type="checkbox"/>
 <u>.box_rotate</u> {
-              <b>transform</b>: rotate(<i group="1">90</i>deg);
-         <b>-moz-transform</b>: rotate(<i group="1">90</i>deg);
-           <b>-o-transform</b>: rotate(<i group="1">90</i>deg);
-      <b>-webkit-transform</b>: rotate(<i group="1">90</i>deg);
-                 <b>filter</b>:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<i group="1" is="cssfn.basicImageToDeg(val)" to="cssfn.degToBasicImage(val)">1</i>);
-             <b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<i group="1" is="cssfn.basicImageToDeg(val)" to="cssfn.degToBasicImage(val)">1</i>)";
+              <span><b>transform</b>: rotate(<i group="1">90</i>deg);</span>
+         <span><b>-moz-transform</b>: rotate(<i group="1">90</i>deg);</span>
+           <span><b>-o-transform</b>: rotate(<i group="1">90</i>deg);</span>
+      <span><b>-webkit-transform</b>: rotate(<i group="1">90</i>deg);</span>
+                 <span><b>filter</b>:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<i group="1" is="cssfn.basicImageToDeg(val)" to="cssfn.degToBasicImage(val)">1</i>);</span>
+             <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<i group="1" is="cssfn.basicImageToDeg(val)" to="cssfn.degToBasicImage(val)">1</i>)";</span>
 }
 </pre> 
 
@@ -237,9 +243,9 @@ $(function () {
 	<div id="codeButton">
 		<div id="codeButtonText">Code</div>
 	</div>
-	<div id="code">
-		A useless box, for now. Code will go here.
-	</div>
+	<pre id="code">
+		
+	</pre>
 </div>
 
 <style type="text/css" media="screen"> 
