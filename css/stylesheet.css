@@ -1,0 +1,239 @@
+/* --------------------------------
+	Normalize CSS Reset v1.2
+	Firefox IE Safari Chrome Opera
+	Jonathan Neal
+	jneal@liferay.com
+	01-28-2010
+--------------------------------*/
+
+/* Global */
+
+html {
+	overflow-y: scroll;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+	display: block;
+}
+
+a {
+	cursor: pointer;
+	outline: none;
+}
+
+q:before,
+q:after {
+	content: "";
+}
+
+img {
+	border: 0;
+	vertical-align: text-bottom;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+/* Box Model */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 20px 0;
+}
+
+blockquote,
+dl,
+ol,
+menu,
+p,
+pre,
+ul {
+  margin: 16px 0;
+}
+
+body {
+	margin: 8px;
+}
+
+ol,
+ul ol {
+	list-style: decimal outside;
+}
+
+ul,
+ol ul {
+	list-style: disc outside;
+}
+
+ul ul {
+	list-style: circle;
+}
+
+ol ol {
+	list-style: upper-roman;
+}
+
+/* Color */
+
+abbr {
+	border-bottom: 1px dotted;
+	border-bottom-color: inherit;
+}
+
+body {
+	background: #FFF;
+	color: #000;
+}
+
+hr {
+	border: 0 solid #808080;
+	border-width: 0 0 1px;
+	height: 0;
+}
+
+/* Fonts */
+
+body {
+	font: 16px/20px Times, "Times New Roman", Georgia, serif;
+}
+
+code,
+h3,
+h4,
+h5,
+h6,
+kbd,
+listing,
+pre,
+samp,
+tt {
+	line-height: 20px;
+}
+
+h1 {
+	font-size: 32px;
+	line-height: 40px;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 30px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h4,
+h5,
+h6 {
+	font-size: 16px;
+}
+
+sub,
+sup {
+	font-size: 12px;
+	line-height: 0;
+}
+
+code,
+kbd,
+listing,
+pre,
+samp,
+tt {
+	font-size: 13px;
+}
+
+dfn {
+	font-style: italic;
+}
+
+/* --------------------------------
+	CSS34All Theme
+	Jonathan Neal
+	jneal@liferay.com
+	01-28-2010
+--------------------------------*/
+
+body {
+	background: #0c1021;
+	color: #f8f8f8;
+}
+
+#sandbox {
+	background: #555;
+	border: 5px solid #888;
+	overflow: hidden;
+	padding: 20px;
+	position: fixed;
+	right: 75px;
+	top: 50px;
+	width: 400px;
+	z-index: 2;
+}
+
+.rule,
+.rule input {
+	font: 14px/20px Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+	white-space: pre;
+	margin: 0;
+}
+
+.rule .comment {
+	color: #d8d8d8;
+}
+
+.rule .selector {
+	color: #ff6400;
+}
+
+.rule .property {
+	color: #8da6ce;
+}
+
+.rule .value {
+	color: #61ce3c;
+}
+
+.rule b {
+	border-bottom: 1px dotted #808080;
+	color: #d8fa3c;
+	font-weight: normal;
+	padding: 0 0 1px;
+	position: relative;
+}
+
+.rule b input {
+	background: none;
+	border: 0;
+	color: inherit;
+	display: none;
+	left: -1px;
+	min-width: 2em;
+	outline: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	width: 200%;
+}
+
+.rule b.edit span {
+	visibility: hidden;
+}
+
+.rule b.edit input {
+	display: inline;
+}
