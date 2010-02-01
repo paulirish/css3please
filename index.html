@@ -34,6 +34,7 @@
 </style> 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script> 
+<script type="text/javascript" src="ZeroClipboard.js"></script>
 <script type="text/javascript">  
 cssfn = {
   matchRgba: /^rgba\s{0,}\(\s{0,}(\d+)\s{0,},\s{0,}(\d+)\s{0,},\s{0,}(\d+)\s{0,},\s{0,}(\d+)\s{0,}\)/,
@@ -127,12 +128,31 @@ function codeSlider(){
 	});
 }
 
+function copyPasta(){
+	var boxround = new ZeroClipboard.Client();
+	boxround.setText( $(".box_round .code").text() ); 
+	boxround.glue( 'box_round_copypaste_button', 'box_round_copypaste' );
+	var boxround = new ZeroClipboard.Client();
+	boxround.setText( $(".box_shadow .code").text() ); 
+	boxround.glue( 'box_shadow_copypaste_button', 'box_shadow_copypaste' );
+	var boxround = new ZeroClipboard.Client();
+	boxround.setText( $(".box_gradient .code").text() ); 
+	boxround.glue( 'box_gradient_copypaste_button', 'box_gradient_copypaste' );
+	var boxround = new ZeroClipboard.Client();
+	boxround.setText( $(".box_rgba .code").text() ); 
+	boxround.glue( 'box_rgba_copypaste_button', 'box_rgba_copypaste' );
+	var boxround = new ZeroClipboard.Client();
+	boxround.setText( $(".box_rotate .code").text() ); 
+	boxround.glue( 'box_rotate_copypaste_button', 'box_rotate_copypaste' );
+}
+
 $(function () {
   var fn = function () {
   };
 	previewSlider();
 	codeSlider();
 	previewBox();
+	copyPasta();
   $('i').live('click', function () {
     var $out = $(this),
     $in = $(document.createElement('input'));
@@ -178,15 +198,20 @@ $(function () {
 
 <pre class="box_round">
 <input type="checkbox"/>
+<div id="box_round_copypaste" style="position:relative"><div id="box_round_copypaste_button">Copy to Clipboard</div></div>
+<span class="code">
 <u>.box_round</u> {
      <span><b>-moz-border-radius</b>: <i group="1">5px</i>;</span>
   <span><b>-webkit-border-radius</b>: <i group="1">5px</i>;</span>
           <span><b>border-radius</b>: <i group="1">5px</i>;</span>
 }
+</span>
 </pre> 
  
 <pre class="box_shadow">
 <input type="checkbox"/>
+<div id="box_shadow_copypaste" style="position:relative"><div id="box_shadow_copypaste_button">Copy to Clipboard</div></div>
+<span class="code">
 <u>.box_shadow</u> {
        <span><b>-moz-box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;</span>
      <span><b>-webkit-box-shadow</b>: <i group="1">2px</i> <i group="2">2px</i> <i group="3">1px</i> <i group="4" is="cssfn.shortHex(val)">#000</i>;</span>
@@ -194,30 +219,39 @@ $(function () {
                  <span><b>filter</b>:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<i group="1">2px</i>, OffY=<i group="2">2px</i>, Color='<i group="4" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>');</span>
              <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<i group="1">2px</i>, OffY=<i group="2">2px</i>, Color='<i group="4" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>')";</span>
 }
+</span>
 </pre> 
  
 <pre class="box_gradient">
 <input type="checkbox"/>
+<div id="box_gradient_copypaste" style="position:relative"><div id="box_gradient_copypaste_button">Copy to Clipboard</div></div>
+<span class="code">
 <u>.box_gradient</u> {
        <span><b>background-image</b>: -moz-linear-gradient(top, <i group="1" is="cssfn.shortHex(val)">#FFF</i>, <i group="2" is="cssfn.shortHex(val)">#000</i>);</span>
        <span><b>background-image</b>: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(255,255,255)),color-stop(1, rgb(0,0,0)));</span>
                  <span><b>filter</b>:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#FFFFFF</i>', endColorstr='<i group="2" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>');</span>
              <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#FFFFFF</i>', endColorstr='<i group="2" to="cssfn.longHex(val)" is="cssfn.shortHex(val)">#000000</i>')";</span>
 }
+</span>
 </pre> 
  
 <pre class="box_rgba">
 <input type="checkbox"/>
+<div id="box_rgba_copypaste" style="position:relative"><div id="box_rgba_copypaste_button">Copy to Clipboard</div></div>
+<span class="code">
 <u>.box_rgba</u> {
        <span><b>background-color</b>: transparent;</span>
        <span><b>background-color</b>: <i group="1" is="cssfn.rgbaToHexa(val)" to="cssfn.hexaToRgba(val)">rgba(255, 0, 255, 0.5)</i>;</span>
                  <span><b>filter</b>:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1">#FF00FF</i>',endColorstr='<i group="1">#FF00FF</i>');</span>
              <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<i group="1">#FF00FF</i>',endColorstr='<i group="1">#FF00FF</i>')";</span>
 }
+</span>
 </pre> 
  
 <pre class="box_rotate">
 <input type="checkbox"/>
+<div id="box_rotate_copypaste" style="position:relative"><div id="box_rotate_copypaste_button">Copy to Clipboard</div></div>
+<span class="code">
 <u>.box_rotate</u> {
               <span><b>transform</b>: rotate(<i group="1">90</i>deg);</span>
          <span><b>-moz-transform</b>: rotate(<i group="1">90</i>deg);</span>
@@ -226,6 +260,7 @@ $(function () {
                  <span><b>filter</b>:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<i group="1" is="cssfn.basicImageToDeg(val)" to="cssfn.degToBasicImage(val)">1</i>);</span>
              <span><b>-ms-filter</b>: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<i group="1" is="cssfn.basicImageToDeg(val)" to="cssfn.degToBasicImage(val)">1</i>)";</span>
 }
+</span>
 </pre> 
 
 <div id="previewContainer">
