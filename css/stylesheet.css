@@ -169,13 +169,13 @@ dfn {
 --------------------------------*/
 
 body {
-	background: url(../img/texture.jpg); /*was #0c1021*/
+	background: #0c1021; /*was url(../img/texture.jpg)*/
 	color: #f8f8f8;
 }
 
 #sandbox {
   font-family: "goudy-bookletter-1911-1","goudy-bookletter-1911-2","Baskerville","Georgia",serif;
-  border:1px solid rgba(155, 151, 109, 0.2);
+  border:1px solid rgba(21, 11, 11, 0.2);
 	overflow: hidden;
 	padding: 20px;
 	position: fixed;
@@ -183,23 +183,27 @@ body {
 	top: 50px;
 	width: 400px;
 	z-index: 2;
-	color: rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0, 0.6);
 	font-size: 16px;
+	text-shadow: 0px 0px 1px rgba(255, 255, 255, .1);
 }
 #sandbox h1{
   font-weight: normal;
-  margin: 0;
+  margin: 0 0 20px 0;
+  font-size: 56px;
+  word-spacing: 2px;
 }
 #sandbox abbr{
   cursor: help;
-  font-size: 1.5em;
-  color: #721212;
-  color: rgba(94, 18, 18, .6);
+  font-size: 1.3em;
+  color: #ff2166;
   text-shadow: 0px 0px 1px #333;
   border-bottom: 1px dashed #888;
 }
 #sandbox p{
-	font-size: 20px;
+	font-size: 30px;
+	line-height: 50px;
+	margin: 0
 }
 
 .rule,
@@ -207,9 +211,8 @@ body {
 	font: 14px/20px Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 	white-space: pre;
 	margin: 0;
-	background: url(../img/texture.jpg);
 	position: relative;
-	z-index: 3;
+	z-index: 1;
 	display: inline
 }
 
