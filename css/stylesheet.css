@@ -169,7 +169,7 @@ dfn {
 --------------------------------*/
 
 body {
-	background: url(../img/texture.jpg);
+	background: url(../img/texture.jpg); /*was #0c1021*/
 	color: #f8f8f8;
 }
 
