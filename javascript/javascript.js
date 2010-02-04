@@ -1,4 +1,4 @@
-cssMath = {
+window.cssMath = {
 	/* Number rounded by Length */
 	round: function (n, l) {
 		l = Math.pow(10, l);
@@ -154,7 +154,7 @@ cssMath = {
 	}
 };
 
-generator = {
+window.generator = {
 	styleAllRules: function (ruleList) {
 		var item = -1,
 		innerHTML;
@@ -208,16 +208,16 @@ $(document).ready(
 
 		$(document.getElementsByTagName('pre')).each(
 			function () {
-				$(this).find('b').bind(
-					'click',
-					function () {
-						$(this).addClass('edit').find('input').val(this.getElementsByTagName('span')[0].innerHTML).focus();
+				$(this).find('b').bind('click',function () {
+						$(this)
+						.addClass('edit')
+						.find('input')
+						    .val(this.getElementsByTagName('span')[0].innerHTML)
+						    .focus();
 					}
 				);
 
-				$(this).find('input').bind(
-					'keydown keypress keyup',
-					function () {
+				$(this).find('input').bind('keydown keypress keyup',function () {
 						var item = -1;
 						allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
 						group = this.parentNode.getAttribute('g'),
@@ -226,13 +226,13 @@ $(document).ready(
 						itemValue = '';
 
 						if (input) {
-							value = eval('cssMath.eval.' + input + '(value, allValues);');
+							value = cssMath.eval[input](value, allValues);
 						}
 
 						while (++item < allValues.length) {
 							if (allValues[item].group == group) {
 								if (allValues[item].output) {
-									itemValue = eval('cssMath.eval.' + allValues[item].output + '(value, allValues);');
+									itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
 								} else {
 									itemValue = value;
 								}
@@ -245,9 +245,7 @@ $(document).ready(
 
 						this.parentNode.getElementsByTagName('span')[0].innerHTML = this.value;
 					}
-				).bind(
-					'blur change',
-					function () {
+				).bind('blur change',function () {
 						$(this).parent().removeClass('edit');
 
 						var item = -1;
@@ -258,13 +256,13 @@ $(document).ready(
 						itemValue = '';
 
 						if (input) {
-							value = eval('cssMath.eval.' + input + '(value, allValues);');
+							value = cssMath.eval[input](value, allValues);
 						}
 
 						while (++item < allValues.length) {
 							if (allValues[item].group == group) {
 								if (allValues[item].output) {
-									itemValue = eval('cssMath.eval.' + allValues[item].output + '(value, allValues);');
+									itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
 								} else {
 									itemValue = value;
 								}
@@ -288,7 +286,7 @@ $(document).ready(
 	}
 );
 
-css = {
+window.css = {
 	'text-shadow': '2px 2px 2px #000;',
 	'filter': 'Shadow(Color=#666666, Direction=135, Strength=5);'
 };
