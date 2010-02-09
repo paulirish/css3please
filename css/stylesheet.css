@@ -85,6 +85,66 @@ ol ol {
 	list-style: upper-roman;
 }
 
+.rule_wrapper {
+	margin: 0 0 32px 0;
+}
+
+/* Toolbox */
+
+.toolbox_container {
+	position: relative;
+	float: right;
+}
+
+.toolbox {
+	position: relative;
+	display: block;
+	background: #05070e;
+	border: 1px solid #1b2448;
+	width: 100px;
+	height: 24px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+.button_container {
+	position: relative;
+	float: left;
+}
+
+.copybutton {
+	width: 24px;
+	height: 24px;
+	background: url(../img/clipboard.png) no-repeat 0 0;
+	background-position: 0 0;
+	background-position-x: 0;
+	background-position-y: 0;
+}
+
+.copybutton.hover {
+	background: url(../img/clipboard.png) no-repeat 0 -24px;
+	background-position: 0 -24px;
+	background-position-x: 0;
+	background-position-y: -24px;
+}
+
+.resetbutton {
+	width: 24px;
+	height: 24px;
+	background: url(../img/reset.png) no-repeat 0 0;
+	background-position: 0 0;
+	background-position-x: 0;
+	background-position-y: 0;
+}
+
+.resetbutton:hover {
+	background: url(../img/reset.png) no-repeat 0 -24px;
+	background-position: 0 -24px;
+	background-position-x: 0;
+	background-position-y: -24px;
+}
 /* Color */
 
 abbr {

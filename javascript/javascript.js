@@ -200,8 +200,45 @@ window.generator = {
 	}
 };
 
+function copypasta(){
+	// this is ugly and makes me mad
+	// ZeroClipboard doesn't accept anything other than id's
+	// I tried passing it variables and it broke
+	var box_round = new ZeroClipboard.Client();
+	box_round.setText( $("#box_round pre").text() );
+	box_round.glue( 'box_round_copybutton', 'box_round_copybutton_container' );
+	box_round.addEventListener( 'mouseDown', function(client) {
+		box_round.setText( $("#box_round pre").text() );
+	});
+	var box_shadow = new ZeroClipboard.Client();
+	box_shadow.setText( $("#box_shadow pre").text() );
+	box_shadow.glue( 'box_shadow_copybutton', 'box_shadow_copybutton_container' );
+	box_shadow.addEventListener( 'mouseDown', function(client) {
+		box_shadow.setText( $("#box_shadow pre").text() );
+	});
+	var box_gradient = new ZeroClipboard.Client();
+	box_gradient.setText( $("#box_gradient pre").text() );
+	box_gradient.glue( 'box_gradient_copybutton', 'box_gradient_copybutton_container' );
+	box_gradient.addEventListener( 'mouseDown', function(client) {
+		box_gradient.setText( $("#box_gradient pre").text() );
+	});
+	var box_rgba = new ZeroClipboard.Client();
+	box_rgba.setText( $("#box_rgba pre").text() );
+	box_rgba.glue( 'box_rgba_copybutton', 'box_rgba_copybutton_container' );
+	box_rgba.addEventListener( 'mouseDown', function(client) {
+		box_rgba.setText( $("#box_rgba pre").text() );
+	});
+	var box_rotate = new ZeroClipboard.Client();
+	box_rotate.setText( $("#box_rotate pre").text() );
+	box_rotate.glue( 'box_rotate_copybutton', 'box_rotate_copybutton_container' );
+	box_rotate.addEventListener( 'mouseDown', function(client) {
+		box_rotate.setText( $("#box_rotate pre").text() );
+	});
+}
+
 $(document).ready(
 	function () {
+		copypasta();
 		generator.styleAllRules(document.getElementsByTagName('pre'));
 
 		generator.makeEditable(document.getElementsByTagName('b'));
