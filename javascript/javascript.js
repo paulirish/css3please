@@ -205,7 +205,6 @@ function copypasta(){
 	    var name = this.id;
 	    var zc = new ZeroClipboard.Client();
 	    zc.glue( name + '_copybutton', name +'_copybutton_container' );
-	    console.log($('#'+ name + '_copybutton'),$('#'+ name +'_copybutton_container'))
     	zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
     		    zc.setText( $("#"+ name + " pre").text() );
