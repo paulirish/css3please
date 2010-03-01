@@ -204,6 +204,16 @@ function copypasta(){
 	// this is ugly and makes me mad
 	// ZeroClipboard doesn't accept anything other than id's
 	// I tried passing it variables and it broke
+	
+	$('.rule_wrapper').each(function(){
+	    var name = this.id;
+	    var zc = new ZeroClipboard.Client();
+	    zc.glue( name + '_copybutton', name +'_copybutton_container' );
+    	zc.addEventListener( 'mouseDown', function(client) {
+    		zc.setText( $("#"+ name + "pre").text() );
+    	});
+	});
+	/*
 	var box_round = new ZeroClipboard.Client();
 	box_round.setText( $("#box_round pre").text() );
 	box_round.glue( 'box_round_copybutton', 'box_round_copybutton_container' );
@@ -234,6 +244,7 @@ function copypasta(){
 	box_rotate.addEventListener( 'mouseDown', function(client) {
 		box_rotate.setText( $("#box_rotate pre").text() );
 	});
+	*/
 }
 
 
@@ -264,7 +275,7 @@ $(document).ready(
 				    $(document.activeElement).not(document.body).blur();
 				});
 
-				$(this).find('input').bind('keydown keypress keyup',function () {
+				$(this).find('input').bind('keyup',function () {
 						var item = -1;
 						allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
 						group = this.parentNode.getAttribute('g'),
@@ -292,7 +303,7 @@ $(document).ready(
 
 						this.parentNode.getElementsByTagName('span')[0].innerHTML = this.value;
 					}
-				).bind('blur change',function () {
+				).bind('blur',function () {
 						$(this).parent().removeClass('edit');
 
 						var item = -1;
