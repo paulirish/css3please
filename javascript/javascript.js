@@ -225,20 +225,20 @@ $(document).ready(
         
 
 		$('pre').each(function () {
-				$(this).find('b').bind('click',function (e) {
+				$(this).find('b span').bind('click',function (e) {
     
 				        // basically calculating where to place the caret.
                         var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
                         var clickY = e.pageX - wrap.offset().left,
                             caretY = Math.round(clickY / wrap.width() * wrap.text().length);
                         
-						$(this).addClass('edit')
+						$(this).parent().addClass('edit')
 						.find('input')
-						    .val(this.getElementsByTagName('span')[0].innerHTML)
+						    .val( $(this).html() )
 						    .focus().caret(caretY,caretY);
 
 				}).mousedown(function(){
-				    $(document.activeElement).not(document.body).blur();
+				    // $(document.activeElement).not(document.body).blur();
 				});
 
 				$(this).find('input').bind('keyup',function () {
