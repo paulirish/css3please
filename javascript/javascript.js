@@ -245,72 +245,41 @@ $(document).ready(
 
 		$(document.getElementsByTagName('pre')).each(
 			function () {
-				$(this).find('b').bind('click',function () {
-						$(this)
-						.addClass('edit')
+				$(this).find('b').each(function(){
+				    $(this).addClass('edit')
 						.find('input')
-						    .val(this.getElementsByTagName('span')[0].innerHTML)
-						    .focus();
+						    .val(this.getElementsByTagName('span')[0].innerHTML);
+				});		    
+			
+
+				$(this).find('input').bind('blur keyup change',function () {
+					// $(this).parent().removeClass('edit');
+
+					var item = -1;
+					allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
+					group = this.parentNode.getAttribute('g'),
+					input = this.parentNode.getAttribute('i'),
+					value = this.value,
+					itemValue = '';
+console.log('allvalues',allValues)
+					if (input) {
+						value = cssMath.eval[input](value, allValues);
 					}
-				);
 
-				$(this).find('input').bind('keydown keypress keyup',function () {
-						var item = -1;
-						allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
-						group = this.parentNode.getAttribute('g'),
-						input = this.parentNode.getAttribute('i'),
-						value = this.value,
-						itemValue = '';
-
-						if (input) {
-							value = cssMath.eval[input](value, allValues);
-						}
-
-						while (++item < allValues.length) {
-							if (allValues[item].group == group) {
-								if (allValues[item].output) {
-									itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
-								} else {
-									itemValue = value;
-								}
-
-								allValues[item].node.innerHTML = itemValue;
-
-								$('#sandbox').css(allValues[item].styleProperty, allValues[item].styleValue);
+					while (++item < allValues.length) {
+						if (allValues[item].group == group) {
+							if (allValues[item].output) {
+								itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
+							} else {
+								itemValue = value;
 							}
-						}
+console.log('item',allValues[item].node)
+							allValues[item].node.innerHTML = itemValue;
 
-						this.parentNode.getElementsByTagName('span')[0].innerHTML = this.value;
-					}
-				).bind('blur change',function () {
-						$(this).parent().removeClass('edit');
-
-						var item = -1;
-						allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
-						group = this.parentNode.getAttribute('g'),
-						input = this.parentNode.getAttribute('i'),
-						value = this.value,
-						itemValue = '';
-
-						if (input) {
-							value = cssMath.eval[input](value, allValues);
-						}
-
-						while (++item < allValues.length) {
-							if (allValues[item].group == group) {
-								if (allValues[item].output) {
-									itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
-								} else {
-									itemValue = value;
-								}
-
-								allValues[item].node.innerHTML = itemValue;
-
-								$('#sandbox').css(allValues[item].styleProperty, allValues[item].styleValue);
-							}
+							$('#sandbox').css(allValues[item].styleProperty, allValues[item].styleValue);
 						}
 					}
-				);
+				});
 
 				var item = -1,
 				allValues = generator.collectAllValues(this);

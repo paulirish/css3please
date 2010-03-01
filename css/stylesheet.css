@@ -277,7 +277,7 @@ body {
 }
 
 .rule .comment {
-	color: #d8d8d8;
+	color: rgba(0,136,255,.9);
 }
 
 .rule .selector {
