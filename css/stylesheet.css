@@ -64,7 +64,7 @@ ul {
 }
 
 body {
-	margin: 8px;
+	margin: 8px; 
 }
 
 ol,
@@ -247,7 +247,7 @@ body {
 	overflow: hidden;
 	padding: 20px;
 	position: fixed;
-	right: 75px;
+	right: 25px;
 	top: 50px;
 	width: 400px;
 	z-index: 2;
