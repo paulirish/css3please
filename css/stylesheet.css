@@ -143,6 +143,8 @@ ol ol {
 	background-position: 0 0;
 	background-position-x: 0;
 	background-position-y: 0;
+	
+	display:none;
 }
 
 .resetbutton:hover {
