@@ -236,6 +236,7 @@ function copypasta(){
 	});
 }
 
+
 $(document).ready(
 	function () {
 		copypasta();
@@ -243,16 +244,27 @@ $(document).ready(
 
 		generator.makeEditable(document.getElementsByTagName('b'));
 
-		$(document.getElementsByTagName('pre')).each(
-			function () {
-				$(this).find('b').bind('click',function () {
-						$(this)
-						.addClass('edit')
+
+        
+
+		$('pre').each(function () {
+				$(this).find('b').bind('click',function (e) {
+    
+                        var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
+                        
+                        // console.log(e.pageX,e.pageY,wrap);
+                        
+                        var clickY = e.pageX - wrap.offset().left,
+                            caretY = Math.round(clickY / wrap.width() * wrap.text().length);
+                        
+						$(this).addClass('edit')
 						.find('input')
 						    .val(this.getElementsByTagName('span')[0].innerHTML)
-						    .focus();
-					}
-				);
+						    .focus().caret(caretY,caretY);
+
+				}).mousedown(function(){
+				    $(document.activeElement).not(document.body).blur();
+				});
 
 				$(this).find('input').bind('keydown keypress keyup',function () {
 						var item = -1;
