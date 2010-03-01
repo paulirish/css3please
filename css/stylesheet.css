@@ -87,26 +87,32 @@ ol ol {
 
 .rule_wrapper {
 	margin: 0 0 32px 0;
+	position: relative;
 }
 
 /* Toolbox */
 
 .toolbox_container {
-	position: relative;
-	float: right;
+	position: absolute; visibility:hidden;
+	bottom: 18px; left: 15px;
 }
+
+.rule_wrapper:hover .toolbox_container { visibility:visible; }
 
 .toolbox {
 	position: relative;
 	display: block;
+	/*
 	background: #05070e;
 	border: 1px solid #1b2448;
 	width: 100px;
+	padding: 3px;
 	height: 24px;
+	*/
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	padding: 3px;
+
 }
 
 .button_container {

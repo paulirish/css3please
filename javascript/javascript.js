@@ -250,10 +250,8 @@ $(document).ready(
 		$('pre').each(function () {
 				$(this).find('b').bind('click',function (e) {
     
+				        // basically calculating where to place the caret.
                         var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
-                        
-                        // console.log(e.pageX,e.pageY,wrap);
-                        
                         var clickY = e.pageX - wrap.offset().left,
                             caretY = Math.round(clickY / wrap.width() * wrap.text().length);
                         
