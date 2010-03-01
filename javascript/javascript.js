@@ -320,7 +320,16 @@ $(document).ready(
 							}
 						}
 					}
-				);
+				).bind("mousewheel", function(event, delta) {
+				    
+				            return true; // quit cuz its not there yet.
+                            if (delta > 0) {
+                                $(this).val( parseFloat(this.value) + 1 );
+                            } else {
+                                this.value = parseFloat(this.value) - 1 ;
+                            }
+                            return false;
+                });
 
 				var item = -1,
 				allValues = generator.collectAllValues(this);
