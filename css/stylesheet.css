@@ -287,6 +287,15 @@ body {
 .rule .comment {
 	color: rgba(0,136,255,.9);
 }
+.rule.comment { display:block;}
+.comment a { color:inherit; text-decoration:none;
+}
+
+.commentedout .endcomment { display:none;}
+.commentclose { visibility:hidden;}
+.commentedout .commentclose { visibility:visible;}
+.commentedout .rule , .commentedout .rule span{ color: rgba(0,136,255,.9) !important;}
+
 
 .rule .selector {
 	color: #ff6400;

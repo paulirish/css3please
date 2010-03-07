@@ -332,3 +332,11 @@ rule
 		property
 			value
 */
+
+
+
+
+$('.comment a').live('click',function(){
+    $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
+    $(this).closest('.rule_wrapper').toggleClass('commentedout');
+})
