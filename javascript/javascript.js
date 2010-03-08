@@ -241,7 +241,7 @@ function copypasta(){
 	    zc.glue( name + '_copybutton', name +'_copybutton_container' );
     	zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
-    		    zc.setText( $("#"+ name + " pre").text() );
+    		    zc.setText( $("#"+ name + " pre").not('.comment').text() );
     		}
     	})());
 	});
