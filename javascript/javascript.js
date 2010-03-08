@@ -247,7 +247,8 @@ $(document).ready(
 						group = this.parentNode.getAttribute('g'),
 						input = this.parentNode.getAttribute('i'),
 						value = this.value,
-						itemValue = '';
+						itemValue = '',
+						isCommentedOut = $(this).closest('.rule_wrapper').hasClass('commentedout');
 
 						if (input) {
 							value = cssMath.eval[input](value, allValues);
@@ -263,7 +264,7 @@ $(document).ready(
 
 								allValues[item].node.innerHTML = itemValue;
 
-								$('#sandbox').css(allValues[item].styleProperty, allValues[item].styleValue);
+								$('#sandbox').css(allValues[item].styleProperty, isCommentedOut ? '' : allValues[item].styleValue);
 							}
 						}
 
@@ -338,5 +339,6 @@ rule
 
 $('.comment a').live('click',function(){
     $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
-    $(this).closest('.rule_wrapper').toggleClass('commentedout');
+    $(this).closest('.rule_wrapper').toggleClass('commentedout')
+        .find('input').first().keyup();
 })
