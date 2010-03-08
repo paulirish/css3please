@@ -248,7 +248,19 @@ window.generator = {
 	        name = wrap.attr('id');
 	        
 	    $('style.'+name).remove();
-	    $('<style>').addClass(name).text( css ).appendTo('body');
+	    
+	    if ('\v'=='v') /* ie only */ {
+            var tag = document.createStyleSheet();
+            tag.className = name;
+            tag.cssText = css;
+        } else {
+            var tag = document.createElement('style'); 
+            tag.className = name;
+            document.body.appendChild(tag); 
+            tag[ (typeof document.body.style.WebkitAppearance=='string') /* webkit only */ ? 'innerText' : 'innerHTML'] = css;    
+        }
+        
+	    //$('<style>').addClass(name).appendTo('body').html( css );
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') )
 	}
 };
