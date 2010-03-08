@@ -86,7 +86,7 @@ ol ol {
 }
 
 .rule_wrapper {
-	margin: 0 0 32px 0;
+	margin: 0; /* dont really need any bottom margin, IMO */
 	position: relative;
 }
 
