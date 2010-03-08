@@ -155,6 +155,9 @@ window.cssMath = {
 };
 
 window.generator = {
+    
+    $sandbox : undefined, // set in doc ready below
+    
 	styleAllRules: function (ruleList) {
 		var item = -1,
 		innerHTML;
@@ -197,7 +200,38 @@ window.generator = {
 		}
 
 		return values;
-	}
+	},
+	grabAndSet : function(elem){
+	    
+        var item = -1;
+        allValues = generator.collectAllValues(elem.parentNode.parentNode.parentNode.parentNode),
+        group = elem.parentNode.getAttribute('g'),
+        input = elem.parentNode.getAttribute('i'),
+        value = elem.value,
+        itemValue = '',
+        isCommentedOut = $(elem).closest('.rule_wrapper').hasClass('commentedout');
+
+        if (input) {
+        	value = cssMath.eval[input](value, allValues);
+        }
+
+        while (++item < allValues.length) {
+        	if (allValues[item].group == group) {
+        		if (allValues[item].output) {
+        			itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
+        		} else {
+        			itemValue = value;
+        		}
+
+        		allValues[item].node.innerHTML = itemValue;
+
+                // for each css rule, set it (though commented out means clear it.)
+        		generator.$sandbox.css(allValues[item].styleProperty, isCommentedOut ? '' : allValues[item].styleValue);
+        	}
+        }
+        
+        return value;
+	} // eo grabAndSet()
 };
 
 function copypasta(){
@@ -214,111 +248,67 @@ function copypasta(){
 }
 
 
-$(document).ready(
-	function () {
-		copypasta();
-		generator.styleAllRules(document.getElementsByTagName('pre'));
 
-		generator.makeEditable(document.getElementsByTagName('b'));
-
-
-        
-
-		$('pre').each(function () {
-				$(this).find('b span').bind('click',function (e) {
+$(document).ready(function () {
     
-				        // basically calculating where to place the caret.
-                        var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
-                        var clickY = e.pageX - wrap.offset().left,
-                            caretY = Math.round(clickY / wrap.width() * wrap.text().length);
-                        
-						$(this).parent().addClass('edit')
-						.find('input')
-						    .val( $(this).html() )
-						    .focus().caret(caretY,caretY);
+    generator.$sandbox = $('#sandbox');
 
-				}).mousedown(function(){
-				    // $(document.activeElement).not(document.body).blur();
-				});
+	generator.styleAllRules(document.getElementsByTagName('pre'));
 
-				$(this).find('input').bind('keyup',function () {
-						var item = -1;
-						allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
-						group = this.parentNode.getAttribute('g'),
-						input = this.parentNode.getAttribute('i'),
-						value = this.value,
-						itemValue = '',
-						isCommentedOut = $(this).closest('.rule_wrapper').hasClass('commentedout');
+	generator.makeEditable(document.getElementsByTagName('b'));
 
-						if (input) {
-							value = cssMath.eval[input](value, allValues);
-						}
 
-						while (++item < allValues.length) {
-							if (allValues[item].group == group) {
-								if (allValues[item].output) {
-									itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
-								} else {
-									itemValue = value;
-								}
+	$('pre').each(function () {
+	    
+			$(this).find('b span').bind('click',function (e) {
 
-								allValues[item].node.innerHTML = itemValue;
+			        // basically calculating where to place the caret.
+                    var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
+                    var clickY = e.pageX - wrap.offset().left,
+                        caretY = Math.round(clickY / wrap.width() * wrap.text().length);
+                    
+					$(this).parent().addClass('edit')
+					.find('input')
+					    .val( $(this).html() )
+					    .focus().caret(caretY,caretY);
 
-								$('#sandbox').css(allValues[item].styleProperty, isCommentedOut ? '' : allValues[item].styleValue);
-							}
-						}
+			}).mousedown(function(){
+			    // $(document.activeElement).not(document.body).blur();
+			});
 
-						this.parentNode.getElementsByTagName('span')[0].innerHTML = this.value;
-					}
-				).bind('blur',function () {
-						$(this).parent().removeClass('edit');
-
-						var item = -1;
-						allValues = generator.collectAllValues(this.parentNode.parentNode.parentNode.parentNode),
-						group = this.parentNode.getAttribute('g'),
-						input = this.parentNode.getAttribute('i'),
-						value = this.value,
-						itemValue = '';
-
-						if (input) {
-							value = cssMath.eval[input](value, allValues);
-						}
-
-						while (++item < allValues.length) {
-							if (allValues[item].group == group) {
-								if (allValues[item].output) {
-									itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
-								} else {
-									itemValue = value;
-								}
-
-								allValues[item].node.innerHTML = itemValue;
-
-								$('#sandbox').css(allValues[item].styleProperty, allValues[item].styleValue);
-							}
-						}
-					}
-				).bind("mousewheel", function(event, delta) {
-				    
-				            return true; // quit cuz its not there yet.
-                            if (delta > 0) {
-                                $(this).val( parseFloat(this.value) + 1 );
-                            } else {
-                                this.value = parseFloat(this.value) - 1 ;
-                            }
-                            return false;
-                });
-
-				var item = -1,
-				allValues = generator.collectAllValues(this);
-
-				while (++item < allValues.length) {
-					$('#sandbox').css(allValues[item].styleProperty, allValues[item].styleValue);
+			$(this).find('input').bind('keyup',function () {
+					
+					generator.grabAndSet(this);
+					
+					this.parentNode.getElementsByTagName('span')[0].innerHTML = this.value;
 				}
+			).bind('blur',function () {
+					$(this).parent().removeClass('edit');
+
+                    generator.grabAndSet(this);
+				}
+			).bind("mousewheel", function(event, delta) {
+			    
+			            return true; // quit cuz its not there yet.
+                        if (delta > 0) {
+                            $(this).val( parseFloat(this.value) + 1 );
+                        } else {
+                            this.value = parseFloat(this.value) - 1 ;
+                        }
+                        return false;
+            });
+
+            // first run on page load
+			var item = -1,
+			    allValues = generator.collectAllValues(this);
+
+			while (++item < allValues.length) {
+				generator.$sandbox.css(allValues[item].styleProperty, allValues[item].styleValue);
 			}
-		);
-	}
-);
+	}); // end pre each()
+	
+	copypasta();
+});
 
 window.css = {
 	'text-shadow': '2px 2px 2px #000;',
@@ -336,9 +326,10 @@ rule
 
 
 
-
+// commenting out
 $('.comment a').live('click',function(){
     $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
     $(this).closest('.rule_wrapper').toggleClass('commentedout')
         .find('input').first().keyup();
+    return false;
 })
