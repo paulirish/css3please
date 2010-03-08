@@ -208,8 +208,7 @@ window.generator = {
         group = elem.parentNode.getAttribute('g'),
         input = elem.parentNode.getAttribute('i'),
         value = elem.value,
-        itemValue = '',
-        isCommentedOut = $(elem).closest('.rule_wrapper').hasClass('commentedout');
+        itemValue = '';
 
         if (input) {
         	value = cssMath.eval[input](value, allValues);
@@ -225,13 +224,33 @@ window.generator = {
 
         		allValues[item].node.innerHTML = itemValue;
 
-                // for each css rule, set it (though commented out means clear it.)
-        		generator.$sandbox.css(allValues[item].styleProperty, isCommentedOut ? '' : allValues[item].styleValue);
+                
         	}
         }
         
+        generator.applyStyles(elem);
+        
         return value;
-	} // eo grabAndSet()
+	}, // eo grabAndSet()
+	
+	// if no elem is passed in, all styles are applied.
+	applyStyles : function(elem){
+	    
+	    if (!elem){
+	        $("pre").not('.comment').each(function(){
+	            generator.applyStyles(this);
+	        })
+	        
+	    }
+	    
+	    var css = $(elem).closest("pre").not('.comment').text(),
+	        wrap = $(elem).closest('.rule_wrapper'),
+	        name = wrap.attr('id');
+	        
+	    $('style.'+name).remove();
+	    $('<style>').addClass(name).text( css ).appendTo('body');
+	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') )
+	}
 };
 
 function copypasta(){
@@ -243,7 +262,7 @@ function copypasta(){
     	    return function(client) {
     		    zc.setText( $("#"+ name + " pre").not('.comment').text() );
     		}
-    	})());
+    	})());  
 	});
 }
 
@@ -299,12 +318,8 @@ $(document).ready(function () {
             });
 
             // first run on page load
-			var item = -1,
-			    allValues = generator.collectAllValues(this);
-
-			while (++item < allValues.length) {
-				generator.$sandbox.css(allValues[item].styleProperty, allValues[item].styleValue);
-			}
+			generator.applyStyles();
+			
 	}); // end pre each()
 	
 	copypasta();
