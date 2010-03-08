@@ -249,18 +249,18 @@ window.generator = {
 	        
 	    $('style.'+name).remove();
 	    
-	    if ('\v'=='v') /* ie only */ {
-            var tag = document.createStyleSheet();
-            tag.className = name;
-            tag.cssText = css;
-        } else {
-            var tag = document.createElement('style'); 
-            tag.className = name;
-            document.body.appendChild(tag); 
-            tag[ (typeof document.body.style.WebkitAppearance=='string') /* webkit only */ ? 'innerText' : 'innerHTML'] = css;    
+	    
+	    var ss = document.createElement('style');
+        ss.setAttribute("type", "text/css");
+        ss.className = name;
+        if (ss.styleSheet) {  
+            ss.styleSheet.cssText = css;
+        } else {               
+            var tt1 = document.createTextNode(css);
+            ss.appendChild(tt1);
         }
+        document.body.appendChild(ss);
         
-	    //$('<style>').addClass(name).appendTo('body').html( css );
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') )
 	}
 };
