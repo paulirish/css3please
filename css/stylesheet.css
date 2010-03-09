@@ -285,6 +285,7 @@ body {
 }
 
 .rule .comment {
+    color: #0088ff;
 	color: rgba(0,136,255,.9);
 }
 .rule.comment { display:block;}
@@ -294,7 +295,7 @@ body {
 .commentedout .endcomment { display:none;}
 .commentclose { visibility:hidden;}
 .commentedout .commentclose { visibility:visible;}
-.commentedout .rule , .commentedout .rule span{ color: rgba(0,136,255,.9) !important;}
+.commentedout .rule , .commentedout .rule span{ color: #0088ff; color: rgba(0,136,255,.9) !important;}
 
 
 .rule .selector {

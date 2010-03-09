@@ -254,7 +254,7 @@ window.generator = {
 			var ss = document.createElement('style');
 			ss.setAttribute("type", "text/css");
 			ss.className = name;
-			alert(name + css);
+			//alert(name + css);
 			if (ss.styleSheet) {  
 				ss.styleSheet.cssText = css;
 			} else {               
