@@ -41,9 +41,9 @@
 	<pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
 .box_round {
-       -moz-border-radius: <b g="0">12px</b>; <span class="comment">/* Firefox 1.0 (partial), Firefox 3.5 and up <span class="endcomment">*/</span></span>
-    -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Safari 3.0 (partial) Safari 4.0 +, Chrome <span class="endcomment">*/</span></span>
-            border-radius: <b g="0">12px</b>; <span class="comment">/* IE 9, Opera 10.5, W3C rule, non vendor specific <span class="endcomment">*/</span></span>
+       -moz-border-radius: <b g="0">12px</b>; <span class="comment">/* FF1+ <span class="endcomment">*/</span></span>
+    -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Saf3+, Chrome <span class="endcomment">*/</span></span>
+            border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE 9 <span class="endcomment">*/</span></span>
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -64,11 +64,11 @@
   <pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
 .box_shadow {
-	   -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Firefox 3.5 and up <span class="endcomment">*/</span></span>
-	-webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Safari 3.0 (partial) Safari 4.0 +, Chrome <span class="endcomment">*/</span></span>
-	        box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* IE 9.0, Opera 10.5, W3C rule, non vendor specific <span class="endcomment">*/</span></span>
-	            filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>'); <span class="comment">/* IE 6.0, IE 7.0 <span class="endcomment">*/</span></span>
-	        -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')"; <span class="comment">/* IE 8.0 <span class="endcomment">*/</span></span>
+	   -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
+	-webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3.0+, Chrome <span class="endcomment">*/</span></span>
+	        box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE 9.0 <span class="endcomment">*/</span></span>
+	            filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>'); <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+	        -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span>
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -88,10 +88,10 @@
   <pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
 .box_gradient {
-       background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* Firefox 3.6 <span class="endcomment">*/</span></span>
-       background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, <b g="0" i="s2Hex">#444444</b>),color-stop(1, <b g="1" i="s2Hex">#999999</b>)); <span class="comment">/* Safari 4.0 and up <span class="endcomment">*/</span></span>
-                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>'); <span class="comment">/* IE 6.0, IE 7.0 <span class="endcomment">*/</span></span>
-             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>')"; <span class="comment">/* IE 8.0 <span class="endcomment">*/</span></span>
+       background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
+       background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, <b g="0" i="s2Hex">#444444</b>),color-stop(1, <b g="1" i="s2Hex">#999999</b>)); <span class="comment">/* Saf4+, Chrome <span class="endcomment">*/</span></span>
+                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>'); <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span>
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -112,9 +112,9 @@
 	<pre class="rule">
 .box_rgba {
        background-color: <b g="0" i="ch" o="s2Hex">#B4B490</b>;
-       background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;
-                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>'); <span class="comment">/* IE 6.0 IE 7.0 <span class="endcomment">*/</span></span>
-             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>')"; <span class="comment">/* IE 8.0 <span class="endcomment">*/</span></span>
+       background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;  <span class="comment">/* FF3+, Saf3+, Opera 10.10+, Chrome <span class="endcomment">*/</span></span>
+                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>'); <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span>
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -134,11 +134,11 @@
   <pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule on}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
 .box_rotate {
-         -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* IE 6.0, IE 7.0 <span class="endcomment">*/</span></span>
+         -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
            -o-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Opera 10.5 <span class="endcomment">*/</span></span>
-      -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Safari 3.1, Chrome <span class="endcomment">*/</span></span>
-                 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>);  <span class="comment">/* IE 6.0, IE 7.0 <span class="endcomment">*/</span></span>
-             -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>)"; <span class="comment">/* IE 8.0 <span class="endcomment">*/</span></span>
+      -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Saf3.1+, Chrome <span class="endcomment">*/</span></span>
+                 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>);  <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+             -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>)"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span>
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -160,10 +160,10 @@
 	<pre class="rule">
 @font-face {
   font-family: '<b g="1">WebFont</b>';
-  src: url('<b g="0">myfont</b>.eot');
+  src: url('<b g="0">myfont</b>.eot');  <span class="comment">/* IE6+ <span class="endcomment">*/</span></span>
   src: local('☺'), 
-        url('<b g="0">myfont</b>.woff') format('woff'), 
-        url('<b g="0">myfont</b>.ttf') format('truetype');
+        url('<b g="0">myfont</b>.woff') format('woff'),  <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
+        url('<b g="0">myfont</b>.ttf') format('truetype');  <span class="comment">/* Saf3+,Chrome,Opera10+ <span class="endcomment">*/</span></span>
 }
 	</pre>
 	<!--  <pre class="rule comment commentclose"><span class="comment"> */</span></pre> -->
