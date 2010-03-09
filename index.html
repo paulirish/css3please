@@ -210,7 +210,7 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
         'http://www') + '.google-analytics.com/ga.js';
     ga.setAttribute('async', 'true');
-    elem.insertBefore(ga, elem.firstChild);
+    setTimeout(function(){ elem.insertBefore(ga, elem.firstChild); },100);
   })();
 
 </script>
