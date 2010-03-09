@@ -6,7 +6,7 @@ window.cssMath = {
 		return Math.round(n * l) / l;
 	},
 	/* X and Y coordinates to Rotation and Strength */
-	xy2rs: function (x, y, p) {
+	xy2rs: function (x, y) {
 		return {
 			r: this.round(Math.atan2(x, y * -1) * 180 / Math.PI, 3),
 			s: this.round(Math.sqrt((x * x) + (y * y)), 3)
@@ -109,7 +109,7 @@ window.cssMath = {
 		/* String to Hexadecimals */
 		s2Hex: function (value, allValues) {
 			if (value.indexOf('rgb') > -1) {
-				return '#' + cssMath.da2ha(c.replace(/^rgb\s?\(\s?(.*?)\s?\)$/, '$1').split(/,\s?/)).join('');
+				return '#' + cssMath.da2ha(value.replace(/^rgb\s?\(\s?(.*?)\s?\)$/, '$1').split(/,\s?/)).join('');
 			}
 			else {
 				return cssMath.h2lh(value);
@@ -119,6 +119,8 @@ window.cssMath = {
 		s2aHex: function (value, allValues) {
 			if (value.indexOf('rgba') > -1) {
 				return cssMath.ac2ah(value);
+			} else if (value.indexOf('rgb') > -1){
+			    return cssMath.ac2ah(value);
 			}
 			else {
 				return value;
@@ -326,14 +328,27 @@ $(document).ready(function () {
 
                     generator.grabAndSet(this);
 				}
-			).bind("mousewheel", function(event, delta) {
+			).bind("mousewheel keydown", function(e, delta) {
 			    
-			            return true; // quit cuz its not there yet.
-                        if (delta > 0) {
-                            $(this).val( parseFloat(this.value) + 1 );
-                        } else {
-                            this.value = parseFloat(this.value) - 1 ;
+			            // only px values get this treatment for now.
+			            if (!$(this).parent().filter('b').not('[o],[i$=Hex]').length) return true;
+			            
+			            var split = this.value.split(/-?[0-9A-F]+/),
+			                num   = this.value.match(/-?[0-9A-F]+/)[0],
+			                len, newval;
+			                
+                        if (delta > 0 || e.which == 38) {
+                            newval = parseFloat(num) + 1;
+                        } else if ( delta < 0 || e.which == 40 ) {
+                            newval = parseFloat(num) - 1;
                         }
+                        
+                        len = (''+newval).length
+                        $(this).val(split.join(newval));
+                        
+                        generator.grabAndSet(this);
+                        
+                        $(this).caret( len,len );
                         return false;
             });
 
