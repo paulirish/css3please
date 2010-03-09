@@ -60,8 +60,9 @@ window.cssMath = {
 		var a,
 		ha = [];
 
-		while ((a = da.shift())) {
-			ha.push(this.d2h(a));
+		for (var i=0; i < da.length; i++) {
+		    if (i==3){ da[i] *= 255; }// alpha bit of the rgba!
+			ha.push( this.d2h( da[i] ) );
 		}
 
 		ha.splice(0, 0, ha.pop());
@@ -73,10 +74,16 @@ window.cssMath = {
 		var a,
 		da = [];
 
-		while ((a = ha.shift())) {
-			da.push(this.h2d(a));
+        for (var i=0; i < ha.length; i++) {
+		    if (i==2){ 
+		        ha[i] /= 255;  // alpha bit of the rgba!
+		        var num = this.h2d( ha[i]*16 )/10;
+		    } else {
+		        var num = this.h2d( ha[i] )
+		    }
+			da.push(  num );
 		}
-
+		
 		da.splice(0, 0, da.pop());
 
 		return da;
@@ -114,6 +121,12 @@ window.cssMath = {
 			else {
 				return cssMath.h2lh(value);
 			}
+		},
+		// dont include an AA in this hex
+		shortHex : function (value, allValues) {
+			
+			return '#'+cssMath.eval.s2Hex(value,allValues).replace(/^#../,'');
+			
 		},
 		/* String to Alpha + Hexadecimals */
 		s2aHex: function (value, allValues) {
@@ -381,13 +394,13 @@ rule
 			value
 */
 
-
+$.fn.applyStyles = function(){ generator.applyStyles(this[0]); return this; }
 
 // commenting out
 $('.comment a').live('click',function(){
     $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
     $(this).closest('.rule_wrapper').toggleClass('commentedout')
-        .find('input').first().keyup();
+        .find('input').first().applyStyles();
     return false;
 })
 
