@@ -298,7 +298,7 @@ body {
 .commentedout .rule , .commentedout .rule span{ color: #0088ff; color: rgba(0,136,255,.9) !important;}
 body .declaration .comment,  span.comment .comment { color: rgba(0,136,255,.3) !important }
 
-.comment a { border-bottom: 1px solid rgb(0,136,255);}
+.footer .comment a { border-bottom: 1px solid rgb(0,136,255);}
 
 .rule .selector {
 	color: #ff6400;
