@@ -309,7 +309,7 @@ $(document).ready(function () {
     
     generator.$sandbox = $('#sandbox');
 
-	generator.styleAllRules(document.getElementsByTagName('pre'));
+	generator.styleAllRules( $('pre').not('.footer').get() );
 
 	generator.makeEditable(document.getElementsByTagName('b'));
 
