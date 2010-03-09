@@ -301,6 +301,7 @@ body .declaration .comment,  span.comment .comment { color: rgba(0,136,255,.3) !
 pre.comment .comment { color: rgba(0,136,255,.5); -webkit-transition: color 2s ease-in;}
 .rule_wrapper:hover pre.comment .comment { color: rgba(0,136,255,.9);}
 
+body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 
 .footer .comment a { border-bottom: 1px solid rgb(0,136,255);}
 
