@@ -208,7 +208,7 @@ window.generator = {
 	grabAndSet : function(elem){
 	    
         var item = -1;
-        allValues = generator.collectAllValues(elem.parentNode.parentNode.parentNode.parentNode),
+        allValues = generator.collectAllValues( $(elem).closest('.property')[0] ),
         group = elem.parentNode.getAttribute('g'),
         input = elem.parentNode.getAttribute('i'),
         value = elem.value,
@@ -343,6 +343,8 @@ $(document).ready(function () {
                             newval = parseFloat(num) + 1;
                         } else if ( delta < 0 || e.which == 40 ) {
                             newval = parseFloat(num) - 1;
+                        } else {
+                            return true;
                         }
                         
                         len = (''+newval).length
