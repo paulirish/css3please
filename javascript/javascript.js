@@ -271,8 +271,9 @@ window.generator = {
 			var ss = document.createElement('style');
 			ss.setAttribute("type", "text/css");
 			ss.className = name;
-			//alert(name + css);
-			if (ss.styleSheet) {  
+
+			if (ss.styleSheet && name !== 'box_webfont') {  
+				// IE crashes hard on @font-face going in through cssText
 				ss.styleSheet.cssText = css;
 			} else {               
 				var tt1 = document.createTextNode(css);
