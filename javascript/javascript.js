@@ -237,9 +237,10 @@ window.generator = {
 	applyStyles : function(elem){
 	    
 	    if (!elem){
-	        $("pre").not('.comment').each(function(){
+	        $(".selector").closest('pre').each(function(){
 	            generator.applyStyles(this);
 	        })
+	        return;
 	        
 	    }
 	    
@@ -266,6 +267,11 @@ window.generator = {
 };
 
 function copypasta(){
+    if (location.protocol == 'file:'){
+        $('.copybutton').parent().hide();
+        return;
+    }
+    
 	$('.rule_wrapper').each(function(){
 	    var name = this.id;
 	    var zc = new ZeroClipboard.Client();
@@ -329,11 +335,13 @@ $(document).ready(function () {
                         return false;
             });
 
-            // first run on page load
-			generator.applyStyles();
+           
 			
 	}); // end pre each()
 	
+	 // first run on page load
+	generator.applyStyles();
+		
 	copypasta();
 });
 
@@ -360,3 +368,4 @@ $('.comment a').live('click',function(){
         .find('input').first().keyup();
     return false;
 })
+
