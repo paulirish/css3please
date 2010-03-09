@@ -223,7 +223,7 @@ window.generator = {
         		if (allValues[item].output) {
         			itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
         		} else {
-        			itemValue = value;
+        			itemValue = value; 
         		}
 
         		allValues[item].node.innerHTML = itemValue;
@@ -347,6 +347,7 @@ $(document).ready(function () {
                             return true;
                         }
                         
+                        newval = Math.round(newval*10)/10;
                         len = (''+newval).length
                         $(this).val(split.join(newval));
                         
