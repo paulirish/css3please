@@ -208,7 +208,7 @@ window.generator = {
 	grabAndSet : function(elem){
 	    
         var item = -1;
-        allValues = generator.collectAllValues( $(elem).closest('.property')[0] ),
+        allValues = generator.collectAllValues( $(elem).closest('.property')[0] || $(elem).closest('.rule')[0] ),
         group = elem.parentNode.getAttribute('g'),
         input = elem.parentNode.getAttribute('i'),
         value = elem.value,
@@ -333,10 +333,10 @@ $(document).ready(function () {
 			).bind("mousewheel keydown", function(e, delta) {
 			    
 			            // only px values get this treatment for now.
-			            if (!/px/.test($(this).val())) return true;
+			            if (!(/px/.test($(this).val()) || $(this).closest('#box_rotate').length)) return true;
 			            
-			            var split = this.value.split(/-?[0-9A-F]+/),
-			                num   = this.value.match(/-?[0-9A-F]+/)[0],
+			            var split = this.value.split(/-?[0-9A-F.]+/),
+			                num   = this.value.match(/-?[0-9A-F.]+/)[0],
 			                len, newval;
 			                
                         if (delta > 0 || e.which == 38) {
