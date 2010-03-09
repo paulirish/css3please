@@ -397,7 +397,7 @@ rule
 $.fn.applyStyles = function(){ generator.applyStyles(this[0]); return this; }
 
 // commenting out
-$('.comment a').live('click',function(){
+$('.rule_wrapper .comment a').live('click',function(){
     $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
     $(this).closest('.rule_wrapper').toggleClass('commentedout')
         .find('input').first().applyStyles();
