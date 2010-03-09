@@ -40,10 +40,10 @@
 <div id="box_round" class="rule_wrapper">
 	<pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
-.box_round {
-       -moz-border-radius: <b g="0">18px</b>;
-    -webkit-border-radius: <b g="0">18px</b>;
-            border-radius: <b g="0">18px</b>;
+.box_round { //No IE,  support, 
+       -moz-border-radius: <b g="0">12px</b>; //Firefox 1.0 (partial), Firefox 3.5 and up
+    -webkit-border-radius: <b g="0">12px</b>; //Safari 3.0 (partial) Safari 4.0 +, Chrome
+            border-radius: <b g="0">12px</b>; //IE 9, Opera 10.5 and up, W3C rule, non vendor specific
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -64,11 +64,11 @@
   <pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
 .box_shadow {
-	   -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>;
-	-webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>;
-	        box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>;
-	            filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>');
-	        -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')";
+	   -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; //Firefox 1.0 (partial), Firefox 3.5 and up
+	-webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; //Safari 3.0 (partial) Safari 4.0 +, Chrome
+	        box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; //IE 9.0, Opera 10.5 and up, W3C rule, non vendor specific
+	            filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>'); //IE 6.0, IE 7.0
+	        -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')"; //IE 8.0
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -88,10 +88,10 @@
   <pre class="rule comment"><span class="comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></span></pre> 
 	<pre class="rule">
 .box_gradient {
-       background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>);
-       background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, <b g="0" i="s2Hex">#444444</b>),color-stop(1, <b g="1" i="s2Hex">#999999</b>));
-                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>');
-             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>')";
+       background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); //Firefox 3.6 and up
+       background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, <b g="0" i="s2Hex">#444444</b>),color-stop(1, <b g="1" i="s2Hex">#999999</b>)); //Safari 4.0 and up
+                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>'); //IE 5.5, 6.0, IE 7.0
+             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>')"; //IE 8
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -112,8 +112,8 @@
 	<pre class="rule">
 .box_rgba {
        background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;
-                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>');
-             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>')";
+                 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>'); //IE 6, IE 7
+             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>',endColorstr='<b g="0" i="s2aHex">#AN0F4F31</b>')"; //IE 8
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
@@ -136,8 +136,8 @@
          -moz-transform: rotate(<b g="0">7.5</b>deg);
            -o-transform: rotate(<b g="0">7.5</b>deg);
       -webkit-transform: rotate(<b g="0">7.5</b>deg);
-                 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>);
-             -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>)";
+                 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>); //IE 6, IE 7
+             -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=<b g="0" i="s2deg" o="rot">0.083</b>)"; //IE 8
 }
 	</pre>
 	<pre class="rule comment commentclose"><span class="comment"> */</span></pre>
