@@ -170,6 +170,8 @@ window.generator = {
 			innerHTML = innerHTML.replace(/(\/\*((\n|.)+)\*\/)/, '<span class="comment">$1</span>');
 			innerHTML = innerHTML.replace(/{((\n|.)+)}/, '{<span class="declaration-block">$1</span>}');
 			innerHTML = innerHTML.replace(/(.*?) {/, '<span class="selector">$1</span> <span class="bracket">{</span>');
+			// this next one matches the triple line @font-face rule
+			innerHTML = innerHTML.replace(/(.*?):\s?(.*?\n.*?\n.*);/mg, '<span class="declaration"><span class="property">$1</span>: <span class="value">$2</span>;</span>');
 			innerHTML = innerHTML.replace(/(.*?):\s?(.*?);/mg, '<span class="declaration"><span class="property">$1</span>: <span class="value">$2</span>;</span>');
 			innerHTML = innerHTML.replace(/}/m, '<span class="bracket">}</span>');
 
@@ -331,7 +333,7 @@ $(document).ready(function () {
 			).bind("mousewheel keydown", function(e, delta) {
 			    
 			            // only px values get this treatment for now.
-			            if (!$(this).parent().filter('b').not('[o],[i$=Hex]').length) return true;
+			            if (!/px/.test($(this).val())) return true;
 			            
 			            var split = this.value.split(/-?[0-9A-F]+/),
 			                num   = this.value.match(/-?[0-9A-F]+/)[0],

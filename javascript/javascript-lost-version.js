@@ -275,5 +275,50 @@ $(document).ready(
 		styleAllRules();
 		stylePreview();
 		$('input').bind('keydown', keyChanges);
+		
+		
+		
+		
+		var fn = function () {
+    	};
+    	$('i').live('click', function () {
+    		var $out = $(this),
+    		$in = $(document.createElement('input'));
+
+    		if ($out.hasClass('edit')) {
+    			return;
+    		} else {
+    			$in.val($out.addClass('edit').wrapInner('<span>').children().attr('to', $out.attr('to') || '').css('visibility', 'hidden').html());
+    		}
+
+    		$out.append($in);
+
+    		$in.focus().bind('keydown keypress keyup', function () {
+    			var $in = $(this),
+    			$out = $in.parent(),
+    			val = $in.val();
+
+    			$out.children('span').html($in.val());
+
+    			val = ($out.attr('is')) ? eval($out.attr('is')) : val;
+
+    			$out.parent().find('i[group=' + $out.attr('group') + ']:not(.edit)').each(function () {
+    				this.innerHTML = (this.getAttribute('to')) ? eval(this.getAttribute('to')) : val;
+    			});
+    		}).bind('blur change', function () {
+    			var $in = $(this),
+    			$out = $in.parent().removeClass('edit'),
+    			val = $in.val();
+
+    			val = ($out.attr('is')) ? eval($out.attr('is')) : val;
+
+    			val = ($out.attr('to')) ? eval($out.attr('to')) : val;
+
+    			$out.html(val);
+
+    			$in.remove();
+    		});
+    	});
+    	
 	}
 );
