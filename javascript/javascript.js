@@ -248,20 +248,22 @@ window.generator = {
 	        wrap = $(elem).closest('.rule_wrapper'),
 	        name = wrap.attr('id');
 	        
-	    $('style.'+name).remove();
+	    $('style.'+name).remove();	
 	    
-	    
-	    var ss = document.createElement('style');
-        ss.setAttribute("type", "text/css");
-        ss.className = name;
-        if (ss.styleSheet) {  
-            ss.styleSheet.cssText = css;
-        } else {               
-            var tt1 = document.createTextNode(css);
-            ss.appendChild(tt1);
+		if (name){
+			var ss = document.createElement('style');
+			ss.setAttribute("type", "text/css");
+			ss.className = name;
+			alert(name + css);
+			if (ss.styleSheet) {  
+				ss.styleSheet.cssText = css;
+			} else {               
+				var tt1 = document.createTextNode(css);
+				ss.appendChild(tt1);
+			}
+			document.body.appendChild(ss);
         }
-        document.body.appendChild(ss);
-        
+		
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') )
 	}
 };
