@@ -412,3 +412,11 @@ $('.rule_wrapper .comment a').live('click',function(){
     return false;
 })
 
+
+
+
+
+
+
+
+

@@ -241,14 +241,18 @@ body {
 	color: #f8f8f8;
 }
 
+#sandboxwrap {
+    position: fixed;
+	right: 25px;
+	top: 50px;
+    z-index: 10;
+}
 #sandbox {
   font-family: "goudy-bookletter-1911-1","goudy-bookletter-1911-2","Baskerville","Georgia",serif;
   border:1px solid rgba(21, 11, 11, 0.2);
 	overflow: hidden;
 	padding: 20px;
-	position: fixed;
-	right: 25px;
-	top: 50px;
+	
 	width: 400px;
 	z-index: 2;
 	color: rgba(0, 0, 0, 0.6);
