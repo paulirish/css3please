@@ -165,6 +165,13 @@ window.cssMath = {
 		},
 		rot: function (value, allValues) {
 			return cssMath.round(cssMath.d2r(value), 3);
+		},
+		xy2rs : function( value, allValues ,elem){
+		    var children = $(elem).parent().parent().parent().find('b'),
+		        x = parseInt(children.eq(0).text(),10),
+		        y = parseInt(children.eq(1).text(),10);
+		    console.log( elem, cssMath.xy2rs(x,y) );
+		    return  cssMath.xy2rs(x,y).r;
 		}
 	}
 };
@@ -228,13 +235,13 @@ window.generator = {
         itemValue = '';
 
         if (input) {
-        	value = cssMath.eval[input](value, allValues);
+        	value = cssMath.eval[input](value, allValues,elem);
         }
 
         while (++item < allValues.length) {
         	if (allValues[item].group == group) {
         		if (allValues[item].output) {
-        			itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
+        			itemValue = cssMath.eval[ allValues[item].output ](value, allValues, elem);
         		} else {
         			itemValue = value; 
         		}
