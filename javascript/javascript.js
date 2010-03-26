@@ -27,6 +27,36 @@ window.cssMath = {
 	d2r: function (d) {
 		return d / 90;
 	},
+	
+	/* Degrees to Radians */
+	d2rad: function (d){
+        return (d) * Math.PI / 180;
+    },
+	
+	/* Radians to Degrees */
+	rad2d: function (r) {
+		return (180*r)/Math.PI + 360;
+	},
+	
+	/* matrix to IE String */
+	m2s: function (M) {
+		return 'M11=' + M.e(1, 1) + ', M12=' + M.e(1,2) + ', M21=' + M.e(2,1) + ', M22=' + M.e(2,2);
+	},
+	
+	s2m: function (s) {
+		
+		var entries = s.split(',');
+		var values = new Array();
+		
+		for (var i=0; i<entries.length; i++) {
+			var e = entries[i];
+			
+			values[i] = e.split('=')[1];
+		}
+		
+		return $M([[values[0], values[1]], [values[2], values[3]]]);
+	},
+	
 	/* Hexadecimal to Decimal */
 	h2d: function (h) {
 		return '' + parseInt(h, 16);
@@ -112,6 +142,16 @@ window.cssMath = {
 	ah2ac: function (h) {
 		return 'rgba(' + this.aha2ada(h.replace(/^#?(.{1,2})(.{1,2})(.{1,2})(.{1,2})$/, '$3,$4,$1,$2').split(',')).join(', ') + ')';
 	},
+	
+	/* Are two numbers close enough.  Needed for matrices because of rounding errors in JavaScript */
+	areClose: function (x, y) {
+		if (Math.abs(x-y) < 0.001) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	
 	eval: {
 		/* String to Hexadecimals */
 		s2Hex: function (value, allValues) {
@@ -156,6 +196,7 @@ window.cssMath = {
 			return cssMath.ah2ac(value);
 		},
 		s2deg: function (value, allValues) {
+			
 			if (value > 4) {
 				return value;
 			}
@@ -165,14 +206,31 @@ window.cssMath = {
 		},
 		rot: function (value, allValues) {
 			return cssMath.round(cssMath.d2r(value), 3);
+		} ,
+		
+		matrix2deg: function (value, allValues) {
+			
+			
+			var M = cssMath.s2m(value);
+			var asin1 = Math.asin(M.e(2,1));
+			var asin2 = Math.asin(M.e(1,2));
+			var cos = Math.acos(M.e(1,1));
+			
+			
+			if (cssMath.areClose(asin1, -asin2)  && cssMath.areClose(M.e(1,1),M.e(2,2))) {
+				return asin1;
+			} else {
+				return "NaN";
+			}
 		},
-		xy2rs : function( value, allValues ,elem){
-		    var children = $(elem).parent().parent().parent().find('b'),
-		        x = parseInt(children.eq(0).text(),10),
-		        y = parseInt(children.eq(1).text(),10);
-		    console.log( elem, cssMath.xy2rs(x,y) );
-		    return  cssMath.xy2rs(x,y).r;
+		
+		deg2matrix: function (value, allValues) {
+			var num = cssMath.d2rad(value);
+			
+       		return cssMath.m2s(Matrix.Rotation(num));
 		}
+		
+		
 	}
 };
 
@@ -235,13 +293,13 @@ window.generator = {
         itemValue = '';
 
         if (input) {
-        	value = cssMath.eval[input](value, allValues,elem);
+        	value = cssMath.eval[input](value, allValues);
         }
 
         while (++item < allValues.length) {
         	if (allValues[item].group == group) {
         		if (allValues[item].output) {
-        			itemValue = cssMath.eval[ allValues[item].output ](value, allValues, elem);
+        			itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
         		} else {
         			itemValue = value; 
         		}
@@ -411,12 +469,4 @@ $('.rule_wrapper .comment a').live('click',function(){
         .find('input').first().applyStyles();
     return false;
 })
-
-
-
-
-
-
-
-
 
