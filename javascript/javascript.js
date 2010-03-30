@@ -311,7 +311,7 @@ window.generator = {
         }
         
         generator.applyStyles(elem);
-        
+        getFilters();
         return value;
 	}, // eo grabAndSet()
 	
@@ -326,10 +326,11 @@ window.generator = {
 	        
 	    }
 	    
-	    var css = $(elem).closest("pre").not('.comment').text(),
+	    var css = $(elem).closest("pre").not('.comment').text().replace(/(-ms-)?filter:[^\;]*\;/g, ''),
 	        wrap = $(elem).closest('.rule_wrapper'),
 	        name = wrap.attr('id');
-	        
+		   
+		//alert(css);
 	    $('style.'+name).remove();	
 	    
 		if (name){
@@ -347,7 +348,9 @@ window.generator = {
 			document.body.appendChild(ss);
         }
 		
-	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') )
+	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') );
+		
+		
 	}
 };
 
@@ -356,7 +359,8 @@ function copypasta(){
         $('.copybutton').parent().hide();
         return;
     }
-    
+
+   
 	$('.rule_wrapper').each(function(){
 	    var name = this.id;
 	    var zc = new ZeroClipboard.Client();
@@ -369,6 +373,189 @@ function copypasta(){
 	});
 }
 
+function filterParamsToObject(s) {
+	var r = {};
+	
+	var params = s.split(',');
+	for (var i=0; i<params.length; i++) {
+		var param = params[i].trim();
+		
+		var nameVal = param.split('=');
+		r[nameVal[0]] = nameVal[1];
+	}
+	
+	return r;
+}
+
+function addFilter (obj, filterName, filterValue){
+    // now ... insert the filter so we can exploit its wonders
+    
+    var filter;
+	
+    
+        // dang! We have to go through all of them and make sure filter
+        // is set right before we add the new one.
+        
+        
+        var filterList = new MSFilterList(obj)
+        
+        filterList.fixFilterStyle();
+       
+        var comma = ", ";
+        
+        if (obj.filters.length == 0) {
+            comma = "";
+        }
+        
+        obj.style.filter += comma + "progid:" + filterName + "(" + filterValue + ")";
+        jslog.debug('filter: ' + obj.style.filter)
+        filter = obj.filters.item(filterName);
+        
+		var obj = filterParamsToObject(filterValue);
+		
+		for (var i in obj) {
+			
+		}
+    
+    
+    return filter;
+}
+
+function MSFilter(node, filterCall){
+    var me = this;
+    
+    me.node = node;
+    me.filterCall = filterCall;
+    
+    var reFilterNameSplitter = /progid:([^\(]*)/g;
+    var reParameterName = /([a-zA-Z0-9]+)=/g;
+    
+    
+    function init(){
+        me.name = me.filterCall.match(reFilterNameSplitter)[0].replace('progid:', '');
+        
+        //This may not be the best way to do this.
+        var parameterString = filterCall.split('(')[1].replace(')', '');
+        me.parameters = parameterString.match(reParameterName);
+        for (var i = 0; i < me.parameters.length; i++) {
+            me.parameters[i] = me.parameters[i].replace('=', '');
+        }
+        
+    }
+    
+    me.toString = function(){
+    
+        var sb = [];
+        
+        sb.push('progid:' + me.name + '(');
+        
+        for (var i = 0; i < me.parameters.length; i++) {
+            var param = me.parameters[i];
+            var filterObj = me.node.filters.item(me.name);
+            var paramValue = filterObj[param];
+            if (typeof(paramValue) == 'string') {
+                sb.push(param);
+				sb.push('="');
+				sb.push(filterObj[param]);
+				sb.push('"');
+				//StringHelpers.sprintf('%s="%s"', param, filterObj[param]));
+            } else {
+				sb.push(param);
+				sb.push('=');
+				sb.push(filterObj[param]);
+				
+                //sb.append(StringHelpers.sprintf('%s=%s', param, filterObj[param]));
+            }
+            
+            if (i != me.parameters.length - 1) {
+                sb.push(', ')
+            }
+        }
+        sb.push(')');
+        
+        return sb.join("");
+    }
+    
+    
+    
+    init();
+}
+
+
+function MSFilterList(node){
+    var me = this;
+    
+    me.list = new Array();
+    me.node = node;
+    
+    var reFilterListSplitter = /[\s\S]*\([\s\S]*\)/g;
+    
+    var styleAttr = node.style;
+    
+    function init(){
+    
+        var filterCalls = styleAttr.filter.match(reFilterListSplitter);
+        
+        if (filterCalls != null) {
+        
+            for (var i = 0; i < filterCalls.length; i++) {
+                var call = filterCalls[i];
+                
+                me.list.push(new MSFilter(node, call));
+                
+            }
+        }
+        
+        
+    }
+    
+    me.toString = function(){
+        var sb = new StringBuffer();
+        
+        for (var i = 0; i < me.list.length; i++) {
+        
+            sb.append(me.list[i].toString());
+            if (i < me.list.length - 1) {
+                sb.append(',')
+            }
+        }
+        return sb.toString();
+    }
+    
+    
+    me.fixFilterStyle = function(){
+    
+        try {
+            me.node.style.filter = me.toString();
+        } 
+        catch (ex) {
+            // do nothing.
+        }
+        
+    }
+    
+    init();
+}
+	
+function getFilters () {
+	$('#sandbox')[0].style.filter = "";
+	if (true) { //document.body.filters) {
+		//var s = [];
+		$('.filter').each(function(){
+			
+			if ($(this).parents('.rule_wrapper').first().find('a').first().text().match(/off/)) {
+				
+				//s.push($(this).text());
+				var text = $(this).text().replace(/\)/, '').split('(');
+				
+				
+				addFilter($('#sandbox')[0], text[0].replace(/progid:/, ''), text[1]);
+			}
+		})
+	}
+	
+	//node.style.filter = s.join("");
+}
 
 
 $(document).ready(function () {
@@ -378,6 +565,10 @@ $(document).ready(function () {
 	generator.styleAllRules( $('pre').not('.footer').get() );
 
 	generator.makeEditable(document.getElementsByTagName('b'));
+	
+	//clearFilter();
+	
+	
 
 
 	$('pre').each(function () {
@@ -442,7 +633,7 @@ $(document).ready(function () {
 	
 	 // first run on page load
 	generator.applyStyles();
-		
+	getFilters();	
 	copypasta();
 });
 
@@ -467,6 +658,32 @@ $('.rule_wrapper .comment a').live('click',function(){
     $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
     $(this).closest('.rule_wrapper').toggleClass('commentedout')
         .find('input').first().applyStyles();
+	getFilters();
     return false;
 })
 
+/* 
+ * Adding trim method to String Object.  Ideas from 
+ * http://www.faqts.com/knowledge_base/view.phtml/aid/1678/fid/1 and
+ * http://blog.stevenlevithan.com/archives/faster-trim-javascript
+ */
+String.prototype.trim = function() { 
+	var str = this;
+	
+	// used by the String.prototype.trim()			
+	var initWhitespaceRe = /^\s\s*/;
+	var endWhitespaceRe = /\s\s*$/;
+	var whitespaceRe = /\s/;
+	
+	// The first method is faster on long strings than the second and 
+	// vice-versa.
+	if (this.length > 6000) {
+		str = this.replace(initWhitespaceRe, '');
+		var i = str.length;
+		while (whitespaceRe.test(str.charAt(--i)));
+		return str.slice(0, i + 1);
+	} else {
+		return this.replace(initWhitespaceRe, '')
+			.replace(endWhitespaceRe, '');
+	}  
+};
