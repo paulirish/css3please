@@ -218,6 +218,14 @@
     coming soon.. extra css transforms (skew, scale), css transitions, and more.
     <a href="http://paulirish.com/2010/introducing-css3please/#comments">plz leave feedback here</a>.
     
+	Note: for the IE filters to work, they must all be placed in one comma delimited filter property in one rule-set.  For example:
+	
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=10, OffY=10, color=#ffffff), 
+	        progid:DXImageTransform.Microsoft.gradient(startColorStr='#99B4B490',EndColorStr='#99B4B490');
+-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=10, OffY=10, color=#ffffff), 
+	        progid:DXImageTransform.Microsoft.gradient(startColorStr='#99B4B490',EndColorStr='#99B4B490')";
+			
+	If you try to spread filters in different rules that resolve to the same node, you'll get unexpected behavior.  We warned you.  :-)			  
 	
     &copy; 2010; a <a href="http://paulirish.com">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
 	
