@@ -10,8 +10,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
 <script src="javascript/jquery.plugins.min.js" type="text/javascript"></script>
 <script src="javascript/javascript.js" type="text/javascript"></script>
-
-<script src="/shared/js/jslog.js" type="text/javascript"></script>
+<script src="/shared/js/helpers.js" type="text/javascript"></script>
+<script src="/shared/js/jslog.js" type="text/javascript"></script> 
 
 
 
@@ -73,8 +73,9 @@
      -moz-box-shadow: <b g="0">0</b>px <b g="1">0</b>px <b g="2">4</b>px <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
   -webkit-box-shadow: <b g="0">0</b>px <b g="1">0</b>px <b g="2">4</b>px <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3.0+, Chrome <span class="endcomment">*/</span></span>
           box-shadow: <b g="0">0</b>px <b g="1">0</b>px <b g="2">4</b>px <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE 9.0 <span class="endcomment">*/</span></span>
-              <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0</b>, OffY=<b g="1">0</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
-          -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0</b>, OffY=<b g="1">0</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
+              <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0</b>, OffY=<b g="1">0</b>, color=<b g="3" i="s2Hex" o="lHex">#ffffff</b>)</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+          -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0</b>, OffY=<b g="1">0</b>, color=<b g="3" i="s2Hex" o="lHex">#ffffff</b>)"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
+		  background: #cccccc; <span class="comment">/* You must put this in for IE or the text gets shadowed ... in an ugly way. <span class="endcomment">*/</span></span>
 }
   </pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
@@ -96,8 +97,8 @@
 .box_gradient {
   background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, <b g="0" i="s2Hex">#444444</b>),color-stop(1, <b g="1" i="s2Hex">#999999</b>)); <span class="comment">/* Saf4+, Chrome <span class="endcomment">*/</span></span>
-            <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>')</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
-        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2Hex">#444444</b>', endColorstr='<b g="1" i="s2Hex">#999999</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
+            <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2Hex">#444444</b>', EndColorStr='<b g="1" i="s2Hex">#999999</b>')</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2Hex">#444444</b>', EndColorStr='<b g="1" i="s2Hex">#999999</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
 }
   </pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
@@ -113,14 +114,16 @@
   </div>
 </div>
 
-<div id="box_rgba" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a href="#">{toggle rule off}</a> <span class="endcomment">*/</span></pre> 
+
+
+<div id="box_rgba" class="rule_wrapper commentedout">
+  <pre class="rule comment">/*                           <a href="#">{toggle rule on}</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_rgba {
   background-color: <b g="0" i="ch" o="shortHex">#B4B490</b>;
   background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;  <span class="comment">/* FF3+, Saf3+, Opera 10.10+, Chrome <span class="endcomment">*/</span></span>
-            <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#99B4B490</b>',endColorstr='<b g="0" i="s2aHex">#99B4B490</b>')</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
-        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='<b g="0" i="s2aHex">#99B4B490</b>',endColorstr='<b g="0" i="s2aHex">#99B4B490</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
+            <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2aHex">#99B4B490</b>',EndColorStr='<b g="0" i="s2aHex">#99B4B490</b>')</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2aHex">#99B4B490</b>',EndColorStr='<b g="0" i="s2aHex">#99B4B490</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
 }
   </pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
@@ -144,9 +147,9 @@
        -o-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Opera 10.5 <span class="endcomment">*/</span></span>
   -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Saf3.1+, Chrome <span class="endcomment">*/</span></span>
           
-             <span class="ie">filter: <span class="filter"> progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', <b g="0" i="matrix2deg" o="deg2matrix">M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104</b>)</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
-         -ms-filter: <span class="msFilter">progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', <b g="0" i="matrix2deg" o="deg2matrix">M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104</b>)"</span>; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
-			 zoom: 1;   
+             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', <b g="0" i="matrix2deg" o="deg2matrix">M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104</b>)</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
+         -ms-filter: <span class="msFilter">progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', <b g="0" i="matrix2deg" o="deg2matrix">M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104</b>)"</span>; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
+ zoom: 1;
 	
 }
   </pre>
@@ -216,7 +219,7 @@
     <a href="http://paulirish.com/2010/introducing-css3please/#comments">plz leave feedback here</a>.
     
 	
-    &copy; 2010; a <a href="http://paulirish.com">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a></small>
+    &copy; 2010; a <a href="http://paulirish.com">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
 	
 	        if you like this, you'll probably also dig <a href="http://yayquery.com">yayQuery</a>. <3
 */

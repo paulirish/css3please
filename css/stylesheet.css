@@ -349,5 +349,6 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 
 .rule b.edit input {
 	display: inline;
+	color: white;
 }
 #guestbook{position:absolute;right:10px;padding-bottom: 10px;  }
