@@ -18,7 +18,7 @@ window.cssMath = {
 			x: this.round(Math.sin(r * Math.PI / 180) * s, 3),
 			y: this.round(Math.cos(r * Math.PI / 180) * s * -1, 3)
 		};
-	},
+	}, 
 	/* Rotation to Degree */
 	r2d: function (r) {
 		return r * 90;
@@ -326,7 +326,7 @@ window.generator = {
 	        
 	    }
 	    
-	    var  css = $(elem).closest("pre").not('.comment').text().replace(/(-ms-)?filter:[^\;]*\;/g, ''),
+	    var css = $(elem).closest("pre").not('.comment').text().replace(/(-ms-)?filter:[^\;]*\;/g, ''),
 	        wrap = $(elem).closest('.rule_wrapper'),
 	        name = wrap.attr('id');
 		   
@@ -341,16 +341,13 @@ window.generator = {
 			if (ss.styleSheet && name !== 'box_webfont') {  
 				// IE crashes hard on @font-face going in through cssText
 				ss.styleSheet.cssText = css;
-			} else {     
-				
-					var tt1 = document.createTextNode(css);
-					ss.appendChild(tt1);
-				
-				//setStyleInnerHTML(ss, css);
-				
+			} else {               
+				var tt1 = document.createTextNode(css);
+				ss.appendChild(tt1);
 			}
 			document.body.appendChild(ss);
         }
+
 		
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') );
 		
@@ -377,173 +374,41 @@ function copypasta(){
 	});
 }
 
-function filterParamsToObject(s) {
-	var r = {};
-	
-	var params = s.split(',');
-	for (var i=0; i<params.length; i++) {
-		var param = params[i].trim();
-		
-		var nameVal = param.split('=');
-		r[nameVal[0]] = nameVal[1];
-	}
-	
-	return r;
-}
+
 
 function addFilter (obj, filterName, filterValue){
-	    // now ... insert the filter so we can exploit its wonders
-	    
-	    var filter;
+    
+    var filter;
+	
+   
+    var comma = ", ";
+    
+    if (obj.filters.length == 0) {
+        comma = "";
+    }
+	
+	// remove existing filter.
+	var re = new RegExp("(\\,\\s*)?progid:" + filterName + "\\([^\\)]*\\)")
+   
+    obj.style.filter = obj.style.filter.replace(re, '') + comma + "progid:" + filterName + "(" + filterValue + ")";
+
+    
+	return;
+    filter = obj.filters.item(filterName);
+    
 	
     
-        // dang! We have to go through all of them and make sure filter
-        // is set right before we add the new one.
-        
-        
-        var filterList = new MSFilterList(obj)
-        
-        filterList.fixFilterStyle();
-       
-        var comma = ", ";
-        
-        if (obj.filters.length == 0) {
-            comma = "";
-        }
-        
-        obj.style.filter += comma + "progid:" + filterName + "(" + filterValue + ")";
-        filter = obj.filters.item(filterName);
-        
-		var obj = filterParamsToObject(filterValue);
-		
-		for (var i in obj) {
-			
-		}
-    
-    	
     return filter;
 }
 
-function MSFilter(node, filterCall){
-    var me = this;
-    
-    me.node = node;
-    me.filterCall = filterCall;
-    
-    var reFilterNameSplitter = /progid:([^\(]*)/g;
-    var reParameterName = /([a-zA-Z0-9]+)=/g;
-    
-    
-    function init(){
-        me.name = me.filterCall.match(reFilterNameSplitter)[0].replace('progid:', '');
-        
-        //This may not be the best way to do this.
-        var parameterString = filterCall.split('(')[1].replace(')', '');
-        me.parameters = parameterString.match(reParameterName);
-        for (var i = 0; i < me.parameters.length; i++) {
-            me.parameters[i] = me.parameters[i].replace('=', '');
-        }
-        
-    }
-    
-    me.toString = function(){
-    
-        var sb = [];
-        
-        sb.push('progid:' + me.name + '(');
-        
-        for (var i = 0; i < me.parameters.length; i++) {
-            var param = me.parameters[i];
-			jslog.debug(StringHelpers.sprintf("%s: %s", param, i))
-            var filterObj = me.node.filters.item(me.name);
-            var paramValue = filterObj[param];
-			
-            if (typeof(paramValue) == 'string') {
-                sb.push(param);
-				sb.push('="');
-				sb.push(filterObj[param]);
-				sb.push('"');
-				//StringHelpers.sprintf('%s="%s"', param, filterObj[param]));
-            } else {
-				sb.push(param);
-				sb.push('=');
-				sb.push(filterObj[param]);
-				
-                //sb.append(StringHelpers.sprintf('%s=%s', param, filterObj[param]));
-            }
-            
-            if (i != me.parameters.length - 1) {
-                sb.push(', ')
-            }
-        }
-        sb.push(')');
-        
-        return sb.join("");
-    }
-    
-    
-    
-    init();
-}
-
-
-function MSFilterList(node){
-    var me = this;
-    
-    me.list = new Array();
-    me.node = node;
-    
-    var reFilterListSplitter = /[\s\S]*\([\s\S]*\)/g;
-    
-    var styleAttr = node.style;
-    
-    function init(){
-    
-        var filterCalls = styleAttr.filter.match(reFilterListSplitter);
-        
-        if (filterCalls != null) {
-        
-            for (var i = 0; i < filterCalls.length; i++) {
-                var call = filterCalls[i];
-                
-                me.list.push(new MSFilter(node, call));
-                
-            }
-        }
-        
-        
-    }
-    
-    me.toString = function(){
-        var sb = new StringBuffer();
-        
-        for (var i = 0; i < me.list.length; i++) {
-        
-            sb.append(me.list[i].toString());
-            if (i < me.list.length - 1) {
-                sb.append(',')
-            }
-        }
-        return sb.toString();
-    }
-    
-    
-    me.fixFilterStyle = function(){
-    
-        try {
-            me.node.style.filter = me.toString();
-        } 
-        catch (ex) {
-            // do nothing.
-        }
-        
-    }
-    
-    init();
-}
 	
 function getFilters () {
+	if (!document.body.filters) {
+		return;
+	}
+	
 	$('#sandbox')[0].style.filter = "";
+	$('#sandbox')[0].style.zoom = "100%";
 	if (true) { //document.body.filters) {
 		//var s = [];
 		$('.filter').each(function(){
@@ -552,45 +417,12 @@ function getFilters () {
 				
 				//s.push($(this).text());
 				var text = $(this).text().replace(/\)/, '').split('(');
-				
-				jslog.debug('adding : ' + text[1])
-				addFilter($('#sandbox')[0], text[0].replace(/progid:/, ''), text[1]);
+				addFilter($('#sandbox')[0], text[0].replace(/progid:/, '').trim(), text[1]);
 			}
 		})
 	}
 	
 	//node.style.filter = s.join("");
-}
-
-/* Code from http://social.msdn.microsoft.com/Forums/en/iewebdevelopment/thread/33fd33f7-e857-4f6f-978e-fd486eba7174 */
-function setStyleInnerHTML(ss, rules){
-    rules = rules.trim();
-    try {
-        ss.innerHTML = rules;
-    } 
-    catch (exc) {
-        var sheet = ss.sheet ? ss.sheet : ss.styleSheet;
-        var parts = rules.split(/\s*[{}]\s*/);
-        
-        for (var i = 0; i < parts.length; i += 2) {
-            if (parts[i] != '') {
-            
-				if (parts[i + 1] != undefined) {
-					var rules = parts[i + 1].split(';');
-					
-					for (var j = 0; j < rules.length; j++) {
-					
-						var rule = rules[j].trim();
-						if (rule != '') {
-							sheet.addRule(parts[i], rules[j]);
-						}
-					}
-				}
-                
-            }
-        }
-    }
-    
 }
 
 
@@ -668,11 +500,12 @@ $(document).ready(function () {
 	}); // end pre each()
 	
 	 // first run on page load
-	generator.applyStyles();
+	getFilters();
 	
-	
-		getFilters();
-	
+	if (!document.body.filters) {
+		generator.applyStyles();
+	}
+		
 	copypasta();
 });
 
