@@ -313,11 +313,11 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 	color: #ff6400;
 }
 
-.rule .property {
+.rule .property,  span.ie  {
 	color: #8da6ce;
 }
 
-.rule .value {
+.rule .value, span.ie .filter {
 	color: #61ce3c;
 }
 
