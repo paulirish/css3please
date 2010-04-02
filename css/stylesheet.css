@@ -328,6 +328,9 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 	padding: 0 0 1px;
 	position: relative;
 }
+.rule b[readonly] { border-bottom: 0; opacity: .82}
+.commentedout .rule b[readonly] { opacity: 1}
+
 
 .rule b input {
 	background: none;

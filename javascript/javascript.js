@@ -442,6 +442,8 @@ $(document).ready(function () {
 	$('pre').each(function () {
 	    
 			$(this).find('b span').bind('click',function (e) {
+				
+					if ($(this).parent().attr('readonly')==='') return;
 
 			        // basically calculating where to place the caret.
                     var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
