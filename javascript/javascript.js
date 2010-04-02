@@ -365,8 +365,11 @@ function copypasta(){
 	    var name = this.id,
 	        zc = new ZeroClipboard.Client(),
 	        elem = $(this).find('a.cb');
+	    
+	    if (!elem.length) return;
+	        
 	    zc.glue( elem[0], elem[0].parentNode );
-    	elem[0] && zc.addEventListener( 'mouseDown', (function(){
+    	zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
     		    zc.setText( $("#"+ name + " pre").not('.comment').text() );
     		}
