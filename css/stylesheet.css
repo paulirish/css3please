@@ -316,6 +316,7 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 .rule .property,  span.ie  {
 	color: #8da6ce;
 }
+.rule .comment .declaration { color: #8da6ce; }
 
 .rule .value, span.ie .filter {
 	color: #61ce3c;

@@ -357,15 +357,15 @@ window.generator = {
 
 function copypasta(){
     if (location.protocol == 'file:'){
-        $('.copybutton').parent().hide();
-        return;
+        // return $('a.cb').hide();
     }
 
    
 	$('.rule_wrapper').each(function(){
-	    var name = this.id;
-	    var zc = new ZeroClipboard.Client();
-	    zc.glue( name + '_copybutton', name +'_copybutton_container' );
+	    var name = this.id,
+	        zc = new ZeroClipboard.Client(),
+	        elem = $(this).find('a.cb');
+	    zc.glue( elem[0], elem[0].parentNode );
     	zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
     		    zc.setText( $("#"+ name + " pre").not('.comment').text() );
@@ -528,13 +528,13 @@ rule
 $.fn.applyStyles = function(){ generator.applyStyles(this[0]); return this; }
 
 // commenting out
-$('.rule_wrapper .comment a').live('click',function(){
+$('.rule_wrapper .comment a.off').live('click',function(){
     $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') )
     $(this).closest('.rule_wrapper').toggleClass('commentedout')
         .find('input').first().applyStyles();
 	getFilters();
     return false;
-})
+});
 
 /* 
  * Adding trim method to String Object.  Ideas from 
