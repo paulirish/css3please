@@ -366,7 +366,7 @@ function copypasta(){
 	        zc = new ZeroClipboard.Client(),
 	        elem = $(this).find('a.cb');
 	    zc.glue( elem[0], elem[0].parentNode );
-    	zc.addEventListener( 'mouseDown', (function(){
+    	elem[0] && zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
     		    zc.setText( $("#"+ name + " pre").not('.comment').text() );
     		}
