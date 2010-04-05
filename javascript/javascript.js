@@ -477,7 +477,8 @@ $(document).ready(function () {
 			            if (!(/px|em/.test($(this).val()) || $(this).closest('#box_rotate').length)) return true;
 			            
 			            var split = this.value.split(/-?[0-9A-F.]+/),
-			                num   = this.value.match(/-?[0-9A-F.]+/)[0],
+			            	match = this.value.match(/-?[0-9A-F.]+/),
+			                num   = match && match[0] || 0,
 			                len, newval;
 			                
                         if (delta > 0 || e.which == 38) {
@@ -489,7 +490,10 @@ $(document).ready(function () {
                         }
                         
                         newval = Math.round(newval*10)/10;
-                        len = (''+newval).length
+                        len = (''+newval).length;
+                        if (split.length===0) split = ['',''];   // IE is stupido.
+                        if (split.length===1) split.unshift(''); // IE is stupido.
+                        
                         $(this).val(split.join(newval));
                         
                         generator.grabAndSet(this);
