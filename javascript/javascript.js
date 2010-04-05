@@ -511,8 +511,12 @@ $(document).ready(function () {
 		generator.applyStyles();
 	}
 		
-	copypasta();
+	
 });
+
+$(window).load(function(){
+	setTimeout(copypasta,1000);
+})
 
 window.css = {
 	'text-shadow': '2px 2px 2px #000;',
