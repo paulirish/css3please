@@ -168,20 +168,16 @@
 </div>
 
 
-         
-
+<div id="box_transition" class="rule_wrapper ">
+  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule off}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule">
+.box_transition {
+     -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* FF3.7+ <span class="endcomment">*/</span></span>
+       -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.5 <span class="endcomment">*/</span></span>
+  -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Saf3.2+, Chrome <span class="endcomment">*/</span></span>
+}
   </pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
-  <div id="box_rotate_toolbox_container" class="toolbox_container">
-    <div id="box_rotate_toolbox" class="toolbox">
-      <div id="box_rotate_copybutton_container" class="button_container">
-        <div id="box_rotate_copybutton" class="copybutton"></div>
-      </div>
-      <div id="box_rotate_resetbutton_container" class="button_container">
-        <div id="box_rotate_resetbutton" class="resetbutton"></div>
-      </div>
-    </div>
-  </div>
 </div>
 
 
@@ -216,17 +212,12 @@
 
 /* 
     btw- up/down keys work, along with your mouse wheel. ;)
-    coming soon.. extra css transforms (skew, scale), css transitions, and more.
+    coming soon.. extra css transforms (skew, scale), text-shadow and more.
     <a href="http://paulirish.com/2010/introducing-css3please/#comments">plz leave feedback here</a>.
     
-    Note: for the IE filters to work, they must all be placed in one comma delimited filter property in one rule-set.  For example:
+    Notes: 
+     + Multiple IE filters must be comma delimited in a single declaration. They are not additive in separate blocks.
     
-    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=10, OffY=10, color=#ffffff), 
-            progid:DXImageTransform.Microsoft.gradient(startColorStr='#99B4B490',EndColorStr='#99B4B490');
--ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=10, OffY=10, color=#ffffff), 
-            progid:DXImageTransform.Microsoft.gradient(startColorStr='#99B4B490',EndColorStr='#99B4B490')";
-            
-    If you try to spread filters in different rules that resolve to the same node, you'll get unexpected behavior.  We 			  
     
     &copy; 2010; a <a href="http://paulirish.com">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
     
