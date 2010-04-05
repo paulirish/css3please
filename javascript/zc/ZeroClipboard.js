@@ -3,9 +3,9 @@
 
 var ZeroClipboard = {
 	
-	version: "1.0.6",
+	version: "1.0.7",
 	clients: {}, // registered upload clients on page, indexed by id
-	moviePath: 'javascript/ZeroClipboard.swf', // URL to movie
+	moviePath: 'ZeroClipboard.swf', // URL to movie
 	nextId: 1, // ID of next movie
 	
 	$: function(thingy) {
@@ -62,11 +62,7 @@ var ZeroClipboard = {
 			height: obj.height ? obj.height : obj.offsetHeight
 		};
 
-		while (obj && (obj != stopObj)) {
-			info.left += obj.offsetLeft;
-			info.top += obj.offsetTop;
-			obj = obj.offsetParent;
-		}
+		$.extend(info,$(obj).position()); // edit by paul.
 
 		return info;
 	},
