@@ -45,7 +45,7 @@
 </pre>
 
 <div id="box_round" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule off}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_round {
      -moz-border-radius: <b g="0">12px</b>; <span class="comment">/* FF1+ <span class="endcomment">*/</span></span>
@@ -58,21 +58,19 @@
 
 
 <div id="box_shadow" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule off}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_shadow {
      -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
   -webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3.0+, Chrome <span class="endcomment">*/</span></span>
           box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE 9.0 <span class="endcomment">*/</span></span>
-              filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>'); <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
-          -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=<b g="0">0px</b>, OffY=<b g="1">0px</b>, Color='<b g="3" i="s2Hex" o="lHex">#ffffff</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span>
 }
   </pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
 
 <div id="box_gradient" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule off}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_gradient {
   background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
@@ -87,7 +85,7 @@
 
 
 <div id="box_rgba" class="rule_wrapper commentedout">
-  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule on}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_rgba {
   background-color: <b g="0" i="ch" o="shortHex" readonly>#B4B490</b>;
@@ -100,7 +98,7 @@
 </div>
 
 <div id="box_rotate" class="rule_wrapper commentedout">
-  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule on}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_rotate {
      -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
@@ -118,7 +116,7 @@
 
 
 <div id="box_transition" class="rule_wrapper ">
-  <pre class="rule comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule off}</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_transition {
      -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* FF3.7+ <span class="endcomment">*/</span></span>
@@ -132,7 +130,7 @@
 
 
 <div id="box_webfont" class="rule_wrapper">
- <pre class="rule comment"> <!-- <span class="comment">/*                           <a class="cb">{to clipboard}</a> <a class="off">{toggle rule off}</a> <span class="endcomment">*/</span></span> --></pre> 
+ <pre class="rule comment"> <!-- <span class="comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></span> --></pre> 
   <pre class="rule">
 @font-face {
   font-family: '<b g="1">WebFont</b>';
@@ -156,7 +154,7 @@
     
     Notes: 
      + Multiple IE filters must be comma delimited in a single declaration. They are not additive in separate blocks.
-    
+     + The closest thing to box-shadow for IE is <a href="http://msdn.microsoft.com/en-us/library/ms532979(v=VS.85).aspx">Blur with makeShadow</a> but you need a duplicate div.
     
     &copy; 2010; a <a href="http://paulirish.com">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
     
@@ -166,6 +164,18 @@
 
 
 </span>
+</pre>
+
+<pre class="rule changelog">
+/*  
+    __Changelog__
+    2010.03.25: Fixed the gradient flipflop. Fixed fixed positioning bug.
+    2010.04.05: Real rotation in IE. No more DropShadow for IE (it's crap)
+*/
+
+
+
+
 </pre>
 
 
