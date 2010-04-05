@@ -357,7 +357,7 @@ window.generator = {
 
 function copypasta(){
     if (location.protocol == 'file:'){
-        // return $('a.cb').hide();
+         return $('a.cb').hide();
     }
 
    
