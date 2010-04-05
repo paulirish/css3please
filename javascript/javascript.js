@@ -501,7 +501,13 @@ $(document).ready(function () {
                         return false;
             });
 
-           
+           $(document).bind('mousewheel',function(e,delta){
+           		if ($(e.target).is('input')) return; // this is already handled fine.
+           		if (! $(document.activeElement).is('input')) return; // they're just scrolling the page.
+           		e.stopPropagation();
+           		$(document.activeElement).trigger(e,delta);
+           		e.preventDefault();
+           })
 			
 	}); // end pre each()
 	
