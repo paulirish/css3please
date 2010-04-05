@@ -413,20 +413,17 @@ function getFilters () {
 	
 	$('#sandbox')[0].style.filter = "";
 	$('#sandbox')[0].style.zoom = "100%";
-	if (true) { //document.body.filters) {
-		//var s = [];
-		$('.filter').each(function(){
-			
-			if ($(this).parents('.rule_wrapper').first().find('a').first().text().match(/off/)) {
-				
-				//s.push($(this).text());
-				var text = $(this).text().replace(/\)/, '').split('(');
-				addFilter($('#sandbox')[0], text[0].replace(/progid:/, '').trim(), text[1]);
-			}
-		})
-	}
 	
-	//node.style.filter = s.join("");
+	
+	$('.filter').each(function(){
+		
+		if (!$(this).closest('.rule_wrapper').hasClass('commentedout')) {
+			
+			var text = $(this).text().replace(/\)/, '').split('(');
+			addFilter($('#sandbox')[0], text[0].replace(/progid:/, '').trim(), text[1]);
+		}
+	})
+
 }
 
 
