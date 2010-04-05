@@ -371,7 +371,8 @@ function copypasta(){
 	    zc.glue( elem[0], elem[0].parentNode );
     	zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
-    		    zc.setText( $("#"+ name + " pre").not('.comment').text() );
+    		    zc.setText(elem.closest("pre").next().text() );
+    		    $(elem).fadeOut(50).fadeIn(300)
     		}
     	})());  
 	});
