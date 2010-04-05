@@ -312,6 +312,9 @@ pre.comment .comment { color: rgba(0,136,255,.5);
 
 .rule_wrapper:hover pre.comment .comment { color: rgba(0,136,255,.9);}
 
+.rule_wrapper pre.comment span.comment a:hover,
+.rule_wrapper pre.comment span.comment a.hover { color: rgba(0,136,255,1);}
+
 body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 
 .footer .comment a { border-bottom: 1px solid rgb(0,136,255);}
