@@ -518,6 +518,11 @@ $(document).ready(function () {
 	if (!document.body.filters) {
 		generator.applyStyles();
 	}
+	
+	// use rgba and not gradients for opera since he's silly.
+	if (/Opera/.test(({}).toString.call(window.opera))){
+	    $('#box_gradient,#box_rgba').find('a.off').click();
+	}
 		
 	
 });
