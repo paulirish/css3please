@@ -137,7 +137,7 @@
 
 
 <div id="box_webfont" class="rule_wrapper">
- <pre class="rule comment"> <!-- <span class="comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></span> --></pre> 
+ <pre class="rule comment"> <span class="comment">/*                           <a class="cb">[to clipboard]</a> <!-- <a class="off">[toggle rule off]</a>--> <span class="endcomment">*/</span></span> </pre> 
   <pre class="rule">
 @font-face {
   font-family: '<b g="1">WebFont</b>';
@@ -161,6 +161,8 @@
     Notes: 
      + Multiple IE filters must be comma delimited in a single declaration. They are not additive in separate blocks.
      + The closest thing to box-shadow for IE is <a href="http://msdn.microsoft.com/en-us/library/ms532979(v=VS.85).aspx">Blur with makeShadow</a> but you need a duplicate div.
+     + The rotation transform ends up with a different transform-origin in IE. Look at heygrady's <a href="http://github.com/heygrady/transform">transform</a>
+       library and his <a href="http://wiki.github.com/heygrady/transform/correcting-transform-origin-and-translate-in-ie">excellent guide</a> for the best results.
     
     &copy; 2010; a <a href="http://paulirish.com">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
     
