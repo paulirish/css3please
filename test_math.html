@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+
+	<title>Cross-Browser CSS3 Rule Generator</title>
+
+	<script src="test_math.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+/* ---- cssMath Firebug tests ---- */
+
+console.log(
+	'Testing round: function (n, l)', '\n',
+	'Number rounded by Length', '\n',
+	'cssMath.round(3.1417534)', 'returns: ', cssMath.round(3.1417534), '\n',
+	'cssMath.round(3.1417534, 2)', 'returns: ', cssMath.round(3.1417534, 2), '\n'
+);
+
+console.log(
+	'Testing xy2rs: function (x, y)', '\n',
+	'X and Y coordinates to rotation and strength', '\n',
+	'cssMath.xy2rs(4, 4)', 'returns: ', cssMath.xy2rs(4, 4), '\n',
+	'cssMath.xy2rs(10, 15)', 'returns: ', cssMath.xy2rs(10, 15), '\n'
+);
+
+console.log(
+	'Testing rs2xy: function (r, s)', '\n',
+	'Rotation and Strength to x and y coordinates', '\n',
+	'cssMath.rs2xy(135, 5.657)', 'returns: ', cssMath.rs2xy(135, 5.657), '\n',
+	'cssMath.rs2xy(146.31, 18.028)', 'returns: ', cssMath.rs2xy(146.31, 18.028), '\n'
+);
+
+console.log(
+	'Testing r2d: function (r)', '\n',
+	'Rotation to degree', '\n',
+	'cssMath.r2d(3)', 'returns: ', cssMath.r2d(3), '\n',
+	'cssMath.r2d(3.5)', 'returns: ', cssMath.r2d(3.5), '\n'
+);
+
+console.log(
+	'Testing d2r: function (d)', '\n',
+	'Degree to rotation', '\n',
+	'cssMath.d2r(270)', 'returns: ', cssMath.d2r(270), '\n',
+	'cssMath.d2r(315)', 'returns: ', cssMath.d2r(315), '\n'
+);
+
+console.log(
+	'Testing lh2sh: function (lh)', '\n',
+	'Long Hexadecimals compressed to short hexadecimals', '\n',
+	'cssMath.lh2sh(\'FF33FF\')', 'returns: ', cssMath.lh2sh('FF33FF'), '\n',
+	'cssMath.lh2sh(\'#FF33FF\')', 'returns: ', cssMath.lh2sh('#FF33FF'), '\n',
+	'cssMath.lh2sh(\'#F3F\')', 'returns: ', cssMath.lh2sh('#F3F'), '\n'
+);
+
+console.log(
+	'Testing sh2lh: function (sh)', '\n',
+	'Short Hexadecimals expanded to long hexadecimals', '\n',
+	'cssMath.sh2lh(\'F3F\')', 'returns: ', cssMath.sh2lh('F3F'), '\n',
+	'cssMath.lh2sh(\'#F3F\')', 'returns: ', cssMath.sh2lh('#F3F'), '\n',
+	'cssMath.lh2sh(\'#FF33FF\')', 'returns: ', cssMath.sh2lh('#FF33FF'), '\n'
+);
+
+console.log(
+	'Testing c2h: function (c)', '\n',
+	'Channel to hexadecimal', '\n',
+	'cssMath.c2h(255)', 'returns: ', cssMath.c2h(255), '\n',
+	'cssMath.c2h(0)', 'returns: ', cssMath.c2h(0), '\n'
+);
+
+console.log(
+	'Testing h2c: function (c)', '\n',
+	'Hexadecimal to channel', '\n',
+	'cssMath.h2c(\'FF\')', 'returns: ', cssMath.h2c('FF'), '\n',
+	'cssMath.h2c(\'00\')', 'returns: ', cssMath.h2c('00'), '\n'
+);
+
+console.log(
+	'Testing c2a: function (c)', '\n',
+	'Channels to array', '\n',
+	'cssMath.c2a(\'255, 0, 255\')', 'returns: ', cssMath.c2a('255, 0, 255'), '\n',
+	'cssMath.c2a(\'255,0,255\')', 'returns: ', cssMath.c2a('255,0,255'), '\n',
+	'cssMath.c2a(\'(255,0,255)\')', 'returns: ', cssMath.c2a('(255,0,255)'), '\n',
+	'cssMath.c2a(\'rgb(255,0,255)\')', 'returns: ', cssMath.c2a('rgb(255,0,255)'), '\n',
+	'cssMath.c2a(\'rgb ( 255 , 0 , 255 )\')', 'returns: ', cssMath.c2a('rgb ( 255 , 0 , 255 )'), '\n'
+);
+
+console.log(
+	'Testing h2a: function (c)', '\n',
+	'Hexadecimals to array', '\n',
+	'cssMath.h2a(\'FF00FF\')', 'returns: ', cssMath.h2a('FF00FF'), '\n',
+	'cssMath.h2a(\'#FF00FF\')', 'returns: ', cssMath.h2a('#FF00FF'), '\n',
+	'cssMath.h2a(\'#F0F\')', 'returns: ', cssMath.h2a('#F0F'), '\n',
+	'cssMath.h2a(\'F0F\')', 'returns: ', cssMath.h2a('F0F'), '\n'
+);
+
+console.log(
+	'Testing c2h2: function (c)', '\n',
+	'Channels to hexadecimals', '\n',
+	'cssMath.c2h2(\'255, 0, 255\')', 'returns: ', cssMath.c2h2('255, 0, 255'), '\n',
+	'cssMath.c2h2(\'255,0,255\')', 'returns: ', cssMath.c2h2('255,0,255'), '\n',
+	'cssMath.c2h2(\'(255,0,255)\')', 'returns: ', cssMath.c2h2('(255,0,255)'), '\n',
+	'cssMath.c2h2(\'rgb(255,0,255)\')', 'returns: ', cssMath.c2h2('rgb(255,0,255)'), '\n',
+	'cssMath.c2h2(\'rgb ( 255 , 0 , 255 )\')', 'returns: ', cssMath.c2h2('rgb ( 255 , 0 , 255 )'), '\n'
+);
+
+console.log(
+	'Testing h2c2: function (h)', '\n',
+	'Hexadecimals to channels', '\n',
+	'cssMath.h2c2(\'FF00FF\')', 'returns: ', cssMath.h2c2('FF00FF'), '\n',
+	'cssMath.h2c2(\'#FF00FF\')', 'returns: ', cssMath.h2c2('#FF00FF'), '\n',
+	'cssMath.h2c2(\'#F0F\')', 'returns: ', cssMath.h2c2('#F0F'), '\n',
+	'cssMath.h2c2(\'F0F\')', 'returns: ', cssMath.h2c2('F0F'), '\n'
+);
+
+console.log(
+	'Testing cf: function (c)', '\n',
+	'Channels proper formatting', '\n',
+	'cssMath.cf(\'255, 0, 255\')', 'returns: ', cssMath.cf('255, 0, 255'), '\n',
+	'cssMath.cf(\'255,0,255\')', 'returns: ', cssMath.cf('255,0,255'), '\n',
+	'cssMath.cf(\'(255,0,255)\')', 'returns: ', cssMath.cf('(255,0,255)'), '\n',
+	'cssMath.cf(\'rgb(255,0,255)\')', 'returns: ', cssMath.cf('rgb(255,0,255)'), '\n',
+	'cssMath.cf(\'rgb ( 255 , 0 , 255 )\')', 'returns: ', cssMath.cf('rgb ( 255 , 0 , 255 )'), '\n',
+	'cssMath.cf(\'255, 0, 255, 204\')', 'returns: ', cssMath.cf('255, 0, 255, 204'), '\n',
+	'cssMath.cf(\'255,0,255,204\')', 'returns: ', cssMath.cf('255,0,255,204'), '\n',
+	'cssMath.cf(\'(255,0,255,204)\')', 'returns: ', cssMath.cf('(255,0,255,204)'), '\n',
+	'cssMath.cf(\'rgb(255,0,255,204)\')', 'returns: ', cssMath.cf('rgb(255,0,255,204)'), '\n',
+	'cssMath.cf(\'rgb ( 255 , 0 , 255 , 204)\')', 'returns: ', cssMath.cf('rgb ( 255 , 0 , 255 , 204)'), '\n'
+);
+
+console.log(
+	'Testing hf: function (h)', '\n',
+	'Hexadecimals proper formatting', '\n',
+	'cssMath.hf(\'FF00FF\')', 'returns: ', cssMath.hf('FF00FF'), '\n',
+	'cssMath.hf(\'#FF00FF\')', 'returns: ', cssMath.hf('#FF00FF'), '\n',
+	'cssMath.hf(\'#F0F\')', 'returns: ', cssMath.hf('#F0F'), '\n',
+	'cssMath.hf(\'F0F\')', 'returns: ', cssMath.hf('F0F'), '\n',
+	'cssMath.hf(\'CCFF00FF\')', 'returns: ', cssMath.hf('CCFF00FF'), '\n',
+	'cssMath.hf(\'CF0F\')', 'returns: ', cssMath.hf('CF0F'), '\n'
+);
+
+console.log(
+	'Testing cm: function (c, m)', '\n',
+	'Channel Move', '\n',
+	'cssMath.cm(254, 1)', 'returns: ', cssMath.cm(254, 1), '\n',
+	'cssMath.cm(253, 2)', 'returns: ', cssMath.cm(253, 2), '\n',
+	'cssMath.cm(255, -51)', 'returns: ', cssMath.cm(255, -51), '\n'
+);
+
+console.log(
+	'Testing hm: function (h, m)', '\n',
+	'Hexadecimal Move', '\n',
+	'cssMath.hm(\'FE\', 1)', 'returns: ', cssMath.hm('FE', 1), '\n',
+	'cssMath.hm(\'FD\', 2)', 'returns: ', cssMath.hm('FD', 2), '\n',
+	'cssMath.hm(\'FF\', -51)', 'returns: ', cssMath.hm('FF', -51), '\n'
+);
+
+console.log(
+	'Testing cm2: function (c, m)', '\n',
+	'Channels Move', '\n',
+	'cssMath.cm2(\'254, 254, 254\', 1)', 'returns: ', cssMath.cm2('254, 254, 254', 1), '\n',
+	'cssMath.cm2(\'253, 253, 253\', 2)', 'returns: ', cssMath.cm2('253, 253, 253', 2), '\n',
+	'cssMath.cm2(\'255, 255, 255\', -51)', 'returns: ', cssMath.cm2('255, 255, 255', -51), '\n'
+);
+
+console.log(
+	'Testing hm2: function (h, m)', '\n',
+	'Hexadecimals Move', '\n',
+	'cssMath.hm2(\'FEFEFE\', 1)', 'returns: ', cssMath.hm2('FEFEFE', 1), '\n',
+	'cssMath.hm2(\'FDFDFD\', 2)', 'returns: ', cssMath.hm2('FDFDFD', 2), '\n',
+	'cssMath.hm2(\'FFFFFF\', -51)', 'returns: ', cssMath.hm2('FFFFFF', -51), '\n'
+);
+
+console.log(
+	'Testing s2sh: function (s)', '\n',
+	'String to short hexadecimal', '\n',
+	'cssMath.s2sh(\'255, 255, 255\', 1)', 'returns: ', cssMath.s2sh('255, 255, 255'), '\n'
+);
+
+console.log(
+	'Testing s2lh: function (s)', '\n',
+	'String to long hexadecimal', '\n',
+	'cssMath.s2lh(\'255, 51, 255\', 1)', 'returns: ', cssMath.s2lh('255, 51, 255'), '\n',
+	'cssMath.s2lh(\'255, 51, 255, 204\', 1)', 'returns: ', cssMath.s2lh('255, 51, 255, 204'), '\n',
+	'cssMath.s2lh(\'rgb (255, 51, 255, 204)\', 1)', 'returns: ', cssMath.s2lh('rgb (255, 51, 255, 204)'), '\n',
+	'cssMath.s2lh(\'rgba (255, 51, 255)\', 1)', 'returns: ', cssMath.s2lh('rgba (255, 51, 255)'), '\n'
+);
+
+console.log(
+	'Testing s2c: function (s)', '\n',
+	'String to channels', '\n',
+	'cssMath.s2c(\'FF33FF\', 1)', 'returns: ', cssMath.s2c('FF33FF'), '\n',
+	'cssMath.s2c(\'#FF33FF\', 1)', 'returns: ', cssMath.s2c('#FF33FF'), '\n',
+	'cssMath.s2c(\'CCFF33FF\', 1)', 'returns: ', cssMath.s2c('CCFF33FF'), '\n',
+	'cssMath.s2c(\'#CCFF33FF\', 1)', 'returns: ', cssMath.s2c('#CCFF33FF'), '\n'
+);
+
+console.log(
+	'Testing s2xm: function (s)', '\n',
+	'String to channels, hexadecimals, or units Moved', '\n',
+	'cssMath.s2xm(\'FFFEFF\', 1)', 'returns: ', cssMath.s2xm('FFFEFF', 1), '\n'
+);
+
+	</script>
+</head>
+
+<body></body>
+
+</html>

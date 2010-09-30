@@ -12,6 +12,16 @@
 cssMath = {
 	/* ---- General ---- */
 
+	/* Isset */
+	isset: function (s) {
+		return s != undefined;
+	},
+
+	/* Trim */
+	trim: function (s) {
+		return s.replace(/^\s+|\s+$/g, '');
+	},
+
 	/* Number rounded by Length */
 	round: function (n, l) {
 		l = Math.pow(10, l) || 10;
@@ -50,12 +60,12 @@ cssMath = {
 
 	/* Long Hexadecimals compressed to short hexadecimals */
 	lh2sh: function (lh) {
-		return lh.replace(/^\s+|\s+$/g, '').replace(/^#?([A-f0-9])\1([A-f0-9])\2([A-f0-9])\3([A-f0-9])\4$/, '#$1$2$3$4').replace(/^#?([A-f0-9])\1([A-f0-9])\2([A-f0-9])\3$/, '#$1$2$3');
+		return '#' + this.trim(lh).replace(/^#?/, '').replace(/^([A-f0-9])\1([A-f0-9])\2([A-f0-9])\3([A-f0-9])\4$/, '$1$2$3$4').replace(/^([A-f0-9])\1([A-f0-9])\2([A-f0-9])\3$/, '$1$2$3');
 	},
 
 	/* Short Hexadecimals expanded to long hexadecimals */
 	sh2lh: function (sh) {
-		return sh.replace(/^\s+|\s+$/g, '').replace(/^#?([A-f0-9])([A-f0-9])([A-f0-9])([A-f0-9])$/, '#$1$1$2$2$3$3$4$4').replace(/^#?([A-f0-9])([A-f0-9])([A-f0-9])$/, '#$1$1$2$2$3$3');
+		return '#' + this.trim(sh).replace(/^#?/, '').replace(/^([A-f0-9])([A-f0-9])([A-f0-9])([A-f0-9])$/, '$1$1$2$2$3$3$4$4').replace(/^([A-f0-9])([A-f0-9])([A-f0-9])$/, '$1$1$2$2$3$3');
 	},
 
 	/* Channel to hexadecimal */
@@ -132,50 +142,104 @@ cssMath = {
 		return this.hf(h.join(''));
 	},
 
-	/* String to short hexadecimals */
-	s2sh: function (s) {
-		return this.lh2sh((s.indexOf(',') > -1) ? this.c2h2(s) : s);
+	/* ---- String Adjustments ---- */
+
+	/* String to short hexadecimals (move capable) */
+	s2sh: function (s, m) {
+		m = this.isset(m) ? m : 0;
+
+		return this.lh2sh(
+			this.hm2(
+				(s.indexOf(',') > -1 ? this.c2h2(s) : s),
+				m
+			)
+		);
 	},
 
-	/* String to long hexadecimals */
-	s2lh: function (s) {
-		return this.sh2lh((s.indexOf(',') > -1) ? this.c2h2(s) : s);
+	/* String to long hexadecimals (move capable) */
+	s2lh: function (s, m) {
+		m = this.isset(m) ? m : 0;
+
+		return this.sh2lh(
+			this.hm2(
+				(s.indexOf(',') > -1 ? this.c2h2(s) : s),
+				m
+			)
+		);
 	},
 
-	/* String to channels */
-	s2c: function (s) {
-		return (s.indexOf(',') > -1) ? this.cf(s) : this.h2c2(s);
+	/* String to channels (move capable) */
+	s2c: function (s, m) {
+		m = this.isset(m) ? m : 0;
+
+		return s.indexOf(',') > -1 ? this.cf(s) : this.h2c2(s);
 	},
 
 	/* String to degree */
 	s2d: function (s) {
-		return (s > 4) ? s : this.round(this.r2d(s), 3);
+		return s > 4 ? s : this.round(this.r2d(s), 3);
 	},
 
-	/* String to channels, short hexadecimals, or units Moved */
-	s2xm: function (s, m) {
-		if (/^[#A-f0-9\s]+$/.test(s)) {
-			return this.lh2sh(this.hm2(s, m));
+	/* String of channels, hexadecimals, or units to string (move capable) */
+	s2x: function (s, m, sh) {
+		s = this.trim(s);
+		m = this.isset(m) ? m : 0;
+		sh = this.isset(sh) ? sh : false;
+
+		/* Hex */
+		if (/^[#A-f0-9]+$/.test(s)) {
+			if (sh || /^[#A-f0-9]{3,5}$/.test(s)) {
+				return this.lh2sh(this.hm2(s, m));
+			}
+
+			return this.hm2(s, m);
 		}
+		/* RGB */
 		else if (s.indexOf(',') > -1) {
 			return this.cm2(s, m);
 		}
-		else if ((s = /([\+\-\d]+)(.*)/.exec(s))) {
-			return parseInt(s[1], 10) + m + s[2];
+		/* Unit */
+		else if (/([\+\-\d]+)(.*)/.test(s)) {
+			var unit,
+				units = [],
+				re = /([\+\-\d]+)(%|in|cm|mm|em|ex|pt|pc|px)*(\s|$)/g;
+
+			while ((unit = re.exec(s)) != null) {
+				units.push((parseInt(unit[1], 10) + m) + (unit[2] || 'px'), unit[3]);
+			}
+
+			return units.join('');
 		}
 		else {
 			return false;
 		}
+	},
+
+	/* String of channels, hexadecimals, or units to short string (move capable)  */
+	s2sx: function (s, m) {
+		return this.s2x(s, m, true);
 	}
 };
 
 /* ---- cssMath Firebug tests ---- */
 
 console.log(
-	'Testing round: function (n, l)', '\n',
+	'--------------------------------------------------------------------------------\n' +
+	'General Tests' +
+	'\n--------------------------------------------------------------------------------'
+);
+
+console.log(
+	'Testing round: function (n, l = 10)', '\n',
 	'Number rounded by Length', '\n',
 	'cssMath.round(3.1417534)', 'returns: ', cssMath.round(3.1417534), '\n',
 	'cssMath.round(3.1417534, 2)', 'returns: ', cssMath.round(3.1417534, 2), '\n'
+);
+
+console.log(
+	'--------------------------------------------------------------------------------\n' +
+	'Rotation Tests' +
+	'\n--------------------------------------------------------------------------------'
 );
 
 console.log(
@@ -207,11 +271,18 @@ console.log(
 );
 
 console.log(
+	'--------------------------------------------------------------------------------\n' +
+	'Color Tests' +
+	'\n--------------------------------------------------------------------------------'
+);
+
+console.log(
 	'Testing lh2sh: function (lh)', '\n',
 	'Long Hexadecimals compressed to short hexadecimals', '\n',
 	'cssMath.lh2sh(\'FF33FF\')', 'returns: ', cssMath.lh2sh('FF33FF'), '\n',
 	'cssMath.lh2sh(\'#FF33FF\')', 'returns: ', cssMath.lh2sh('#FF33FF'), '\n',
-	'cssMath.lh2sh(\'#F3F\')', 'returns: ', cssMath.lh2sh('#F3F'), '\n'
+	'cssMath.lh2sh(\'#F3F\')', 'returns: ', cssMath.lh2sh('#F3F'), '\n',
+	'cssMath.lh2sh(\'#FF33FE\')', 'returns: ', cssMath.lh2sh('#FF33FE'), '\n'
 );
 
 console.log(
@@ -333,33 +404,109 @@ console.log(
 );
 
 console.log(
+	'--------------------------------------------------------------------------------\n' +
+	'String Tests' +
+	'\n--------------------------------------------------------------------------------'
+);
+
+console.log(
 	'Testing s2sh: function (s)', '\n',
 	'String to short hexadecimal', '\n',
-	'cssMath.s2sh(\'255, 255, 255\', 1)', 'returns: ', cssMath.s2sh('255, 255, 255'), '\n'
+	'cssMath.s2sh(\'255, 238, 255\')', 'returns: ', cssMath.s2sh('255, 238, 255'), '\n',
+	'cssMath.s2sh(\'rgb(255, 238, 255)\')', 'returns: ', cssMath.s2sh('rgb(255, 238, 255)'), '\n',
+	'cssMath.s2sh(\'rgba(255, 238, 255, 255)\')', 'returns: ', cssMath.s2sh('rgba(255, 238, 255, 255)'), '\n',
+	'cssMath.s2sh(\'rgb(255, 238, 255, 255)\')', 'returns: ', cssMath.s2sh('rgb(255, 238, 255, 255)'), '\n',
+	'cssMath.s2sh(\'rgba(255, 238, 255)\')', 'returns: ', cssMath.s2sh('rgba(255, 238, 255)'), '\n',
+	'cssMath.s2sh(\'F3F\')', 'returns: ', cssMath.s2sh('F3F'), '\n',
+	'cssMath.s2sh(\'FF33FF\')', 'returns: ', cssMath.s2sh('FF33FF'), '\n',
+	'cssMath.s2sh(\'FF3F\')', 'returns: ', cssMath.s2sh('FF3F'), '\n',
+	'cssMath.s2sh(\'FFFF33FF\')', 'returns: ', cssMath.s2sh('FFFF33FF'), '\n',
+	'cssMath.s2sh(\'#F3F\')', 'returns: ', cssMath.s2sh('#F3F'), '\n',
+	'cssMath.s2sh(\'#FF33FF\')', 'returns: ', cssMath.s2sh('#FF33FF'), '\n',
+	'cssMath.s2sh(\'#FF3F\')', 'returns: ', cssMath.s2sh('#FF3F'), '\n',
+	'cssMath.s2sh(\'#FFFF33FF\')', 'returns: ', cssMath.s2sh('#FFFF33FF'), '\n'
 );
 
 console.log(
 	'Testing s2lh: function (s)', '\n',
 	'String to long hexadecimal', '\n',
-	'cssMath.s2lh(\'255, 51, 255\', 1)', 'returns: ', cssMath.s2lh('255, 51, 255'), '\n',
-	'cssMath.s2lh(\'255, 51, 255, 204\', 1)', 'returns: ', cssMath.s2lh('255, 51, 255, 204'), '\n',
-	'cssMath.s2lh(\'rgb (255, 51, 255, 204)\', 1)', 'returns: ', cssMath.s2lh('rgb (255, 51, 255, 204)'), '\n',
-	'cssMath.s2lh(\'rgba (255, 51, 255)\', 1)', 'returns: ', cssMath.s2lh('rgba (255, 51, 255)'), '\n'
+	'cssMath.s2lh(\'255, 238, 255\')', 'returns: ', cssMath.s2lh('255, 238, 255'), '\n',
+	'cssMath.s2lh(\'rgb(255, 238, 255)\')', 'returns: ', cssMath.s2lh('rgb(255, 238, 255)'), '\n',
+	'cssMath.s2lh(\'rgba(255, 238, 255, 255)\')', 'returns: ', cssMath.s2lh('rgba(255, 238, 255, 255)'), '\n',
+	'cssMath.s2lh(\'rgb(255, 238, 255, 255)\')', 'returns: ', cssMath.s2lh('rgb(255, 238, 255, 255)'), '\n',
+	'cssMath.s2lh(\'rgba(255, 238, 255)\')', 'returns: ', cssMath.s2lh('rgba(255, 238, 255)'), '\n',
+	'cssMath.s2lh(\'F3F\')', 'returns: ', cssMath.s2lh('F3F'), '\n',
+	'cssMath.s2lh(\'FF33FF\')', 'returns: ', cssMath.s2lh('FF33FF'), '\n',
+	'cssMath.s2lh(\'FF3F\')', 'returns: ', cssMath.s2lh('FF3F'), '\n',
+	'cssMath.s2lh(\'FFFF33FF\')', 'returns: ', cssMath.s2lh('FFFF33FF'), '\n',
+	'cssMath.s2lh(\'#F3F\')', 'returns: ', cssMath.s2lh('#F3F'), '\n',
+	'cssMath.s2lh(\'#FF33FF\')', 'returns: ', cssMath.s2lh('#FF33FF'), '\n',
+	'cssMath.s2lh(\'#FF3F\')', 'returns: ', cssMath.s2lh('#FF3F'), '\n',
+	'cssMath.s2lh(\'#FFFF33FF\')', 'returns: ', cssMath.s2lh('#FFFF33FF'), '\n'
 );
 
 console.log(
 	'Testing s2c: function (s)', '\n',
 	'String to channels', '\n',
-	'cssMath.s2c(\'FF33FF\', 1)', 'returns: ', cssMath.s2c('FF33FF'), '\n',
-	'cssMath.s2c(\'#FF33FF\', 1)', 'returns: ', cssMath.s2c('#FF33FF'), '\n',
-	'cssMath.s2c(\'CCFF33FF\', 1)', 'returns: ', cssMath.s2c('CCFF33FF'), '\n',
-	'cssMath.s2c(\'#CCFF33FF\', 1)', 'returns: ', cssMath.s2c('#CCFF33FF'), '\n'
+	'cssMath.s2c(\'255, 238, 255\')', 'returns: ', cssMath.s2c('255, 238, 255'), '\n',
+	'cssMath.s2c(\'rgb(255, 238, 255)\')', 'returns: ', cssMath.s2c('rgb(255, 238, 255)'), '\n',
+	'cssMath.s2c(\'rgba(255, 238, 255, 255)\')', 'returns: ', cssMath.s2c('rgba(255, 238, 255, 255)'), '\n',
+	'cssMath.s2c(\'rgb(255, 238, 255, 255)\')', 'returns: ', cssMath.s2c('rgb(255, 238, 255, 255)'), '\n',
+	'cssMath.s2c(\'rgba(255, 238, 255)\')', 'returns: ', cssMath.s2c('rgba(255, 238, 255)'), '\n',
+	'cssMath.s2c(\'F3F\')', 'returns: ', cssMath.s2c('F3F'), '\n',
+	'cssMath.s2c(\'FF33FF\')', 'returns: ', cssMath.s2c('FF33FF'), '\n',
+	'cssMath.s2c(\'FF3F\')', 'returns: ', cssMath.s2c('FF3F'), '\n',
+	'cssMath.s2c(\'FFFF33FF\')', 'returns: ', cssMath.s2c('FFFF33FF'), '\n',
+	'cssMath.s2c(\'#F3F\')', 'returns: ', cssMath.s2c('#F3F'), '\n',
+	'cssMath.s2c(\'#FF33FF\')', 'returns: ', cssMath.s2c('#FF33FF'), '\n',
+	'cssMath.s2c(\'#FF3F\')', 'returns: ', cssMath.s2c('#FF3F'), '\n',
+	'cssMath.s2c(\'#FFFF33FF\')', 'returns: ', cssMath.s2c('#FFFF33FF'), '\n'
 );
 
 console.log(
-	'Testing s2xm: function (s)', '\n',
-	'String to channels, hexadecimals, or units Moved', '\n',
-	'cssMath.s2xm(\'FFFEFF\', 1)', 'returns: ', cssMath.s2xm('FFFEFF', 1), '\n'
+	'Testing s2x: function (s, m)', '\n',
+	'String of channels, hexadecimals, or units to string and moved', '\n',
+	'cssMath.s2x(\'255, 238, 255\', 17)', 'returns: ', cssMath.s2x('255, 238, 255', 17), '\n',
+	'cssMath.s2x(\'rgb(255, 238, 255)\', 17)', 'returns: ', cssMath.s2x('rgb(255, 238, 255)', 17), '\n',
+	'cssMath.s2x(\'rgba(255, 238, 255, 255)\', 17)', 'returns: ', cssMath.s2x('rgba(255, 238, 255, 255)', 17), '\n',
+	'cssMath.s2x(\'rgb(255, 238, 255, 255)\', 17)', 'returns: ', cssMath.s2x('rgb(255, 238, 255, 255)', 17), '\n',
+	'cssMath.s2x(\'rgba(255, 238, 255)\', 17)', 'returns: ', cssMath.s2x('rgba(255, 238, 255)', 17), '\n',
+	'cssMath.s2x(\'FEF\', 17)', 'returns: ', cssMath.s2x('FEF', 17), '\n',
+	'cssMath.s2x(\'FFEEFF\', 17)', 'returns: ', cssMath.s2x('FFEEFF', 17), '\n',
+	'cssMath.s2x(\'FFEF\', 17)', 'returns: ', cssMath.s2x('FFEF', 17), '\n',
+	'cssMath.s2x(\'FFFFEEFF\', 17)', 'returns: ', cssMath.s2x('FFFFEEFF', 17), '\n',
+	'cssMath.s2x(\'#FEF\', 17)', 'returns: ', cssMath.s2x('#FEF', 17), '\n',
+	'cssMath.s2x(\'#FFEEFF\', 17)', 'returns: ', cssMath.s2x('#FFEEFF', 17), '\n',
+	'cssMath.s2x(\'#FFEF\', 17)', 'returns: ', cssMath.s2x('#FFEF', 17), '\n',
+	'cssMath.s2x(\'#FFFFEEFF\', 17)', 'returns: ', cssMath.s2x('#FFFFEEFF', 17), '\n',
+	'cssMath.s2x(\'1px\', 9)', 'returns: ', cssMath.s2x('1px', 9), '\n',
+	'cssMath.s2x(\'1em\', 9)', 'returns: ', cssMath.s2x('1em', 9), '\n',
+	'cssMath.s2x(\'1%\', 9)', 'returns: ', cssMath.s2x('1%', 9), '\n',
+	'cssMath.s2x(\'1px 1px 11px 1px\', 9)', 'returns: ', cssMath.s2x('1px 1px 11px 1px', 9), '\n',
+	'cssMath.s2x(\'5px 0 10px 15px\', 5)', 'returns: ', cssMath.s2x('5px 0 10px 15px', 5), '\n'
+);
+
+console.log(
+	'Testing s2sx: function (s, m)', '\n',
+	'String of channels, hexadecimals, or units to short string and moved', '\n',
+	'cssMath.s2sx(\'255, 238, 255\', 17)', 'returns: ', cssMath.s2sx('255, 238, 255', 17), '\n',
+	'cssMath.s2sx(\'rgb(255, 238, 255)\', 17)', 'returns: ', cssMath.s2sx('rgb(255, 238, 255)', 17), '\n',
+	'cssMath.s2sx(\'rgba(255, 238, 255, 255)\', 17)', 'returns: ', cssMath.s2sx('rgba(255, 238, 255, 255)', 17), '\n',
+	'cssMath.s2sx(\'rgb(255, 238, 255, 255)\', 17)', 'returns: ', cssMath.s2sx('rgb(255, 238, 255, 255)', 17), '\n',
+	'cssMath.s2sx(\'rgba(255, 238, 255)\', 17)', 'returns: ', cssMath.s2sx('rgba(255, 238, 255)', 17), '\n',
+	'cssMath.s2sx(\'FEF\', 17)', 'returns: ', cssMath.s2sx('FEF', 17), '\n',
+	'cssMath.s2sx(\'FFEEFF\', 17)', 'returns: ', cssMath.s2sx('FFEEFF', 17), '\n',
+	'cssMath.s2sx(\'FFEF\', 17)', 'returns: ', cssMath.s2sx('FFEF', 17), '\n',
+	'cssMath.s2sx(\'FFFFEEFF\', 17)', 'returns: ', cssMath.s2sx('FFFFEEFF', 17), '\n',
+	'cssMath.s2sx(\'#FEF\', 17)', 'returns: ', cssMath.s2sx('#FEF', 17), '\n',
+	'cssMath.s2sx(\'#FFEEFF\', 17)', 'returns: ', cssMath.s2sx('#FFEEFF', 17), '\n',
+	'cssMath.s2sx(\'#FFEF\', 17)', 'returns: ', cssMath.s2sx('#FFEF', 17), '\n',
+	'cssMath.s2sx(\'#FFFFEEFF\', 17)', 'returns: ', cssMath.s2sx('#FFFFEEFF', 17), '\n',
+	'cssMath.s2sx(\'1px\', 9)', 'returns: ', cssMath.s2sx('1px', 9), '\n',
+	'cssMath.s2sx(\'1em\', 9)', 'returns: ', cssMath.s2sx('1em', 9), '\n',
+	'cssMath.s2sx(\'1%\', 9)', 'returns: ', cssMath.s2sx('1%', 9), '\n',
+	'cssMath.s2sx(\'1px 1px 11px 1px\', 9)', 'returns: ', cssMath.s2sx('1px 1px 11px 1px', 9), '\n',
+	'cssMath.s2sx(\'5px 0 10px 15px\', 5)', 'returns: ', cssMath.s2sx('5px 0 10px 15px', 5), '\n'
 );
 
 	</script>

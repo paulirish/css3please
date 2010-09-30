@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+
+	<title>css3please | UI</title>
+
+	<script src="javascript/jquery-1.4.2.js" type="text/javascript"></script>
+	<script src="javascript/jquery-mousewheel-3.0.4.js"></script>
+	<script src="test_math.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+$(function () {
+	var focusedInput,
+		currentInput;
+	var inputPX = $('#input-px')[0],
+		inputHEX = $('#input-hex')[0],
+		inputRGB = $('#input-rgb')[0],
+		inputX = $('#input-x')[0],
+		inputY = $('#input-y')[0],
+		inputR = $('#input-r')[0],
+		inputS = $('#input-s')[0];
+
+	var cssFun = function (elem, delta) {
+		var value = elem.value;
+
+		if (elem == inputPX) {
+			elem.value = cssMath.s2x(value, delta);
+		}
+		else if (elem == inputHEX) {
+			inputHEX.value = cssMath.lh2sh(cssMath.hm2(cssMath.s2lh(value), delta));
+			inputRGB.value = cssMath.cm2(cssMath.s2c(value), delta);
+		}
+		else if (elem == inputRGB) {
+			inputHEX.value = cssMath.lh2sh(cssMath.hm2(cssMath.s2lh(value), delta));
+			inputRGB.value = cssMath.cm2(cssMath.s2c(value), delta);
+		}
+		else if (elem == inputX || elem == inputY || elem == inputR || elem == inputS) {
+			if (elem == inputX) {
+				inputX.value = parseInt(value, 10) + delta;
+				inputR.value = cssMath.xy2rs(inputX.value, inputY.value).r;
+				inputS.value = cssMath.xy2rs(inputX.value, inputY.value).s;
+			}
+			else if (elem == inputY) {
+				inputY.value = parseInt(value, 10) + delta;
+				inputR.value = cssMath.xy2rs(inputX.value, inputY.value).r;
+				inputS.value = cssMath.xy2rs(inputX.value, inputY.value).s;
+			}
+			else if (elem == inputR) {
+				inputR.value = parseInt(value, 10) + delta;
+				inputX.value = cssMath.rs2xy(inputR.value, inputS.value).x;
+				inputY.value = cssMath.rs2xy(inputR.value, inputS.value).y;
+			}
+			else if (elem == inputS) {
+				inputS.value = parseInt(value, 10) + delta;
+				inputX.value = cssMath.rs2xy(inputR.value, inputS.value).x;
+				inputY.value = cssMath.rs2xy(inputR.value, inputS.value).y;
+			}
+		}
+	};
+
+	$('input').focus(function () {
+		focusedInput = this;
+	}).blur(function () {
+		cssFun(this, 0);
+		focusedInput = (focusedInput == this) ? undefined : focusedInput;
+	}).bind('keydown', function (e) {
+		if (e.keyCode == 38) {
+			cssFun(this, 1);
+		}
+		else if (e.keyCode == 40) {
+			cssFun(this, -1);
+		}
+		else if (e.keyCode == 13) {
+			cssFun(this, 0);
+		}
+	});
+
+	$(window).bind('mousewheel', function (event, delta) {
+		if (focusedInput) {
+			event.preventDefault();
+
+			cssFun(focusedInput, delta);
+		}
+	});
+});
+
+	</script>
+</head>
+
+<body>
+
+<ul>
+	<li>
+		S <input id="input-px" type="text" value="5px 0 10px 15px" csstype="s" />
+	</li>
+	<li>
+		HEX <input id="input-hex" type="text" value="#CCC" csstype="hex" />
+		RGB <input id="input-rgb" type="text" value="rgb(200, 200, 200)" csstype="rgb" />
+	</li>
+	<li>
+		X <input id="input-x" type="text" value="4" csstype="x" />
+		Y <input id="input-y" type="text" value="4" csstype="y" />
+		R <input id="input-r" type="text" value="135" csstype="r" />
+		S <input id="input-s" type="text" value="5.657" csstype="s" />
+	</li>
+</ul>
+
+</body>
+
+</html>
