@@ -76,7 +76,7 @@
 .box_shadow {
      -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
   -webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3.0+, Chrome <span class="endcomment">*/</span></span>
-          box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE 9.0 <span class="endcomment">*/</span></span>
+          box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE 9 <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -101,7 +101,7 @@
   <pre class="rule">
 .box_rgba {
   background-color: <b g="0" i="ch" o="shortHex" readonly>#B4B490</b>;
-  background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;  <span class="comment">/* FF3+, Saf3+, Opera 10.10+, Chrome <span class="endcomment">*/</span></span>
+  background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;  <span class="comment">/* FF3+, Saf3+, Opera 10.10+, Chrome, IE9 <span class="endcomment">*/</span></span>
             <span class="ie">filter:  <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2aHex">#99B4B490</b>',EndColorStr='<b g="0" i="s2aHex">#99B4B490</b>')</span>; <span class="comment">/* IE6,IE7 <span class="endcomment">*/</span></span>
         -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2aHex">#99B4B490</b>',EndColorStr='<b g="0" i="s2aHex">#99B4B490</b>')"; <span class="comment">/* IE8 <span class="endcomment">*/</span></span></span>
 }</pre>
@@ -216,7 +216,7 @@
  
   (function() {
     var ga = document.createElement('script'),
-        elem = document.head || document.documentElement;   // FUCK YAH UNIMPLEMENTED HTML5 HAWTNESS
+        elem = document.head || document.documentElement;   // FUCK YAH IMPLEMENTED HTML5 HAWTNESS
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
         'http://www') + '.google-analytics.com/ga.js';
     ga.setAttribute('async', 'true');
