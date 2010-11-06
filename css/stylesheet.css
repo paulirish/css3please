@@ -377,3 +377,13 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 		background:#FF5E99;
 	color:#fff;
 }
+
+/* --------------------------------
+	Curtis Blackwell's Changes
+	blackwell.curtis@gmail.com
+	11.4.10
+--------------------------------*/
+
+#sandbox { margin-bottom: 20px; }
+
+#sandboxwrap .rule.comment { text-align: right; }
