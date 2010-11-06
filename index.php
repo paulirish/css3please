@@ -11,7 +11,6 @@
 <script src="javascript/javascript.js" type="text/javascript"></script>
 
 
-
  </head> 
 
 
@@ -206,23 +205,6 @@
 
 </pre>
 
-
-<script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-15142720-1']);
-  _gaq.push(['_trackPageview']);
-  _gaq.push(['_setDomainName','none']);
-  _gaq.push(['_setAllowLinker','true']);
- 
-  (function() {
-    var ga = document.createElement('script'),
-        elem = document.head || document.documentElement;   // FUCK YAH IMPLEMENTED HTML5 HAWTNESS
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
-        'http://www') + '.google-analytics.com/ga.js';
-    ga.setAttribute('async', 'true');
-    setTimeout(function(){ elem.insertBefore(ga, elem.firstChild); },100);
-  })();
-
-</script>
+<?php include('_cb_changes/index.php'); ?>
 </body>
 </html>

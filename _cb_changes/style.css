@@ -1,0 +1,54 @@
+body {
+	background-color: #eeeeee;
+	background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #ffffff));
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#ffffff');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#ffffff')";
+}
+
+
+/*==UTILITY==*/
+
+.no_underline {
+	border-bottom: none !important;
+	text-decoration: none !important;
+}
+
+
+/*==SANDBOX==*/
+
+#sandbox {
+	/* Save for after border-editing integration | put in mark-up, not css
+	border: 1px solid #007dd1;
+	border-bottom-color: #002a47;
+	border-top-color: #a1d6ff;*/
+	border: none;
+}
+
+#sandbox h1 {
+	color: #fff;
+	font-size: 47px; /* Fit on one line, don't overlap text */
+	text-shadow: 0px -1px 1px #25C;
+}
+
+#sandbox abbr {
+	border-bottom: 1px dashed #fff;
+	color: #f33;
+	text-shadow: 0px -1px 1px #a00;
+}
+
+
+/*==COLORS==*/
+
+.rule_wrapper pre.comment .comment, .rule .comment, .commentedout .rule, .commentedout .rule span { color: #50BD2B !important; }
+.rule_wrapper:hover pre.comment .comment, .rule_wrapper pre.comment span.comment a:hover, .rule_wrapper pre.comment span.comment a.hover { color: #2d9e06; }
+
+.rule .property, span.ie { color: #333; }
+
+.rule b { color: rgba(0, 136, 255, 0.898438); }
+
+.rule b.edit input { color: red; }
+
+.rule .value, span.ie .filter { color: saddleBrown; }
+
+.footer .comment a, .comment a { border-bottom: 1px solid #50BD2B; }
