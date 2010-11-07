@@ -371,7 +371,7 @@ function copypasta(){
 	    zc.glue( elem[0], elem[0].parentNode );
     	zc.addEventListener( 'mouseDown', (function(){
     	    return function(client) {
-    	      var text = elem.closest("pre").next().text();
+    	      var text = elem.closest("pre").next().find('.declaration-block').text();
     	      text = text.replace(/\/\*.*?\*\//g,''); // strip comments
     		    zc.setText( text );
     		    $(elem).fadeOut(50).fadeIn(300)
