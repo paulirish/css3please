@@ -348,36 +348,33 @@ window.generator = {
 			document.body.appendChild(ss);
         }
 
-		
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') );
-		
 		
 	}
 };
 
 function copypasta(){
-    if (location.protocol == 'file:'){
-         return $('a.cb').hide();
-    }
+	var isFlashInstalled = document.documentElement.className == 'flash';
 
+  if (isFlashInstalled) {
+		$('.rule_wrapper').each(function(){
+		    var name = this.id,
+		        zc = new ZeroClipboard.Client(),
+		        elem = $(this).find('a.cb');
    
-	$('.rule_wrapper').each(function(){
-	    var name = this.id,
-	        zc = new ZeroClipboard.Client(),
-	        elem = $(this).find('a.cb');
-	    
-	    if (!elem.length) return;
-	        
-	    zc.glue( elem[0], elem[0].parentNode );
-    	zc.addEventListener( 'mouseDown', (function(){
-    	    return function(client) {
-    	      var text = elem.closest("pre").next().find('.declaration-block').text();
-    	      text = text.replace(/\/\*.*?\*\//g,''); // strip comments
-    		    zc.setText( text );
-    		    $(elem).fadeOut(50).fadeIn(300)
-    		}
-    	})());  
-	});
+		    if (!elem.length) return;
+       
+		    zc.glue( elem[0], elem[0].parentNode );
+	    	zc.addEventListener( 'mouseDown', (function(){
+	    	    return function(client) {
+	    	      var text = elem.closest("pre").next().find('.declaration-block').text();
+	    	      text = text.replace(/\/\*.*?\*\//g,''); // strip comments
+	    		    zc.setText( text );
+	    		    $(elem).fadeOut(50).fadeIn(300)
+	    		}
+	    	})());  
+		});
+	}
 }
 
 

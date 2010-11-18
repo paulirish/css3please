@@ -387,3 +387,8 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 #sandbox { margin-bottom: 20px; }
 
 #sandboxwrap .rule.comment { text-align: right; }
+
+/* @mathias */
+
+.cb { display: none; }
+.flash .cb { display: inline; }
