@@ -63,7 +63,8 @@ window.cssMath = {
 	},
 	/* Decimal to Hexadecimal */
 	d2h: function (d) {
-		return ('0' + parseInt(d, 10).toString(16)).substr(-2).toUpperCase();
+		var h = '0' + parseInt(d, 10).toString(16);
+		return h.substr(h.length-2,2).toUpperCase();
 	},
 	/* Decimal Array to Hexadecimal Array */
 	da2ha: function (da) {
