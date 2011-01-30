@@ -2,6 +2,7 @@ body {
 	background-color: #eeeeee;
 	background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
 	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #ffffff));
+	background-image: -webkit-linear-gradient(#444444, #999999);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#ffffff');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#ffffff')";
 	color: #FF6400;
