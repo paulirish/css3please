@@ -153,10 +153,9 @@
   <pre class="rule">
 @font-face {
   font-family: '<b g="1">WebFont</b>';
-  src: url('<b g="0">myfont</b>.eot');  <span class="comment">/* IE6–8 <span class="endcomment">*/</span></span>
-  src: local('☺'), 
-        url('<b g="0">myfont</b>.woff') format('woff'),  <span class="comment">/* FF3.6, IE9 <span class="endcomment">*/</span></span>
-        url('<b g="0">myfont</b>.ttf') format('truetype');  <span class="comment">/* Saf3+, Chrome, FF3.5, Opera 10+ <span class="endcomment">*/</span></span>
+  src: url('<b g="0">myfont</b>.eot?') format('eot'),  <span class="comment">/* IE6–8 <span class="endcomment">*/</span></span>
+       url('<b g="0">myfont</b>.woff') format('woff'),  <span class="comment">/* FF3.6+, IE9, Chrome6+ <span class="endcomment">*/</span></span>
+       url('<b g="0">myfont</b>.ttf') format('truetype');  <span class="comment">/* Saf3+, Chrome4+, FF3.5, Opera 10+ <span class="endcomment">*/</span></span>
 }</pre>
   <!--  <pre class="rule comment commentclose"><span class="comment">/* */</span></pre> -->
 </div>
@@ -200,6 +199,7 @@
     2010.11.06: Toggle to light skin (Thx <a href="http://curtisblackwell.com/">Curtis Blackwell</a>!). IE9 Transform added. Clipboard only grabs rules, no selector.
     2010.11.19: Better handling of users without Flash. (Thx <a href="http://mathiasbynens.be/">Mathias</a>)
     2011.01.05: Removed unneeded <code>-ms-filter</code> declarations and added unprefixed <code>linear-gradient</code>. (Thx <a href="http://mathiasbynens.be/">Mathias</a>)
+    2011.02.10: New gradient syntax (Thx <a href="http://samhuri.net/">Sami</a>). Update @font-face syntax.
 */
 
 
