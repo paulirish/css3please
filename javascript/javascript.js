@@ -92,7 +92,9 @@ window.cssMath = {
 		ha = [];
 
 		for (var i=0; i < da.length; i++) {
-		    if (i==3){ da[i] *= 255; }// alpha bit of the rgba!
+		    if (i==3){ 
+				da[i] *= 255; // alpha bit of the rgba!
+			}
 			ha.push( this.d2h( da[i] ) );
 		}
 
@@ -106,11 +108,11 @@ window.cssMath = {
 		da = [];
 
         for (var i=0; i < ha.length; i++) {
-		    if (i==2){ 
-		        ha[i] /= 255;  // alpha bit of the rgba!
-		        var num = this.h2d( ha[i]*16 )/10;
+		    if (i==2){  // alpha bit of the rgba!
+				var dec = parseInt(ha[i],16) / 256;
+				var num = Math.round(dec * 100) / 100;
 		    } else {
-		        var num = this.h2d( ha[i] )
+		    	var num = this.h2d( ha[i] )
 		    }
 			da.push(  num );
 		}
