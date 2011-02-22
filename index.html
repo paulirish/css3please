@@ -49,7 +49,7 @@
 .box_round {
      -moz-border-radius: <b g="0">12px</b>; <span class="comment">/* FF1+ <span class="endcomment">*/</span></span>
   -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Saf3-4, iOS 1+, Android 1.5+ <span class="endcomment">*/</span></span>
-          border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9, Saf5, Chrome <span class="endcomment">*/</span></span>
+          border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9, Saf5, Chrome, FF4 <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -75,7 +75,7 @@
 .box_shadow {
      -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
   -webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3.0+, Chrome <span class="endcomment">*/</span></span>
-          box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE9 <span class="endcomment">*/</span></span>
+          box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE9, Chrome 10+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -128,8 +128,8 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
   <pre class="rule">
 .box_transition {
-     -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* FF3.7+ <span class="endcomment">*/</span></span>
-       -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.5 <span class="endcomment">*/</span></span>
+     -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* FF4+ <span class="endcomment">*/</span></span>
+       -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.5+ <span class="endcomment">*/</span></span>
   -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Saf3.2+, Chrome <span class="endcomment">*/</span></span>
           transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  
 }</pre>
@@ -203,6 +203,7 @@
     2011.02.16: Fixed IE filter sizingMethod (moved to the end) after maybe 10 bug reports for it. (Whoops.)
     2011.02.20: Fixed longstanding rgba NaN bug.
     2011.02.20: Tab key support added (good idea, iszak)
+    2012.02.22: Browser support updated.
 */
 
 
