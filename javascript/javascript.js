@@ -112,7 +112,7 @@ window.cssMath = {
 				var dec = parseInt(ha[i],16) / 256;
 				var num = Math.round(dec * 100) / 100;
 		    } else {
-		    	var num = this.h2d( ha[i] )
+		    	var num = this.h2d( ha[i] );
 		    }
 			da.push(  num );
 		}
@@ -535,8 +535,8 @@ $(document).ready(function () {
 		generator.applyStyles();
 	}
 	
-	// use rgba and not gradients for opera since he's silly.
-	if (/Opera/.test(({}).toString.call(window.opera))){
+	// use rgba and not gradients for older operas since they're silly.
+	if (/Opera/.test(({}).toString.call(window.opera)) && (parseFloat(opera.version(), 10) < 11.1)){
 	    $('#box_gradient,#box_rgba').find('a.off').click();
 	}
 		
