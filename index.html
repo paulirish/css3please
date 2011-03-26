@@ -176,6 +176,7 @@
      + The closest thing to box-shadow for IE is <a href="http://msdn.microsoft.com/en-us/library/ms532979(v=VS.85).aspx">Blur with makeShadow</a> but you need a duplicate div.
      + The rotation transform ends up with a different transform-origin in IE. Look at heygrady's <a href="http://github.com/heygrady/transform">transform</a>
        library and his <a href="http://wiki.github.com/heygrady/transform/correcting-transform-origin-and-translate-in-ie">excellent guide</a> for the best results.
+     + If you’re doing transitions, Matthew Lein’s <a href="http://matthewlein.com/ceaser/">Ceaser</a> generates code with lots of presets, including the Penner equations.
     
     &copy; 2010; a <a href="http://paulirish.com/">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
     
@@ -190,6 +191,7 @@
 <pre class="rule changelog">
 /*  
     __Changelog__
+    2010.03.26: Added Ceaser link.
     2010.03.25: Fixed the gradient flipflop. Fixed fixed positioning bug.
     2010.04.04: New copy to clipboard style. Better mousewheel support.
     2010.04.05: <a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">Real rotation</a> in IE (Thx Zoltan!). Added transition. No more DropShadow for IE (it's crap)
