@@ -173,6 +173,7 @@
     
     Notes: 
      + Multiple IE filters must be comma delimited in a single declaration. They are not additive in separate blocks.
+     + IE9 starts to suck with filter-based gradients and rounded corners. <a href="http://abouthalf.com/2010/10/25/internet-explorer-9-gradients-with-rounded-corners/">Possible solution</a>.
      + The closest thing to box-shadow for IE is <a href="http://msdn.microsoft.com/en-us/library/ms532979(v=VS.85).aspx">Blur with makeShadow</a> but you need a duplicate div.
      + The rotation transform ends up with a different transform-origin in IE. Look at heygrady's <a href="http://github.com/heygrady/transform">transform</a>
        library and his <a href="http://wiki.github.com/heygrady/transform/correcting-transform-origin-and-translate-in-ie">excellent guide</a> for the best results.
