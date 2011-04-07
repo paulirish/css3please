@@ -87,8 +87,8 @@
   background-color: <b g="0" i="s2Hex">#444444</b>;
   background-image: -moz-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
   background-image: -o-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* Opera 11.10+ <span class="endcomment">*/</span></span>
-  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, <b g="0" i="s2Hex">#444444</b>),color-stop(1, <b g="1" i="s2Hex">#999999</b>)); <span class="comment">/* Saf4+, Chrome <span class="endcomment">*/</span></span>
-  background-image: -webkit-linear-gradient(<b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* Chrome 10+, Saf5.1+ <span class="endcomment">*/</span></span>
+  background-image: -webkit-gradient(linear, left top, left bottom, from(<b g="0" i="s2Hex">#444444</b>), to(<b g="1" i="s2Hex">#999999</b>)); <span class="comment">/* Saf4+, Chrome <span class="endcomment">*/</span></span>
+  background-image: -webkit-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* Chrome 10+, Saf5.1+ <span class="endcomment">*/</span></span>
   background-image: linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>);</span>
             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2Hex">#444444</b>', EndColorStr='<b g="1" i="s2Hex">#999999</b>')</span>; <span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span></span>
 }</pre>
@@ -207,6 +207,7 @@
     2011.02.20: Fixed longstanding rgba NaN bug.
     2011.02.20: Tab key support added (good idea, iszak)
     2011.02.22: Browser support updated.
+    2011.03.15: Added linear gradients for Opera 11.10. (Thanks, <a href="http://miketaylr.com/">Mike</a>!)
     2011.03.26: Added Ceaser link.
     2012.03.01: Went one year into the future to make a minor text change. Phew!
 */
@@ -219,12 +220,7 @@
 <div id="toggle_style"></div>
 
 
-<script>
-  var _gaq=[['_setAccount','UA-15142720-1'],['_trackPageview']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=true;
-  g.src=('https:'==location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g,s)})(document,'script');
-</script>
+<script>var _gaq=[['_setAccount','UA-15142720-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));</script>
 
 </body>
 </html>
