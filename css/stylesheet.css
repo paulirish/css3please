@@ -293,7 +293,7 @@ body {
 	color: rgba(0,136,255,.9);
 }
 .rule.comment { display:block;}
-.comment a { color:inherit; text-decoration:none;
+.comment a { color:inherit; 
 }
 
 .commentedout .endcomment { display:none;}
