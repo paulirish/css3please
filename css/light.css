@@ -1,6 +1,7 @@
 body {
 	background-color: #eeeeee;
 	background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
+	background-image: -ms-linear-gradient(top, #eeeeee, #ffffff);
 	background-image: -o-linear-gradient(top, #eeeeee, #ffffff);
 	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #ffffff));
 	background-image: -webkit-linear-gradient(#eeeeee, #ffffff);
