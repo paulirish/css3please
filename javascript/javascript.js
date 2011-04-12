@@ -535,6 +535,15 @@ $(document).ready(function () {
 		generator.applyStyles();
 	}
 	
+	// weird fix for FF4. thx 
+	// https://github.com/paulirish/css3please/issues/22
+	// https://github.com/paulirish/css3please/issues/38
+	setTimeout(function(){
+          generator.grabAndSet($('pre input').first().get(0));
+  }, 100);
+  
+  
+  
 	// use rgba and not gradients for older operas since they're silly.
 	if (/Opera/.test(({}).toString.call(window.opera)) && (parseFloat(opera.version(), 10) < 11.1)){
 	    $('#box_gradient,#box_rgba').find('a.off').click();
