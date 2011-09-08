@@ -586,7 +586,7 @@ $('.rule_wrapper .comment a.off').live('click',function(){
  * http://www.faqts.com/knowledge_base/view.phtml/aid/1678/fid/1 and
  * http://blog.stevenlevithan.com/archives/faster-trim-javascript
  */
-String.prototype.trim = function() { 
+String.prototype.trim = String.prototype.trim || function() { 
 	var str = this;
 	
 	// used by the String.prototype.trim()			
