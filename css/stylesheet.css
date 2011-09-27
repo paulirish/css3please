@@ -161,7 +161,7 @@ abbr {
 }
 
 body {
-	background: #FFF;
+	background-color: #FFF;
 	color: #000;
 }
 
@@ -237,7 +237,7 @@ dfn {
 --------------------------------*/
 
 body {
-	background: #0c1021; /*was url(../img/texture.jpg)*/
+	background-color: #0c1021; /*was url(../img/texture.jpg)*/
 	color: #f8f8f8;
 }
 
@@ -387,6 +387,14 @@ body .commentclose .comment { color: rgba(0,136,255,.9) !important;}
 #sandbox { margin-bottom: 20px; }
 
 #sandboxwrap .rule.comment { text-align: right; }
+
+body {
+  -webkit-transition: background-color 0.5s ease-out;  /* Saf3.2+, Chrome */
+     -moz-transition: background-color 0.5s ease-out;  /* FF4+ */
+      -ms-transition: background-color 0.5s ease-out;  /* IE10? */
+       -o-transition: background-color 0.5s ease-out;  /* Opera 10.5+ */
+          transition: background-color 0.5s ease-out;  
+}
 
 /* @mathias */
 
