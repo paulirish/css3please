@@ -410,7 +410,7 @@ body {
 
 
 #matrixbox { position:relative; top: 160px;}
-#output { position: static; background: initial; border: 0;
+#output { position: static; background: none; border: 0;
 		text-align: inherit;
 		font-family: inherit;
 }
