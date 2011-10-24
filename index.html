@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>CSS3 Please! The Cross-Browser CSS3 Rule Generator</title>
+  
+  <link rel="stylesheet" href="http://peterned.home.xs4all.nl/matrices/matrices.css">
+
   <link rel="stylesheet" href="css/stylesheet.css" media="screen">
   
 <script>if (((navigator.plugins && typeof navigator.plugins['Shockwave Flash'] == 'object') || (window.ActiveXObject && (new ActiveXObject('ShockwaveFlash.ShockwaveFlash')))) && location.protocol != 'file:') document.documentElement.className = 'flash';</script>
@@ -221,6 +224,39 @@
 
 
 
+<script defer src="http://peterned.home.xs4all.nl/matrices/matrices.js"></script>
+
+<div id="box_matrix" class="rule_wrapper">
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  
+<div id="matrixbox">
+<span id="save">
+    Oh hai :)
+    <br><br>
+    From <a href="http://peterned.home.xs4all.nl/matrices/">Peter Nederlof</a>
+    <a href="#1,0,0,1,0,0" class="reset">oh noes!</a>
+</span>
+<span id="play">
+    Manipulate me, please!
+    <span class="rotate">rotate</span>
+    <span class="scale">scale</span>
+    <span class="skewx">skew</span>
+    <span class="skewy">skew</span>
+
+    <span class="move">move</span>
+  </span>
+</div>
+
+  <pre class="rule">
+.matrix {
+  <div class="comment"><div id="output" class="declaration" style="min-height: 100px">Play for output ...</div></div>
+}</pre>
+  
+
+</div>
+
+
+
 <pre class="rule footer"><span class="comment">
 
 
@@ -252,6 +288,7 @@
 /*  
     __Changelog__
 
+    2011.10.23: Added the sweet matrix manip demo from <a href="http://peterned.home.xs4all.nl/matrices/">Peter Nederlof</a>. Thx Peter!
     2011.10.18: <a href="http://css-tricks.com/snippets/css/webkit-keyframe-animation-syntax/">CSS Animations</a> added. (thx <a href="//twitter.com/wookiehangover">wookiehangover</a>!)
     2011.07.27: Added multicolumn. (thx <a href="https://twitter.com/hotmeteor" target="_blank">hotmeteor</a>!)
     2011.04.12: Added gradient for IE10! (thx <a href="https://github.com/Calvein" target="_blank">calvein</a>!)

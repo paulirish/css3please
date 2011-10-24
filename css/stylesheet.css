@@ -10,6 +10,7 @@
 
 html {
 	overflow-y: scroll;
+	background:none;
 }
 
 article,
@@ -27,6 +28,7 @@ a {
 	cursor: pointer;
 	outline: none;
 }
+a:link { color: #aaa;}
 
 q:before,
 q:after {
@@ -238,7 +240,7 @@ dfn {
 
 body {
 	background-color: #0c1021; /*was url(../img/texture.jpg)*/
-	color: #f8f8f8;
+
 }
 
 #sandboxwrap {
@@ -275,7 +277,8 @@ body {
 #sandbox p{
 	font-size: 30px;
 	line-height: 50px;
-	margin: 0
+	margin: 0;
+	width: auto;
 }
 
 .rule,
@@ -287,6 +290,7 @@ body {
 	z-index: 1;
 	display: inline
 }
+.bracket { color: #f8f8f8; }
 
 .rule .comment {
     color: #0088ff;
@@ -400,3 +404,34 @@ body {
 
 .cb { display: none; }
 .flash .cb { display: inline; }
+
+
+/* overruling the new matrix stuff. */
+
+
+#matrixbox { position:relative; top: 160px;}
+#output { position: static; background: initial; border: 0;
+		text-align: inherit;
+		font-family: inherit;
+}
+#box_matrix { 
+position: relative;
+z-index: 10;
+background: #0c1021;
+min-height: 270px;
+margin-right: -10px;
+}
+
+
+
+#play, #save { 
+height: 160px;
+width: 160px;
+padding: 50px;
+text-align: center;
+right: 12%;
+z-index: 20;
+left: auto;
+}
+#save { color: white;
+border-color: white; }

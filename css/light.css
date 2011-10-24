@@ -1,4 +1,4 @@
-body {
+body, #box_matrix  {
 	background-color: #eeeeee;
 	background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
 	background-image: -ms-linear-gradient(top, #eeeeee, #ffffff);
