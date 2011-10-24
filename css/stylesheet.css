@@ -164,7 +164,7 @@ abbr {
 
 body {
 	background-color: #FFF;
-	color: #000;
+	color: #d8d8d8;
 }
 
 hr {
@@ -432,6 +432,7 @@ text-align: center;
 right: 12%;
 z-index: 20;
 left: auto;
+color:black;
 }
 #save { color: white;
 border-color: white; }
