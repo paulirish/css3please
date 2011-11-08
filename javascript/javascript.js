@@ -156,6 +156,14 @@ window.cssMath = {
 	},
 	
 	eval: {
+		/* Fraction to Percentage */
+		fraction: function (value, allValues) {
+			return value / 100;
+		},
+		/* Percentage to Fraction */
+		percent: function (value, allValues) {
+			return value * 100;
+		},
 		/* String to Hexadecimals */
 		s2Hex: function (value, allValues) {
 			if (value.indexOf('rgb') > -1) {
