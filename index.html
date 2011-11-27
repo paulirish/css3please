@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>CSS3 Please! The Cross-Browser CSS3 Rule Generator</title>
-  
+
   <link rel="stylesheet" href="http://peterned.home.xs4all.nl/matrices/matrices.css">
 
   <link rel="stylesheet" href="css/stylesheet.css" media="screen">
-  
+
 <script>if (((navigator.plugins && typeof navigator.plugins['Shockwave Flash'] == 'object') || (window.ActiveXObject && (new ActiveXObject('ShockwaveFlash.ShockwaveFlash')))) && location.protocol != 'file:') document.documentElement.className = 'flash';</script>
 
 <!-- its only up here because the js does syntax highlighting so i want the js loaded before the page loads. bad practice i know... -->
@@ -15,7 +15,7 @@
 <script src="javascript/jquery.plugins.min.js"></script>
 <script src="javascript/javascript.js"></script>
 <script src="javascript/cb_plugins.js"></script>
- </head> 
+ </head>
 
 <body>
 
@@ -47,21 +47,21 @@
 </pre>
 
 <div id="box_round" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_round {
   -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Saf3-4, iOS 1-3.2, Android &lte;1.6 <span class="endcomment">*/</span></span>
      -moz-border-radius: <b g="0">12px</b>; <span class="comment">/* FF1-3.6 <span class="endcomment">*/</span></span>
           border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ <span class="endcomment">*/</span></span>
-          
-  <span class="comment">/* useful if you don't want a bg color from <a href="http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed">leaking outside</a> the border: */</span>        
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+
+  <span class="comment">/* useful if you don't want a bg color from <a href="http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed">leaking outside</a> the border: */</span>
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
 <!--
 <div id="box_round_complex" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_round {
      -moz-border-radius: <b g="0">8px 8px 0px 0px</b>; <span class="comment">/* FF1+ <span class="endcomment">*/</span></span>
@@ -76,7 +76,7 @@
 -->
 
 <div id="box_shadow" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_shadow {
   -webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3" i="s2Hex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ <span class="endcomment">*/</span></span>
@@ -87,7 +87,7 @@
 </div>
 
 <div id="box_gradient" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_gradient {
   background-color: <b g="0" i="s2Hex">#444444</b>;
@@ -97,7 +97,6 @@
   background-image:     -ms-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* IE10 <span class="endcomment">*/</span></span>
   background-image:      -o-linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>); <span class="comment">/* Opera 11.10+ <span class="endcomment">*/</span></span>
   background-image:         linear-gradient(top, <b g="0" i="s2Hex">#444444</b>, <b g="1" i="s2Hex">#999999</b>);</span>
-            <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorStr='<b g="0" i="s2Hex">#444444</b>', EndColorStr='<b g="1" i="s2Hex">#999999</b>')</span>; <span class="comment">/* IE6-IE9 <span class="endcomment">*/</span></span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -105,7 +104,7 @@
 
 
 <div id="box_rgba" class="rule_wrapper commentedout">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_rgba {
   background-color: transparent;
@@ -117,15 +116,15 @@
 </div>
 
 <div id="box_rotate" class="rule_wrapper commentedout">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_rotate {
   -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Saf3.1+, Chrome <span class="endcomment">*/</span></span>
      -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
       -ms-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* IE9 <span class="endcomment">*/</span></span>
        -o-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Opera 10.5 <span class="endcomment">*/</span></span>
-          transform: rotate(<b g="0">7.5</b>deg);  
-             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(<span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span> 
+          transform: rotate(<b g="0">7.5</b>deg);
+             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(<span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span>
                      <b g="0" i="matrix2deg" o="deg2matrix" readonly>M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104</b>, sizingMethod='auto expand')</span>;</span></span>
                zoom: 1;
 }</pre>
@@ -134,14 +133,14 @@
 
 
 <div id="box_transition" class="rule_wrapper ">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_transition {
   -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Saf3.2+, Chrome <span class="endcomment">*/</span></span>
      -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* FF4+ <span class="endcomment">*/</span></span>
       -ms-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* IE10? <span class="endcomment">*/</span></span>
        -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.5+ <span class="endcomment">*/</span></span>
-          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  
+          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -149,7 +148,7 @@
 
 
 <div id="box_textshadow" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_textshadow {
      text-shadow: <b g="0">1px</b> <b g="1">1px</b> <b g="2">3px</b> <b g="3" i="s2Hex" o="sHex">#888</b>; <span class="comment">/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 <span class="endcomment">*/</span></span>
@@ -159,7 +158,7 @@
 
 
 <div id="box_opacity" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_opacity {
   opacity: <b g="0">0.9</b>; <span class="comment">/* Chrome 4+, FF2+, Saf3.1+, Opera 9+, IE9, iOS 3.2+, Android 2.1+ <span class="endcomment">*/</span></span>
@@ -171,7 +170,7 @@
 
 
 <div id="box_webfont" class="rule_wrapper">
- <pre class="rule comment"> <span class="comment">/*                           <a class="cb">[to clipboard]</a> <!-- <a class="off">[toggle rule off]</a>--> <span class="endcomment">*/</span></span> </pre> 
+ <pre class="rule comment"> <span class="comment">/*                           <a class="cb">[to clipboard]</a> <!-- <a class="off">[toggle rule off]</a>--> <span class="endcomment">*/</span></span> </pre>
   <pre class="rule">
 @font-face {
   font-family: '<b g="1">WebFont</b>';
@@ -184,7 +183,7 @@
 
 
 <div id="box_bgsize" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_bgsize {
   -webkit-background-size: <b g="0">100% 100%</b>; <span class="comment">/* Saf3-4 <span class="endcomment">*/</span></span>
@@ -195,7 +194,7 @@
 </div>
 
 <div id="box_columns" class="rule_wrapper commentedout">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_columns {
   -webkit-column-count: <b g="0">2</b>;  -webkit-column-gap: <b g="1">15px</b>; <span class="comment">/* Saf3, Chrome<span class="endcomment">*/</span></span>
@@ -206,7 +205,7 @@
 </div>
 
 <div id="box_animation" class="rule_wrapper ">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_animation&#58;hover {
   -webkit-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Saf5, Chrome <span class="endcomment">*/</span></span>
@@ -214,12 +213,12 @@
       -ms-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* IE10pp3 <span class="endcomment">*/</span></span>
 }
 
-@-webkit-keyframes <b g="0">myanim</b> { 
+@-webkit-keyframes <b g="0">myanim</b> {
   <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
   <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
   <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
 }
-@-moz-keyframes <b g="0">myanim</b> { 
+@-moz-keyframes <b g="0">myanim</b> {
   <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
   <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
   <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
@@ -238,8 +237,8 @@
 <script defer src="http://peterned.home.xs4all.nl/matrices/matrices.js"></script>
 
 <div id="box_matrix" class="rule_wrapper">
-  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre> 
-  
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
+
 <div id="matrixbox">
 <span id="save">
     Oh hai :)
@@ -262,7 +261,7 @@
 .matrix {
   <div class="comment"><div id="output" class="declaration" style="min-height: 100px">Play for output ...</div></div>
 }</pre>
-  
+
 
 </div>
 
@@ -271,22 +270,22 @@
 <pre class="rule footer"><span class="comment">
 
 
-/* 
+/*
     btw- up/down keys work, along with your mouse wheel. ;)
     coming soon.. extra css transforms (skew, scale), text-shadow and more.
-    <a href="http://paulirish.com/2010/introducing-css3please/#comments">plz leave feedback here</a>. 
+    <a href="http://paulirish.com/2010/introducing-css3please/#comments">plz leave feedback here</a>.
     also css3please is an open source project!. <a href="https://github.com/paulirish/css3please">report bugs or contribute!</a>
-    
-    Notes: 
+
+    Notes:
      + Multiple IE filters must be comma delimited in a single declaration. They are not additive in separate blocks.
      + IE9 starts to suck with filter-based gradients and rounded corners. Possible solutions are <a href="http://abouthalf.com/2010/10/25/internet-explorer-9-gradients-with-rounded-corners/">using SVG</a> or <a href="http://www.timmywillison.com/2011/Gradients-plus-border-radius-in-IE9.html">adding a wrapper</a>.
      + The closest thing to box-shadow for IE is <a href="http://msdn.microsoft.com/en-us/library/ms532979(v=VS.85).aspx">Blur with makeShadow</a> but you need a duplicate div.
      + The rotation transform ends up with a different transform-origin in IE. Look at heygrady's <a href="http://github.com/heygrady/transform">transform</a>
        library and his <a href="http://wiki.github.com/heygrady/transform/correcting-transform-origin-and-translate-in-ie">excellent guide</a> for the best results.
      + If you’re doing transitions, Matthew Lein’s <a href="http://matthewlein.com/ceaser/">Ceaser</a> generates code with lots of presets, including the Penner equations.
-    
+
     &copy; 2010; a <a href="http://paulirish.com/">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
-    
+
             if you like this, you'll probably also dig <a href="http://yayquery.com/">yayQuery</a> and <a href="//mothereffinghsl.com">mothereffinghsl.com</a>. <3
 */
 
@@ -296,7 +295,7 @@
 </pre>
 
 <pre class="rule changelog">
-/*  
+/*
     __Changelog__
 
     2011.10.23: Added the sweet matrix manip demo from <a href="http://peterned.home.xs4all.nl/matrices/">Peter Nederlof</a>. Thx Peter!
