@@ -483,21 +483,6 @@ $(document).ready(function () {
                     generator.grabAndSet(this);
 				}
 			).bind("mousewheel keydown", function(e, delta) {
-				
-				        if (e.which == 9){ // tab key
-				            var inputs      = $('b input'),
-				                elemIndex   = inputs.index(this),
-				                direction   = e.shiftKey ? -1 : 1;
-				                
-				            // basically tab to next input.
-				            $(this).blur();
-				            
-				            inputs.eq(elemIndex + direction).prev('span').click();
-				            return false;
-				            
-				        }
-				
-			    
 			            // only px values get this treatment for now.
 			            if (!(/px|em/.test($(this).val()) || $(this).closest('#box_rotate').length)) return true;
 			            
@@ -533,7 +518,20 @@ $(document).ready(function () {
            		e.stopPropagation();
            		$(document.activeElement).trigger(e,delta);
            		e.preventDefault();
-           })
+           }).bind('keydown', function (e) {
+		        if (e.which == 9){ // tab key
+		            var inputs      = $('b input'),
+		                elemIndex   = inputs.index($(e.target).closest('input')) || 0,
+		                direction   = e.shiftKey ? -1 : 1;
+		                
+		            // basically tab to next input.
+		            $(this).blur();
+		            
+		            inputs.eq(elemIndex + direction).prev('span').click();
+		            return false;
+		            
+		        }
+           });
 			
 	}); // end pre each()
 	
