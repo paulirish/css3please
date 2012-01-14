@@ -18,7 +18,7 @@ window.cssMath = {
 			x: this.round(Math.sin(r * Math.PI / 180) * s, 3),
 			y: this.round(Math.cos(r * Math.PI / 180) * s * -1, 3)
 		};
-	}, 
+	},
 	/* Rotation to Degree */
 	r2d: function (r) {
 		return r * 90;
@@ -27,36 +27,36 @@ window.cssMath = {
 	d2r: function (d) {
 		return d / 90;
 	},
-	
+
 	/* Degrees to Radians */
 	d2rad: function (d){
         return (d) * Math.PI / 180;
     },
-	
+
 	/* Radians to Degrees */
 	rad2d: function (r) {
 		return (180*r)/Math.PI + 360;
 	},
-	
+
 	/* matrix to IE String */
 	m2s: function (M) {
 		return 'M11=' + M.e(1, 1) + ', M12=' + M.e(1,2) + ', M21=' + M.e(2,1) + ', M22=' + M.e(2,2);
 	},
-	
+
 	s2m: function (s) {
-		
+
 		var entries = s.split(',');
 		var values = new Array();
-		
+
 		for (var i=0; i<entries.length; i++) {
 			var e = entries[i];
-			
+
 			values[i] = e.split('=')[1];
 		}
-		
+
 		return $M([[values[0], values[1]], [values[2], values[3]]]);
 	},
-	
+
 	/* Hexadecimal to Decimal */
 	h2d: function (h) {
 		return '' + parseInt(h, 16);
@@ -92,7 +92,7 @@ window.cssMath = {
 		ha = [];
 
 		for (var i=0; i < da.length; i++) {
-		    if (i==3){ 
+		    if (i==3){
 				da[i] *= 255; // alpha bit of the rgba!
 			}
 			ha.push( this.d2h( da[i] ) );
@@ -116,7 +116,7 @@ window.cssMath = {
 		    }
 			da.push(  num );
 		}
-		
+
 		da.splice(0, 0, da.pop());
 
 		return da;
@@ -145,7 +145,7 @@ window.cssMath = {
 	ah2ac: function (h) {
 		return 'rgba(' + this.aha2ada(h.replace(/^#?(.{1,2})(.{1,2})(.{1,2})(.{1,2})$/, '$3,$4,$1,$2').split(',')).join(', ') + ')';
 	},
-	
+
 	/* Are two numbers close enough.  Needed for matrices because of rounding errors in JavaScript */
 	areClose: function (x, y) {
 		if (Math.abs(x-y) < 0.001) {
@@ -154,7 +154,7 @@ window.cssMath = {
 			return false;
 		}
 	},
-	
+
 	eval: {
 		/* Fraction to Percentage */
 		fraction: function (value, allValues) {
@@ -175,9 +175,9 @@ window.cssMath = {
 		},
 		// dont include an AA in this hex
 		shortHex : function (value, allValues) {
-			
+
 			return '#'+cssMath.eval.s2Hex(value,allValues).replace(/^#../,'');
-			
+
 		},
 		/* String to Alpha + Hexadecimals */
 		s2aHex: function (value, allValues) {
@@ -207,7 +207,7 @@ window.cssMath = {
 			return cssMath.ah2ac(value);
 		},
 		s2deg: function (value, allValues) {
-			
+
 			if (value > 4) {
 				return value;
 			}
@@ -218,37 +218,37 @@ window.cssMath = {
 		rot: function (value, allValues) {
 			return cssMath.round(cssMath.d2r(value), 3);
 		} ,
-		
+
 		matrix2deg: function (value, allValues) {
-			
-			
+
+
 			var M = cssMath.s2m(value);
 			var asin1 = Math.asin(M.e(2,1));
 			var asin2 = Math.asin(M.e(1,2));
 			var cos = Math.acos(M.e(1,1));
-			
-			
+
+
 			if (cssMath.areClose(asin1, -asin2)  && cssMath.areClose(M.e(1,1),M.e(2,2))) {
 				return asin1;
 			} else {
 				return "NaN";
 			}
 		},
-		
+
 		deg2matrix: function (value, allValues) {
 			var num = cssMath.d2rad(value);
-			
+
        		return cssMath.m2s(Matrix.Rotation(num));
 		}
-		
-		
+
+
 	}
 };
 
 window.generator = {
-    
+
     $sandbox : undefined, // set in doc ready below
-    
+
 	styleAllRules: function (ruleList) {
 		var item = -1,
 		innerHTML;
@@ -295,7 +295,7 @@ window.generator = {
 		return values;
 	},
 	grabAndSet : function(elem){
-	    
+
         var item = -1;
         allValues = generator.collectAllValues( $(elem).closest('.declaration-block')[0] || $(elem).closest('.rule')[0] ),
         group = elem.parentNode.getAttribute('g'),
@@ -312,47 +312,47 @@ window.generator = {
         		if (allValues[item].output) {
         			itemValue = cssMath.eval[ allValues[item].output ](value, allValues);
         		} else {
-        			itemValue = value; 
+        			itemValue = value;
         		}
 
         		allValues[item].node.innerHTML = itemValue;
 
-                
+
         	}
         }
-        
+
         generator.applyStyles(elem);
         getFilters();
         return value;
 	}, // eo grabAndSet()
-	
+
 	// if no elem is passed in, all styles are applied.
 	applyStyles : function(elem){
-	    
+
 	    if (!elem){
 	        $(".selector").closest('pre').each(function(){
 	            generator.applyStyles(this);
 	        })
 	        return;
-	        
+
 	    }
-	    
+
 	    var css = $(elem).closest("pre").not('.comment').text().replace(/(-ms-)?filter:[^\;]*\;/g, ''),
 	        wrap = $(elem).closest('.rule_wrapper'),
 	        name = wrap.attr('id');
-		   
+
 		//alert(css);
-	    $('style.'+name).remove();	
-	    
+	    $('style.'+name).remove();
+
 		if (name){
 			var ss = document.createElement('style');
 			ss.setAttribute("type", "text/css");
 			ss.className = name;
 
-			if (ss.styleSheet && name !== 'box_webfont') {  
+			if (ss.styleSheet && name !== 'box_webfont') {
 				// IE crashes hard on @font-face going in through cssText
 				ss.styleSheet.cssText = css;
-			} else {               
+			} else {
 				var tt1 = document.createTextNode(css);
 				ss.appendChild(tt1);
 			}
@@ -360,7 +360,7 @@ window.generator = {
         }
 
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') );
-		
+
 	}
 };
 
@@ -372,9 +372,9 @@ function copypasta(){
 		    var name = this.id,
 		        zc = new ZeroClipboard.Client(),
 		        elem = $(this).find('a.cb');
-   
+
 		    if (!elem.length) return;
-       
+
 		    zc.glue( elem[0], elem[0].parentNode );
 	    	zc.addEventListener( 'mouseDown', (function(){
 	    	    return function(client) {
@@ -384,7 +384,7 @@ function copypasta(){
 	    		    zc.setText( text );
 	    		    $(elem).fadeOut(50).fadeIn(300)
 	    		}
-	    	})());  
+	    	})());
 		});
 	}
 }
@@ -392,44 +392,44 @@ function copypasta(){
 
 
 function addFilter (obj, filterName, filterValue){
-    
+
     var filter;
-	
-   
+
+
     var comma = ", ";
-    
+
     if (obj.filters.length == 0) {
         comma = "";
     }
-	
+
 	// remove existing filter.
 	var re = new RegExp("(\\,\\s*)?progid:" + filterName + "\\([^\\)]*\\)")
-   
+
     obj.style.filter = obj.style.filter.replace(re, '') + comma + "progid:" + filterName + "(" + filterValue + ")";
 
-    
+
 	return;
     filter = obj.filters.item(filterName);
-    
-	
-    
+
+
+
     return filter;
 }
 
-	
+
 function getFilters () {
 	if (!document.body.filters) {
 		return;
 	}
-	
+
 	$('#sandbox')[0].style.filter = "";
 	$('#sandbox')[0].style.zoom = "100%";
-	
-	
+
+
 	$('.filter').each(function(){
-		
+
 		if (!$(this).closest('.rule_wrapper').hasClass('commentedout')) {
-			
+
 			var text = $(this).text().replace(/\)/, '').split('(');
 			addFilter($('#sandbox')[0], text[0].replace(/progid:/, '').trim(), text[1]);
 		}
@@ -439,29 +439,29 @@ function getFilters () {
 
 
 $(document).ready(function () {
-    
+
     generator.$sandbox = $('#sandbox');
 
 	generator.styleAllRules( $('pre').not('.footer').get() );
 
 	generator.makeEditable(document.getElementsByTagName('b'));
-	
+
 	//clearFilter();
-	
-	
+
+
 
 
 	$('pre').each(function () {
-	    
+
 			$(this).find('b span').bind('click',function (e) {
-				
+
 					if ($(this).parent().attr('readonly')==='') return;
 
 			        // basically calculating where to place the caret.
                     var wrap = $(document.elementFromPoint(e.pageX-$(document).scrollLeft(),e.pageY-$(document).scrollTop()));
                     var clickY = e.pageX - wrap.offset().left,
                         caretY = Math.round(clickY / wrap.width() * wrap.text().length);
-                    
+
 					$(this).parent().addClass('edit')
 					.find('input')
 					    .val( $(this).html() )
@@ -472,9 +472,9 @@ $(document).ready(function () {
 			});
 
 			$(this).find('input').bind('keyup',function () {
-					
+
 					generator.grabAndSet(this);
-					
+
 					this.parentNode.getElementsByTagName('span')[0].innerHTML = this.value;
 				}
 			).bind('blur',function () {
@@ -484,13 +484,13 @@ $(document).ready(function () {
 				}
 			).bind("mousewheel keydown", function(e, delta) {
 			            // only px values get this treatment for now.
-			            if (!(/px|em/.test($(this).val()) || $(this).closest('#box_rotate').length)) return true;
-			            
+			            if (!(/px|em|[0-9]/.test(this.value) || $(this).closest('#box_rotate').length)) return true;
+
 			            var split = this.value.split(/-?[0-9A-F.]+/),
 			            	match = this.value.match(/-?[0-9A-F.]+/),
 			                num   = match && match[0] || 0,
 			                len, newval;
-			                
+
                         if (delta > 0 || e.which == 38) {
                             newval = parseFloat(num) + 1 * (e.shiftKey ? .1 : 1);
                         } else if ( delta < 0 || e.which == 40 ) {
@@ -498,16 +498,16 @@ $(document).ready(function () {
                         } else {
                             return true;
                         }
-                        
+
                         newval = Math.round(newval*10)/10;
                         len = (''+newval).length;
                         if (split.length===0) split = ['',''];   // IE is stupido.
                         if (split.length===1) split.unshift(''); // IE is stupido.
-                        
+
                         $(this).val(split.join(newval));
-                        
+
                         generator.grabAndSet(this);
-                        
+
                         $(this).caret( len,len );
                         return false;
             });
@@ -523,40 +523,40 @@ $(document).ready(function () {
 		            var inputs      = $('b input'),
 		                elemIndex   = inputs.index($(e.target).closest('input')) || 0,
 		                direction   = e.shiftKey ? -1 : 1;
-		                
+
 		            // basically tab to next input.
 		            $(this).blur();
-		            
+
 		            inputs.eq(elemIndex + direction).prev('span').click();
 		            return false;
-		            
+
 		        }
            });
-			
+
 	}); // end pre each()
-	
+
 	 // first run on page load
 	getFilters();
-	
+
 	if (!document.body.filters) {
 		generator.applyStyles();
 	}
-	
-	// weird fix for FF4. thx 
+
+	// weird fix for FF4. thx
 	// https://github.com/paulirish/css3please/issues/22
 	// https://github.com/paulirish/css3please/issues/38
 	setTimeout(function(){
           generator.grabAndSet($('pre input').first().get(0));
   }, 100);
-  
-  
-  
+
+
+
 	// use rgba and not gradients for older operas since they're silly.
 	if (/Opera/.test(({}).toString.call(window.opera)) && (parseFloat(opera.version(), 10) < 11.1)){
 	    $('#box_gradient,#box_rgba').find('a.off').click();
 	}
-		
-	
+
+
 });
 
 $(window).load(function(){
@@ -588,20 +588,20 @@ $('.rule_wrapper .comment a.off').live('click',function(){
     return false;
 });
 
-/* 
- * Adding trim method to String Object.  Ideas from 
+/*
+ * Adding trim method to String Object.  Ideas from
  * http://www.faqts.com/knowledge_base/view.phtml/aid/1678/fid/1 and
  * http://blog.stevenlevithan.com/archives/faster-trim-javascript
  */
-String.prototype.trim = String.prototype.trim || function() { 
+String.prototype.trim = String.prototype.trim || function() {
 	var str = this;
-	
-	// used by the String.prototype.trim()			
+
+	// used by the String.prototype.trim()
 	var initWhitespaceRe = /^\s\s*/;
 	var endWhitespaceRe = /\s\s*$/;
 	var whitespaceRe = /\s/;
-	
-	// The first method is faster on long strings than the second and 
+
+	// The first method is faster on long strings than the second and
 	// vice-versa.
 	if (this.length > 6000) {
 		str = this.replace(initWhitespaceRe, '');
@@ -611,5 +611,5 @@ String.prototype.trim = String.prototype.trim || function() {
 	} else {
 		return this.replace(initWhitespaceRe, '')
 			.replace(endWhitespaceRe, '');
-	}  
+	}
 };
