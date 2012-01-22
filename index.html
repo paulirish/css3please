@@ -131,6 +131,37 @@
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
 
+<div id="box_scale" class="rule_wrapper commentedout">
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
+  <pre class="rule">
+.box_scale {
+  -webkit-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Saf3.1+, Chrome <span class="endcomment">*/</span></span>
+     -moz-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
+      -ms-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* IE9 <span class="endcomment">*/</span></span>
+       -o-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Opera 10.5+ <span class="endcomment">*/</span></span>
+          transform: scale(<b g="0">0.8</b>);
+             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(<span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span>
+                     <b g="0" i="matrix2deg" o="deg2matrix" readonly>M11=0.9999025240093042, M12=-0.013962180339145272, M21=0.013962180339145272, M22=0.9999025240093042</b>,SizingMethod='auto expand')</span>;</span></span>
+}</pre>
+  <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
+</div>
+
+<div id="box_3dtransforms" class="rule_wrapper commentedout">
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
+  <pre class="rule">
+.box_3dtransforms {
+  -webkit-perspective: <b g="0">300</b>;  <span class="comment">/* Saf4+, Chrome 12+ <span class="endcomment">*/</span></span>
+     -moz-perspective: <b g="0">300</b>;  <span class="comment">/* FF10+ <span class="endcomment">*/</span></span>
+      -ms-perspective: <b g="0">300</b>;  <span class="comment">/* IE10+ <span class="endcomment">*/</span></span>
+          perspective: <b g="0">300</b>; 
+  -webkit-transform: rotateY(<b g="1">180</b>deg);  -webkit-transform-style: preserve-3d;   
+     -moz-transform: rotateY(<b g="1">180</b>deg);     -moz-transform-style: preserve-3d;
+      -ms-transform: rotateY(<b g="1">180</b>deg);      -ms-transform-style: preserve-3d;
+          transform: rotateY(<b g="1">180</b>deg);          transform-style: preserve-3d; 
+}</pre>
+  <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
+</div>
+
 
 <div id="box_transition" class="rule_wrapper ">
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
@@ -283,7 +314,7 @@
 
 /*
     btw- up/down keys work, along with your mouse wheel. ;)
-    coming soon.. extra css transforms (skew, scale), text-shadow and more.
+    coming soon.. extra css transforms (skew, scale) and more.
     <a href="http://paulirish.com/2010/introducing-css3please/#comments">plz leave feedback here</a>.
     also css3please is an open source project!. <a href="https://github.com/paulirish/css3please">report bugs or contribute!</a>
 
@@ -309,6 +340,7 @@
 /*
     __Changelog__
 
+    2012.01.21: Added transform scale and 3d transforms.(thx <a href="https://github.com/uxder">uxder</a>)
     2012.01.19: Linear Gradient Syntax <a href="https://github.com/paulirish/css3please/issues/78">Updated</a>. (thx <a href="http://cssdeck.com">cssdeck</a> and <a href="https://github.com/uxder">uxder</a>!)
     2012.01.14: Added <code>tab-size</code>. (Blame <a href="http://mathiasbynens.be/">Mathias</a> if anything breaks!)
     2011.10.23: Added the sweet matrix manip demo from <a href="http://peterned.home.xs4all.nl/matrices/">Peter Nederlof</a>. Thx Peter!
