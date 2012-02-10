@@ -295,7 +295,7 @@ window.generator = {
 		return values;
 	},
 	grabAndSet : function(elem){
-
+		
         var item = -1;
         allValues = generator.collectAllValues( $(elem).closest('.declaration-block')[0] || $(elem).closest('.rule')[0] ),
         group = elem.parentNode.getAttribute('g'),
@@ -556,12 +556,44 @@ $(document).ready(function () {
 	    $('#box_gradient,#box_rgba').find('a.off').click();
 	}
 
-
+	//create colorpicker
+	colorPicker.load("b[i='s2Hex']", 'hex');
 });
 
 $(window).load(function(){
 	setTimeout(copypasta,1000);
 })
+
+window.colorPicker = {
+	_currentTarget: "",
+	_colors: {},
+	load: function(selector, colorType) {
+		var cp = this;
+		$(selector).ColorPicker({
+			onBeforeShow: function () {
+				var span = $(this),
+					text = span.text();
+					
+				cp._currentTarget = span; //workaround to colorpicker plugin not preseving current element?
+				span.ColorPickerSetColor(text); //set the colorpicker value
+			},
+			onChange: function (hsb, hex, rgb) {
+				cp._colors = {
+					hsl: hsb,
+					hex: hex,
+					rgb: rgb
+				};
+			},
+			onHide: function(){
+				//update the colors
+				var input = cp._currentTarget.find('input');
+				input.val("#" + cp._colors[colorType]);
+				generator.grabAndSet(input[0]); 
+			}
+		});
+	}
+}
+
 
 window.css = {
 	'text-shadow': '2px 2px 2px #000;',
