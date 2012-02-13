@@ -557,7 +557,7 @@ $(document).ready(function () {
 	}
 
 	//create colorpicker
-	colorPicker.load("b[i='s2Hex']", 'hex');
+	//colorPicker.load("b[i='s2Hex']", 'hex');
 });
 
 $(window).load(function(){
