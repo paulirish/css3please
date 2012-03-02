@@ -557,42 +557,43 @@ $(document).ready(function () {
 	}
 
 	//create colorpicker
-	//colorPicker.load("b[i='s2Hex']", 'hex');
+	colorPicker("b[i='s2Hex']", 'hex');
 });
 
 $(window).load(function(){
 	setTimeout(copypasta,1000);
 })
 
-window.colorPicker = {
-	_currentTarget: "",
-	_colors: {},
-	load: function(selector, colorType) {
-		var cp = this;
-		$(selector).ColorPicker({
-			onBeforeShow: function () {
-				var span = $(this),
-					text = span.text();
-					
-				cp._currentTarget = span; //workaround to colorpicker plugin not preseving current element?
-				span.ColorPickerSetColor(text); //set the colorpicker value
-			},
-			onChange: function (hsb, hex, rgb) {
-				cp._colors = {
-					hsl: hsb,
-					hex: hex,
-					rgb: rgb
-				};
-			},
-			onHide: function(){
-				//update the colors
-				var input = cp._currentTarget.find('input');
-				input.val("#" + cp._colors[colorType]);
-				generator.grabAndSet(input[0]); 
-			}
-		});
-	}
-}
+window.colorPicker = (function(){
+	var currentTarget = "",
+		colors = {},
+		currentColor,
+	    picker = function(selector, colorType) {
+			$(selector).ColorPicker({
+				onBeforeShow: function () {
+					var t = $(this);
+					colors = {}; //reset colors
+					currentColor = t.text();
+					currentTarget = t; //workaround to colorpicker plugin not preseving current element?
+					t.ColorPickerSetColor(currentColor); //set the colorpicker value
+				},
+				onChange: function (hsb, hex, rgb) {
+					colors = {
+						hsl: hsb,
+						hex: hex,
+						rgb: rgb
+					};
+					//update the colors
+					var input = currentTarget.find('input'),
+						color = (colors[colorType]) ? "#" + colors[colorType] : currentColor;
+						input.val(color);
+						generator.grabAndSet(input[0]);
+				}
+			});
+		}
+		
+		return picker;
+})();
 
 
 window.css = {
