@@ -240,6 +240,8 @@ dfn {
 
 body {
 	background-color: #0c1021; /*was url(../img/texture.jpg)*/
+	overflow-x: hidden;
+
 
 }
 
@@ -255,7 +257,7 @@ body {
 	overflow: hidden;
 	padding: 20px;
 	
-	width: 400px;
+	width: 440px;
 	z-index: 2;
 	color: rgba(0, 0, 0, 0.6);
 	font-size: 16px;

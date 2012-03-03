@@ -25,7 +25,7 @@
       <abbr title="Cascading Style Sheets Level 3">CSS3</abbr>, please!
     </h1>
     <p>
-      This element will receive inline changes as you edit the CSS rules on the left. Enjoy!
+      This element will receive instant changes as you edit the CSS rules on the left. Enjoy!
     </p>
   </div>
   <pre class="rule comment">/*    <a class="off">[toggle styling]</a><span class="endcomment">    */</span></pre>
@@ -200,6 +200,18 @@
 
 
 
+<div id="box_boxsizing" class="rule_wrapper">
+  <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <span class="endcomment">*/</span></pre>
+  <pre class="rule">
+* {
+  -webkit-box-sizing: <b g="0">border-box</b>; <span class="comment">/* <=iOS4, <= Android  2.3 <span class="endcomment">*/</span></span>
+     -moz-box-sizing: <b g="0">border-box</b>; <span class="comment">/* FF1+ <span class="endcomment">*/</span></span>
+          box-sizing: <b g="0">border-box</b>; <span class="comment">/* Chrome, IE8, Opera, Safari 5.1<span class="endcomment">*/</span></span>
+}</pre>
+  <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
+</div>
+
+
 <div id="box_bgsize" class="rule_wrapper">
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
@@ -340,6 +352,7 @@
 /* 
     __Changelog__
 
+    2012.03.02: Added <a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">box-sizing</a>. Woo!
     2012.01.21: Added transform scale and 3d transforms.(thx <a href="https://github.com/uxder">uxder</a>)
     2012.01.19: Linear Gradient Syntax <a href="https://github.com/paulirish/css3please/issues/78">Updated</a>. (thx <a href="http://cssdeck.com">cssdeck</a> and <a href="https://github.com/uxder">uxder</a>!)
     2012.01.14: Added <code>tab-size</code>. (Blame <a href="http://mathiasbynens.be/">Mathias</a> if anything breaks!)
