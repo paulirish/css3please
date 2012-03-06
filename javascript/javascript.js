@@ -558,7 +558,30 @@ $(document).ready(function () {
 
 	//create colorpicker
 	colorPicker("b[i='s2Hex']", 'hex');
+	
+	//track events via google analytics custom events
+	$(document).on('click', 'b, #matrixbox', function(event) {
+		trackEvent( $(this).closest('.rule_wrapper').attr('id') );
+	});
+	
 });
+
+/*
+ * Track user actions via google anlaytics custom events.
+ * Store each event into an array so that only one event is sent per property.
+ */
+window.trackEvent = (function() {
+	var events = []; 
+	var track = function(eventName) {
+		if ($.inArray(eventName, events) === -1) {
+			events.push(eventName);
+			//console.log(events);
+			_gaq.push(['_trackEvent', 'properties', 'change', eventName]);
+		} 
+	}
+	return track;
+})();
+
 
 $(window).load(function(){
 	setTimeout(copypasta,1000);
@@ -572,6 +595,7 @@ window.colorPicker = (function(){
 			$(selector).ColorPicker({
 				onBeforeShow: function () {
 					var t = $(this);
+					trackEvent( $(this).closest('.rule_wrapper').attr('id') );
 					colors = {}; //reset colors
 					currentColor = t.text();
 					currentTarget = t; //workaround to colorpicker plugin not preseving current element?
