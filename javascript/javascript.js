@@ -557,7 +557,7 @@ $(document).ready(function () {
 	}
 
 	//create colorpicker
-	colorPicker("b[i='s2Hex']", 'hex');
+	colorPicker("b[i='s2Hex'], b[i='lHex']", 'hex');
 	
 	//track events via google analytics custom events
 	$(document).on('click', 'b, #matrixbox', function(event) {
