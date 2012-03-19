@@ -166,12 +166,15 @@ window.cssMath = {
 		},
 		/* String to Hexadecimals */
 		s2Hex: function (value, allValues) {
-			if (value.indexOf('rgb') > -1) {
-				return '#' + cssMath.da2ha(value.replace(/^rgb\s?\(\s?(.*?)\s?\)$/, '$1').split(/,\s?/)).join('');
-			}
-			else {
-				return cssMath.h2lh(value);
-			}
+			// if (value.indexOf('rgb') > -1) {
+			//                 return '#' + cssMath.da2ha(value.replace(/^rgb\s?\(\s?(.*?)\s?\)$/, '$1').split(/,\s?/)).join('');
+			//             }
+			//             else {
+			//                 return cssMath.h2lh(value);
+			//             }
+            
+            // No messing with RGB(A) here - let user decide what's best
+            return cssMath.h2lh(value);
 		},
 		// dont include an AA in this hex
 		shortHex : function (value, allValues) {
