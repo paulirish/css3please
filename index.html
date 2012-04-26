@@ -51,8 +51,7 @@
   <pre class="rule">
 .box_round {
   -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Saf3-4, iOS 1-3.2, Android &le;1.6 <span class="endcomment">*/</span></span>
-     -moz-border-radius: <b g="0">12px</b>; <span class="comment">/* FF1-3.6 <span class="endcomment">*/</span></span>
-          border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ <span class="endcomment">*/</span></span>
+          border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9, Saf5, Chrome, FF4+, iOS 4, Android 2.1+ <span class="endcomment">*/</span></span>
 
   <span class="comment">/* useful if you don't want a bg color from <a href="http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed">leaking outside</a> the border: */</span>
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
@@ -80,7 +79,6 @@
   <pre class="rule">
 .box_shadow {
   -webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3">0px</b> <b g="4" i="lHex" o="sHex">#ffffff</b>; <span class="comment">/* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ <span class="endcomment">*/</span></span>
-     -moz-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3">0px</b> <b g="4" i="lHex" o="sHex">#ffffff</b>; <span class="comment">/* FF3.5 - 3.6 <span class="endcomment">*/</span></span>
           box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3">0px</b> <b g="4" i="lHex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
@@ -93,7 +91,7 @@
   background-color: <b g="0" i="lHex">#444444</b>;
   background-image: -webkit-gradient(linear, left top, left bottom, from(<b g="0" i="lHex">#444444</b>), to(<b g="1" i="lHex">#999999</b>)); <span class="comment">/* Saf4+, Chrome <span class="endcomment">*/</span></span>
   background-image: -webkit-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 10+, Saf5.1+, iOS 5+ <span class="endcomment">*/</span></span>
-  background-image:    -moz-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
+  background-image:    -moz-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* FF3.6+ <span class="endcomment">*/</span></span>
   background-image:     -ms-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* IE10 <span class="endcomment">*/</span></span>
   background-image:      -o-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Opera 11.10+ <span class="endcomment">*/</span></span>
   background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>);</span>
@@ -153,11 +151,11 @@
   -webkit-perspective: <b g="0">300</b>;  <span class="comment">/* Saf4+, Chrome 12+ <span class="endcomment">*/</span></span>
      -moz-perspective: <b g="0">300</b>;  <span class="comment">/* FF10+ <span class="endcomment">*/</span></span>
       -ms-perspective: <b g="0">300</b>;  <span class="comment">/* IE10+ <span class="endcomment">*/</span></span>
-          perspective: <b g="0">300</b>; 
-  -webkit-transform: rotateY(<b g="1">180</b>deg);  -webkit-transform-style: preserve-3d;   
+          perspective: <b g="0">300</b>;
+  -webkit-transform: rotateY(<b g="1">180</b>deg);  -webkit-transform-style: preserve-3d;
      -moz-transform: rotateY(<b g="1">180</b>deg);     -moz-transform-style: preserve-3d;
       -ms-transform: rotateY(<b g="1">180</b>deg);      -ms-transform-style: preserve-3d;
-          transform: rotateY(<b g="1">180</b>deg);          transform-style: preserve-3d; 
+          transform: rotateY(<b g="1">180</b>deg);          transform-style: preserve-3d;
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -217,8 +215,7 @@
   <pre class="rule">
 .box_bgsize {
   -webkit-background-size: <b g="0">100% 100%</b>; <span class="comment">/* Saf3-4 <span class="endcomment">*/</span></span>
-     -moz-background-size: <b g="0">100% 100%</b>; <span class="comment">/* FF3.6 <span class="endcomment">*/</span></span>
-          background-size: <b g="0">100% 100%</b>; <span class="comment">/* Opera, IE9, Saf5, Chrome, FF4 <span class="endcomment">*/</span></span>
+          background-size: <b g="0">100% 100%</b>; <span class="comment">/* Opera, IE9, Saf5, Chrome, FF4+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -355,7 +352,7 @@
 </pre>
 
 <pre class="rule changelog">
-/* 
+/*
     __Changelog__
 
     2012.03.02: Added <a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">box-sizing</a>. Woo!
