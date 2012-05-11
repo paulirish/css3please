@@ -559,6 +559,9 @@ $(document).ready(function () {
 	//create colorpicker
 	colorPicker("b[i='s2Hex'], b[i='lHex']", 'hex');
 	
+	//force colorpicker to close when tabbing out of a color input field
+	$("b[i='s2Hex'] input, b[i='lHex'] input").bind("keydown", function(e) { if (e.keyCode == 9) $(this).parent("b").ColorPickerHide(); });
+	
 	//track events via google analytics custom events
 	$(document).on('click', 'b, #matrixbox', function(event) {
 		trackEvent( $(this).closest('.rule_wrapper').attr('id') );
