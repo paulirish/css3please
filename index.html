@@ -236,6 +236,7 @@
   -webkit-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Saf5, Chrome <span class="endcomment">*/</span></span>
      -moz-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* FF5+ <span class="endcomment">*/</span></span>
        -o-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Opera 12+ <span class="endcomment">*/</span></span>
+          animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Saf5, Chrome <span class="endcomment">*/</span></span>
 }
 
 @-webkit-keyframes <b g="0">myanim</b> {
@@ -249,6 +250,11 @@
   <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
 }
 @-o-keyframes <b g="0">myanim</b> {
+  <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
+  <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
+  <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
+}
+@keyframes <b g="0">myanim</b> {
   <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
   <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
   <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
@@ -346,7 +352,7 @@
 <pre class="rule changelog">
 /*
     __Changelog__
-
+    2012.06.06: Removed -ms prefixes from transition, animations and gradients.
     2012.03.02: Added <a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">box-sizing</a>. Woo!
     2012.01.21: Added transform scale and 3d transforms.(thx <a href="https://github.com/uxder">uxder</a>)
     2012.01.19: Linear Gradient Syntax <a href="https://github.com/paulirish/css3please/issues/78">Updated</a>. (thx <a href="http://cssdeck.com">cssdeck</a> and <a href="https://github.com/uxder">uxder</a>!)
