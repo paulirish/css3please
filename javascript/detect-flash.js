@@ -1,0 +1,1 @@
+if (((navigator.plugins && typeof navigator.plugins['Shockwave Flash'] == 'object') || (window.ActiveXObject && (new ActiveXObject('ShockwaveFlash.ShockwaveFlash')))) && location.protocol != 'file:') document.documentElement.className = 'flash';

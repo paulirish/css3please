@@ -66,7 +66,7 @@ ul {
 }
 
 body {
-	margin: 8px; 
+	margin: 8px;
 }
 
 ol,
@@ -145,7 +145,7 @@ ol ol {
 	background-position: 0 0;
 	background-position-x: 0;
 	background-position-y: 0;
-	
+
 	display:none;
 }
 
@@ -256,7 +256,7 @@ body {
   border:1px solid rgba(21, 11, 11, 0.2);
 	overflow: hidden;
 	padding: 20px;
-	
+
 	width: 440px;
 	z-index: 2;
 	color: rgba(0, 0, 0, 0.6);
@@ -299,7 +299,7 @@ body {
 	color: rgba(0,136,255,.9);
 }
 .rule.comment { display:block;}
-.comment a { color:inherit; text-decoration:none; 
+.comment a { color:inherit; text-decoration:none;
 }
 
 .commentedout .endcomment { display:none;}
@@ -308,7 +308,7 @@ body {
 .commentedout .rule , .commentedout .rule span{ color: #0088ff; color: rgba(0,136,255,.9) !important;}
 body .declaration .comment,  span.comment .comment { color: rgba(0,136,255,.3) !important }
 
-pre.comment .comment { color: rgba(0,136,255,.5);     
+pre.comment .comment { color: rgba(0,136,255,.5);
 	 -moz-transition: color 0.6s ease-out;  /* FF3.7+ */
        -o-transition: color 0.6s ease-out;  /* Opera 10.5 */
   -webkit-transition: color 0.6s ease-out;  /* Saf3.2+, Chrome */
@@ -399,7 +399,7 @@ body {
      -moz-transition: background-color 0.5s ease-out;  /* FF4+ */
       -ms-transition: background-color 0.5s ease-out;  /* IE10? */
        -o-transition: background-color 0.5s ease-out;  /* Opera 10.5+ */
-          transition: background-color 0.5s ease-out;  
+          transition: background-color 0.5s ease-out;
 }
 
 /* @mathias */
@@ -416,7 +416,7 @@ body {
 		text-align: inherit;
 		font-family: inherit;
 }
-#box_matrix { 
+#box_matrix {
 position: relative;
 z-index: 10;
 background: #0c1021;
@@ -426,7 +426,7 @@ margin-right: -10px;
 
 
 
-#play, #save { 
+#play, #save {
 height: 160px;
 width: 160px;
 padding: 50px;

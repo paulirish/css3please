@@ -1,4 +1,4 @@
-body, #box_matrix	{
+.light body, .light #box_matrix	{
 	background-color: #eee;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient(top, #eee, #fff); /* Chrome 10+, Saf5.1+, iOS 5+ */
@@ -8,34 +8,40 @@ body, #box_matrix	{
 	color: #ff6400;
 }
 
-.rule_wrapper pre.comment .comment, .rule .comment, .commentedout .rule, .commentedout .rule span {
+.light .rule_wrapper pre.comment .comment,
+.light .rule .comment,
+.light .commentedout .rule,
+.light .commentedout .rule span {
 	color: #50bd2b !important;
 }
 
-.rule_wrapper:hover pre.comment .comment, .rule_wrapper pre.comment span.comment a:hover, .rule_wrapper pre.comment span.comment a.hover {
+.light .rule_wrapper:hover pre.comment .comment,
+.light .rule_wrapper pre.comment span.comment a:hover,
+.light .rule_wrapper pre.comment span.comment a.hover {
 	color: #2d9e06;
 }
 
-.rule .property, span.ie {
+.light .rule .property, span.ie {
 	color: #333;
 }
 
-.rule b {
+.light .rule b {
 	color: rgba(0, 136, 255, 0.898438);
 }
 
-.rule b.edit input {
+.light .rule b.edit input {
 	color: red;
 }
 
-.rule .value, span.ie .filter {
+.light .rule .value, span.ie .filter {
 	color: saddleBrown;
 }
 
-.footer .comment a, .comment a {
+.light .footer .comment a,
+.light .comment a {
 	border-bottom: 1px solid #50bd2b;
 }
 
-.rule.comment .comment a {
+.light .rule.comment .comment a {
 	border-bottom: none;
 }
