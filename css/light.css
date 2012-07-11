@@ -1,26 +1,41 @@
-body, #box_matrix  {
-	background-color: #eeeeee;
-	background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
-	background-image: -ms-linear-gradient(top, #eeeeee, #ffffff);
-	background-image: -o-linear-gradient(top, #eeeeee, #ffffff);
-	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #ffffff));
-	background-image: -webkit-linear-gradient(#eeeeee, #ffffff);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#ffffff');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#ffffff')";
-	color: #FF6400;
+body, #box_matrix	{
+	background-color: #eee;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #eee, #fff); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -moz-linear-gradient(top, #eee, #fff); /* FF3.6+ */
+	background-image: -o-linear-gradient(top, #eee, #fff); /* Opera 11.10+ */
+	background-image: linear-gradient(to bottom, #eee, #fff);
+	color: #ff6400;
 }
 
-.rule_wrapper pre.comment .comment, .rule .comment, .commentedout .rule, .commentedout .rule span { color: #50BD2B !important; }
-.rule_wrapper:hover pre.comment .comment, .rule_wrapper pre.comment span.comment a:hover, .rule_wrapper pre.comment span.comment a.hover { color: #2d9e06; }
+.rule_wrapper pre.comment .comment, .rule .comment, .commentedout .rule, .commentedout .rule span {
+	color: #50bd2b !important;
+}
 
-.rule .property, span.ie { color: #333; }
+.rule_wrapper:hover pre.comment .comment, .rule_wrapper pre.comment span.comment a:hover, .rule_wrapper pre.comment span.comment a.hover {
+	color: #2d9e06;
+}
 
-.rule b { color: rgba(0, 136, 255, 0.898438); }
+.rule .property, span.ie {
+	color: #333;
+}
 
-.rule b.edit input { color: red; }
+.rule b {
+	color: rgba(0, 136, 255, 0.898438);
+}
 
-.rule .value, span.ie .filter { color: saddleBrown; }
+.rule b.edit input {
+	color: red;
+}
 
-.footer .comment a, .comment a { border-bottom: 1px solid #50BD2B; }
+.rule .value, span.ie .filter {
+	color: saddleBrown;
+}
 
-.rule.comment .comment a { border-bottom: none; }
+.footer .comment a, .comment a {
+	border-bottom: 1px solid #50bd2b;
+}
+
+.rule.comment .comment a {
+	border-bottom: none;
+}
