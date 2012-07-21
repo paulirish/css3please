@@ -85,9 +85,9 @@
   background-color: <b g="0" i="lHex">#444444</b>;
   background-image: -webkit-gradient(linear, left top, left bottom, from(<b g="0" i="lHex">#444444</b>), to(<b g="1" i="lHex">#999999</b>)); <span class="comment">/* Saf4+, Chrome <span class="endcomment">*/</span></span>
   background-image: -webkit-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 10+, Saf5.1+, iOS 5+ <span class="endcomment">*/</span></span>
-  background-image:    -moz-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* FF3.6+ <span class="endcomment">*/</span></span>
+  background-image:    -moz-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Firefox 3.6-15 <span class="endcomment">*/</span></span>
   background-image:      -o-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Opera 11.10+ <span class="endcomment">*/</span></span>
-  background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>);</span>
+  background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Firefox 16+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -111,10 +111,10 @@
   <pre class="rule">
 .box_rotate {
   -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Saf3.1+, Chrome <span class="endcomment">*/</span></span>
-     -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* FF3.5+ <span class="endcomment">*/</span></span>
+     -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 3.5-15 <span class="endcomment">*/</span></span>
       -ms-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* IE9 <span class="endcomment">*/</span></span>
        -o-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Opera 10.5 <span class="endcomment">*/</span></span>
-          transform: rotate(<b g="0">7.5</b>deg);
+          transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 16+ <span class="endcomment">*/</span>
              <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(<span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span>
                      <b g="0" i="matrix2deg" o="deg2matrix" readonly>M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104</b>, sizingMethod='auto expand')</span>;</span></span>
                zoom: 1;
@@ -159,9 +159,10 @@
   <pre class="rule">
 .box_transition {
   -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Saf3.2+, Chrome <span class="endcomment">*/</span></span>
-     -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* FF4+ <span class="endcomment">*/</span></span>
+     -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Firefox 4-15 <span class="endcomment">*/</span></span>
        -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.5+ <span class="endcomment">*/</span></span>
-          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;
+          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>
+          ;  <span class="comment">/* Firefox 16+ <span class="endcomment">*/</span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -228,9 +229,9 @@
   <pre class="rule">
 .box_animation&#58;hover {
   -webkit-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Saf5, Chrome <span class="endcomment">*/</span></span>
-     -moz-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* FF5+ <span class="endcomment">*/</span></span>
+     -moz-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Firefox 5-15 <span class="endcomment">*/</span></span>
        -o-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Opera 12+ <span class="endcomment">*/</span></span>
-          animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Saf5, Chrome <span class="endcomment">*/</span></span>
+          animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Saf5, Chrome, Firefox 16+ <span class="endcomment">*/</span></span>
 }
 
 @-webkit-keyframes <b g="0">myanim</b> {
