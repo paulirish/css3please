@@ -45,7 +45,7 @@
   <pre class="rule">
 .box_round {
   -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Safari 3-4, iOS 1-3.2, Android &le;1.6 <span class="endcomment">*/</span></span>
-          border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9, Safari 5, Chrome, Firefox 4+, iOS 4, Android 2.1+ <span class="endcomment">*/</span></span>
+          border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9+, Safari 5, Chrome, Firefox 4+, iOS 4, Android 2.1+ <span class="endcomment">*/</span></span>
 
   <span class="comment">/* useful if you don't want a bg color from <a href="http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed">leaking outside</a> the border: */</span>
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
@@ -73,7 +73,7 @@
   <pre class="rule">
 .box_shadow {
   -webkit-box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3">0px</b> <b g="4" i="lHex" o="sHex">#ffffff</b>; <span class="comment">/* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ <span class="endcomment">*/</span></span>
-          box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3">0px</b> <b g="4" i="lHex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE9, Firefox 4+, Chrome 6+, iOS 5 <span class="endcomment">*/</span></span>
+          box-shadow: <b g="0">0px</b> <b g="1">0px</b> <b g="2">4px</b> <b g="3">0px</b> <b g="4" i="lHex" o="sHex">#ffffff</b>; <span class="comment">/* Opera 10.5, IE9+, Firefox 4+, Chrome 6+, iOS 5 <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -99,9 +99,7 @@
   <pre class="rule">
 .box_rgba {
   background-color: transparent;
-  background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;  <span class="comment">/* Firefox 3+, Safari 3+, Opera 10.10+, Chrome, IE9 <span class="endcomment">*/</span></span>
-            <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.gradient(startColorstr=<b g="0" i="s2aHex">#99B4B490</b>,endColorstr=<b g="0" i="s2aHex">#99B4B490</b>)</span>; <span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span></span>
-            zoom: 1;
+  background-color: <b g="0" i="s2aHex" o="aCh">rgba(180, 180, 144, 0.6)</b>;  <span class="comment">/* Firefox 3+, Safari 3+, Opera 10.10+, Chrome, IE9+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -112,12 +110,9 @@
 .box_rotate {
   -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Safari 3.1+, Chrome <span class="endcomment">*/</span></span>
      -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 3.5-15 <span class="endcomment">*/</span></span>
-      -ms-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* IE9 <span class="endcomment">*/</span></span>
+      -ms-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* IE9+ <span class="endcomment">*/</span></span>
        -o-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Opera 10.5-12.00 <span class="endcomment">*/</span></span>
           transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 16+, Opera 12.50+ <span class="endcomment">*/</span>
-             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(<span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span>
-                     <b g="0" i="matrix2deg" o="deg2matrix" readonly>M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104</b>, sizingMethod='auto expand')</span>;</span></span>
-               zoom: 1;
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -128,11 +123,9 @@
 .box_scale {
   -webkit-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Safari 3.1+, Chrome <span class="endcomment">*/</span></span>
      -moz-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Firefox 3.5+ <span class="endcomment">*/</span></span>
-      -ms-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* IE9 <span class="endcomment">*/</span></span>
+      -ms-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* IE9+ <span class="endcomment">*/</span></span>
        -o-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Opera 10.50+ <span class="endcomment">*/</span></span>
           transform: scale(<b g="0">0.8</b>);
-             <span class="ie">filter: <span class="filter">progid:DXImageTransform.Microsoft.Matrix(<span class="comment">/* IE6–IE9 <span class="endcomment">*/</span></span>
-                     <b g="0" i="matrix2deg" o="deg2matrix" readonly>M11=0.9999025240093042, M12=-0.013962180339145272, M21=0.013962180339145272, M22=0.9999025240093042</b>,SizingMethod='auto expand')</span>;</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -182,8 +175,7 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_opacity {
-  opacity: <b g="0">0.9</b>; <span class="comment">/* Chrome 4+, Firefox 2+, Safari 3.1+, Opera 9+, IE9, iOS 3.2+, Android 2.1+ <span class="endcomment">*/</span></span>
-  filter: alpha(opacity=<b g="0" i="fraction" o="percent">90</b>); <span class="comment">/* IE6-IE8 <span class="endcomment">*/</span></span>
+  opacity: <b g="0">0.9</b>; <span class="comment">/* Chrome 4+, Firefox 2+, Safari 3.1+, Opera 9+, IE9+, iOS 3.2+, Android 2.1+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -196,7 +188,7 @@
 * {
   -webkit-box-sizing: <b g="0">border-box</b>; <span class="comment">/* &lt;=iOS4, &lt;= Android  2.3 <span class="endcomment">*/</span></span>
      -moz-box-sizing: <b g="0">border-box</b>; <span class="comment">/* Firefox 1+ <span class="endcomment">*/</span></span>
-          box-sizing: <b g="0">border-box</b>; <span class="comment">/* Chrome, IE8, Opera, Safari 5.1<span class="endcomment">*/</span></span>
+          box-sizing: <b g="0">border-box</b>; <span class="comment">/* Chrome, IE8+, Opera, Safari 5.1<span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -207,7 +199,7 @@
   <pre class="rule">
 .box_bgsize {
   -webkit-background-size: <b g="0">100% 100%</b>; <span class="comment">/* Safari 3-4 <span class="endcomment">*/</span></span>
-          background-size: <b g="0">100% 100%</b>; <span class="comment">/* Opera, IE9, Safari 5, Chrome, Firefox 4+ <span class="endcomment">*/</span></span>
+          background-size: <b g="0">100% 100%</b>; <span class="comment">/* Opera, IE9+, Safari 5, Chrome, Firefox 4+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -294,8 +286,7 @@
   <pre class="rule">
 @font-face {
   font-family: '<b g="1">WebFont</b>';
-  src: url('<b g="0">myfont</b>.eot?#') format('eot'),  <span class="comment">/* IE6–8 <span class="endcomment">*/</span></span>
-       url('<b g="0">myfont</b>.woff') format('woff'),  <span class="comment">/* Firefox 3.6+, IE9, Chrome 6+, Safari 5.1+<span class="endcomment">*/</span></span>
+  src: url('<b g="0">myfont</b>.woff') format('woff'),  <span class="comment">/* Firefox 3.6+, IE9+, Chrome 6+, Safari 5.1+<span class="endcomment">*/</span></span>
        url('<b g="0">myfont</b>.ttf') format('truetype');  <span class="comment">/* Safari 3—5, Chrome4+, Firefox 3.5, Opera 10+ <span class="endcomment">*/</span></span>
 }
 
@@ -326,14 +317,12 @@
     also css3please is an open source project!. <a href="https://github.com/paulirish/css3please">report bugs or contribute!</a>
 
     Notes:
-     + Multiple IE filters must be comma delimited in a single declaration. They are not additive in separate blocks.
-     + IE9 starts to suck with filter-based gradients and rounded corners. Possible solutions are <a href="http://abouthalf.com/2010/10/25/internet-explorer-9-gradients-with-rounded-corners/">using SVG</a> or <a href="http://www.timmywillison.com/2011/Gradients-plus-border-radius-in-IE9.html">adding a wrapper</a>.
-     + The closest thing to box-shadow for IE is <a href="http://msdn.microsoft.com/en-us/library/ms532979(v=VS.85).aspx">Blur with makeShadow</a> but you need a duplicate div.
+     + IE&lt;10 browsers do not support gradients. Possible solutions are <a href="http://abouthalf.com/2010/10/25/internet-explorer-9-gradients-with-rounded-corners/">using SVG</a> or <a href="http://www.timmywillison.com/2011/Gradients-plus-border-radius-in-IE9.html">adding a wrapper</a>.
      + The rotation transform ends up with a different transform-origin in IE. Look at heygrady's <a href="http://github.com/heygrady/transform">transform</a>
        library and his <a href="http://wiki.github.com/heygrady/transform/correcting-transform-origin-and-translate-in-ie">excellent guide</a> for the best results.
      + If you’re doing transitions, Matthew Lein’s <a href="http://matthewlein.com/ceaser/">Ceaser</a> generates code with lots of presets, including the Penner equations.
 
-    &copy; 2010; a <a href="http://paulirish.com/">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
+    &copy; 2012; a <a href="http://paulirish.com/">Paul Irish</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a> joint, <small>in association w/ <a href="http://www.boazsender.com/">Boaz Sender</a> and <a href="http://www.useragentman.com/">Zoltan Hawryluk</a>.</small>
 
             if you like this, you'll probably also dig <a href="http://yayquery.com/">yayQuery</a> and <a href="//mothereffinghsl.com">mothereffinghsl.com</a>. <3
 */
@@ -346,6 +335,7 @@
 <pre class="rule changelog">
 /*
     __Changelog__
+    2012.08.29: Removed IE6-8 support.
     2012.06.06: Removed -ms prefixes from transition, animations and gradients.
     2012.03.02: Added <a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">box-sizing</a>. Woo!
     2012.01.21: Added transform scale and 3d transforms.(thx <a href="https://github.com/uxder">uxder</a>)
@@ -375,8 +365,7 @@
     2010.04.11: text-shadow added.
     2010.04.05: <a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/" target="_blank">Real rotation</a> in IE (Thx Zoltan!). Added transition. No more DropShadow for IE (it's crap)
     2010.04.04: New copy to clipboard style. Better mousewheel support.
-    2010.03.25: Fixed the gradient flipflop. Fixed  positioning bug.
-
+    2010.03.25: Fixed the gradient flipflop. Fixed positioning bug.
 */
 
 
