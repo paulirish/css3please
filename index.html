@@ -48,7 +48,7 @@
           border-radius: <b g="0">12px</b>; <span class="comment">/* Opera 10.5, IE9+, Safari 5, Chrome, Firefox 4+, iOS 4, Android 2.1+ <span class="endcomment">*/</span></span>
 
   <span class="comment">/* useful if you don't want a bg color from <a href="http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed">leaking outside</a> the border: */</span>
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+  -webkit-background-clip: padding-box; background-clip: padding-box;
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -335,6 +335,7 @@
 <pre class="rule changelog">
 /*
     __Changelog__
+    2012.12.31: Removed -moz-background-clip (thx <a href="https://github.com/Mottie">Mottie</a>)
     2012.08.29: Removed IE6-8 support.
     2012.06.06: Removed -ms prefixes from transition, animations and gradients.
     2012.03.02: Added <a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">box-sizing</a>. Woo!
