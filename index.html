@@ -84,10 +84,10 @@
 .box_gradient {
   background-color: <b g="0" i="lHex">#444444</b>;
   background-image: -webkit-gradient(linear, left top, left bottom, from(<b g="0" i="lHex">#444444</b>), to(<b g="1" i="lHex">#999999</b>)); <span class="comment">/* Chrome, Safari 4+ <span class="endcomment">*/</span></span>
-  background-image: -webkit-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 10+, iOS 5+, Safari 5.1+ <span class="endcomment">*/</span></span>
+  background-image: -webkit-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 10-25, iOS 5+, Safari 5.1+ <span class="endcomment">*/</span></span>
   background-image:    -moz-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Firefox 3.6-15 <span class="endcomment">*/</span></span>
   background-image:      -o-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Opera 11.10-12.00 <span class="endcomment">*/</span></span>
-  background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Firefox 16+, IE 10+, Opera 12.50+ <span class="endcomment">*/</span></span>
+  background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -151,10 +151,10 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_transition {
-  -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Chrome, Safari 3.2+ <span class="endcomment">*/</span></span>
+  -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Chrome 1-25, Safari 3.2+ <span class="endcomment">*/</span></span>
      -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Firefox 4-15 <span class="endcomment">*/</span></span>
        -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.50–12.00 <span class="endcomment">*/</span></span>
-          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Firefox 16+, IE 10+, Opera 12.50+ <span class="endcomment">*/</span></span>
+          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -332,6 +332,7 @@
 <pre class="rule changelog">
 /*
     __Changelog__
+    2013.04.05: Chrome 26 support for unprefix transitions and unprefixed gradints.
     2012.12.31: Removed -moz-background-clip (thx <a href="https://github.com/Mottie">Mottie</a>)
     2012.08.29: Removed IE6-8 support.
     2012.06.06: Removed -ms prefixes from transition, animations and gradients.
