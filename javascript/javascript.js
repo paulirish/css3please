@@ -295,7 +295,7 @@ window.generator = {
 		return values;
 	},
 	grabAndSet : function(elem){
-		
+
         var item = -1;
         allValues = generator.collectAllValues( $(elem).closest('.declaration-block')[0] || $(elem).closest('.rule')[0] ),
         group = elem.parentNode.getAttribute('g'),
@@ -558,15 +558,15 @@ $(document).ready(function () {
 
 	//create colorpicker
 	colorPicker("b[i='s2Hex'], b[i='lHex']", 'hex');
-	
+
 	//force colorpicker to close when tabbing out of a color input field
 	$("b[i='s2Hex'] input, b[i='lHex'] input").bind("keydown", function(e) { if (e.keyCode == 9) $(this).parent("b").ColorPickerHide(); });
-	
+
 	//track events via google analytics custom events
 	$(document).on('click', 'b, #matrixbox', function(event) {
 		trackEvent( $(this).closest('.rule_wrapper').attr('id') );
 	});
-	
+
 });
 
 /*
@@ -574,13 +574,13 @@ $(document).ready(function () {
  * Store each event into an array so that only one event is sent per property.
  */
 window.trackEvent = (function() {
-	var events = []; 
+	var events = [];
 	var track = function(eventName) {
 		if ($.inArray(eventName, events) === -1) {
 			events.push(eventName);
 			//console.log(events);
 			_gaq.push(['_trackEvent', 'properties', 'change', eventName]);
-		} 
+		}
 	}
 	return track;
 })();
@@ -618,7 +618,7 @@ window.colorPicker = (function(){
 				}
 			});
 		}
-		
+
 		return picker;
 })();
 
@@ -638,6 +638,20 @@ rule
 */
 
 $.fn.applyStyles = function(){ generator.applyStyles(this[0]); return this; }
+
+// box_shadow inset
+$('.rule_wrapper .comment a.inset').live('click',function(){
+    $(this).text( $(this).text().replace(' off',' !on').replace(' on',' off').replace('!','') );
+    var ruleWrapper = $(this).closest('.rule_wrapper');
+    if (ruleWrapper.find('span.inset').length) {
+        ruleWrapper.find('span.inset').remove();
+    } else {
+        ruleWrapper.find('b[g="0"]').before('<span class="inset">inset </span>');
+    }
+    ruleWrapper.find('input').first().applyStyles();
+    getFilters();
+    return false;
+});
 
 // commenting out
 $('.rule_wrapper .comment a.off').live('click',function(){
