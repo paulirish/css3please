@@ -1,4 +1,4 @@
-/*! css3please.com | 2013-02-11 13:58:30 */
+/*! css3please.com | 2013-03-27 12:43:59 */
 
 if (((navigator.plugins && typeof navigator.plugins['Shockwave Flash'] == 'object') || (window.ActiveXObject && (new ActiveXObject('ShockwaveFlash.ShockwaveFlash')))) && location.protocol != 'file:') document.documentElement.className = 'flash';
 /*! jQuery v1.7.1 jquery.com | jquery.org/license */
@@ -407,6 +407,27 @@ window.generator = {
 			}
 			document.body.appendChild(ss);
         }
+
+			if (name === 'box_3dtransforms') {
+				var splitCss = css.split("\n"),
+				    perspectiveProperties = ".box_3dtransforms_perspective { \n";
+
+				$('#sandboxwrap').toggleClass('box_3dtransforms_perspective', !wrap.hasClass('commentedout') );
+
+				splitCss.forEach(function(line) {
+					if (line.indexOf('perspective') !== -1)
+						perspectiveProperties += line;
+				});
+
+				var perspectiveStyle = document.createElement('style');
+				perspectiveStyle.setAttribute("type", "text/css");
+				perspectiveStyle.className = 'box_3dtransforms_perspective';
+
+				var perspectiveText = document.createTextNode(perspectiveProperties);
+				perspectiveStyle.appendChild(perspectiveText);
+
+				document.body.appendChild(perspectiveStyle);
+			}
 
 	    name && generator.$sandbox.toggleClass(name, !wrap.hasClass('commentedout') );
 
