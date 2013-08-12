@@ -44,8 +44,7 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_round {
-  -webkit-border-radius: <b g="0">12px</b>; <span class="comment">/* Android &le; 1.6, iOS 1-3.2, Safari 3-4 <span class="endcomment">*/</span></span>
-          border-radius: <b g="0">12px</b>; <span class="comment">/* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ <span class="endcomment">*/</span></span>
+  border-radius: <b g="0">12px</b>; <span class="comment">/* Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+ <span class="endcomment">*/</span></span>
 
   <span class="comment">/* useful if you don't want a bg color from <a href="http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed">leaking outside</a> the border: */</span>
   background-clip: padding-box; <span class="comment">/* Android 2.2+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 4+ <span class="endcomment">*/</span></span>
@@ -83,11 +82,8 @@
   <pre class="rule">
 .box_gradient {
   background-color: <b g="0" i="lHex">#444444</b>;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(<b g="0" i="lHex">#444444</b>), to(<b g="1" i="lHex">#999999</b>)); <span class="comment">/* Chrome, Safari 4+ <span class="endcomment">*/</span></span>
   background-image: -webkit-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 10-25, iOS 5+, Safari 5.1+ <span class="endcomment">*/</span></span>
-  background-image:    -moz-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Firefox 3.6-15 <span class="endcomment">*/</span></span>
-  background-image:      -o-linear-gradient(top, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Opera 11.10-12.00 <span class="endcomment">*/</span></span>
-  background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ <span class="endcomment">*/</span></span>
+  background-image:         linear-gradient(to bottom, <b g="0" i="lHex">#444444</b>, <b g="1" i="lHex">#999999</b>); <span class="comment">/* Chrome 26, Firefox 16+, IE 10+, Opera <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -108,11 +104,9 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_rotate {
-  -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Chrome, Safari 3.1+ <span class="endcomment">*/</span></span>
-     -moz-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 3.5-15 <span class="endcomment">*/</span></span>
+  -webkit-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Chrome, Opera 15+, Safari 3.1+ <span class="endcomment">*/</span></span>
       -ms-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* IE 9 <span class="endcomment">*/</span></span>
-       -o-transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Opera 10.50-12.00 <span class="endcomment">*/</span></span>
-          transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 16+, IE 10+, Opera 12.10+ <span class="endcomment">*/</span></span>
+          transform: rotate(<b g="0">7.5</b>deg);  <span class="comment">/* Firefox 16+, IE 10+, Opera <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -121,11 +115,9 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule on]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_scale {
-  -webkit-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Chrome, Safari 3.1+ <span class="endcomment">*/</span></span>
-     -moz-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Firefox 3.5+ <span class="endcomment">*/</span></span>
+  -webkit-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Chrome, Opera 15+, Safari 3.1+ <span class="endcomment">*/</span></span>
       -ms-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* IE 9 <span class="endcomment">*/</span></span>
-       -o-transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Opera 10.50-12.00 <span class="endcomment">*/</span></span>
-          transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Firefox 16+, IE 10+, Opera 12.10+ <span class="endcomment">*/</span></span>
+          transform: scale(<b g="0">0.8</b>);  <span class="comment">/* Firefox 16+, IE 10+, Opera <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -135,11 +127,9 @@
   <pre class="rule">
 .box_3dtransforms {
   -webkit-perspective: <b g="0">300px</b>;  <span class="comment">/* Chrome 12+, Safari 4+ <span class="endcomment">*/</span></span>
-     -moz-perspective: <b g="0">300px</b>;  <span class="comment">/* Firefox 10+ <span class="endcomment">*/</span></span>
       -ms-perspective: <b g="0">300px</b>;  <span class="comment">/* IE 10 <span class="endcomment">*/</span></span>
           perspective: <b g="0">300px</b>;
   -webkit-transform: rotateY(<b g="1">180</b>deg);  -webkit-transform-style: preserve-3d;
-     -moz-transform: rotateY(<b g="1">180</b>deg);     -moz-transform-style: preserve-3d;
       -ms-transform: rotateY(<b g="1">180</b>deg);      -ms-transform-style: preserve-3d;
           transform: rotateY(<b g="1">180</b>deg);          transform-style: preserve-3d;
 }</pre>
@@ -151,10 +141,8 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_transition {
-  -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Chrome 1-25, Safari 3.2+ <span class="endcomment">*/</span></span>
-     -moz-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Firefox 4-15 <span class="endcomment">*/</span></span>
-       -o-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Opera 10.50–12.00 <span class="endcomment">*/</span></span>
-          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ <span class="endcomment">*/</span></span>
+  -webkit-transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  <span class="endcomment">*/</span></span>
+          transition: <b g="0">all</b> <b g="1">0.3s</b> <b g="2">ease-out</b>;  <span class="comment">/* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera <span class="endcomment">*/</span></span>
 }</pre>
   <pre class="rule comment commentclose"><span class="comment">/* */</span></pre>
 </div>
@@ -219,23 +207,11 @@
   <pre class="rule comment">/*                           <a class="cb">[to clipboard]</a> <a class="off">[toggle rule off]</a> <span class="endcomment">*/</span></pre>
   <pre class="rule">
 .box_animation&#58;hover {
-  -webkit-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Chrome, Safari 5+ <span class="endcomment">*/</span></span>
-     -moz-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Firefox 5-15 <span class="endcomment">*/</span></span>
-       -o-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Opera 12.00 <span class="endcomment">*/</span></span>
-          animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Chrome, Firefox 16+, IE 10+, Opera 12.10+ <span class="endcomment">*/</span></span>
+  -webkit-animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Chrome, Opera 15+, Safari 5+ <span class="endcomment">*/</span></span>
+          animation: <b g="0">myanim</b> <b g="8">5s</b> infinite; <span class="comment">/* Chrome, Firefox 16+, IE 10+, Opera <span class="endcomment">*/</span></span>
 }
 
 @-webkit-keyframes <b g="0">myanim</b> {
-  <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
-  <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
-  <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
-}
-@-moz-keyframes <b g="0">myanim</b> {
-  <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
-  <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
-  <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
-}
-@-o-keyframes <b g="0">myanim</b> {
   <b g="1">0%</b>   { <b g="2">opacity</b>: <b g="3">0.0</b>; }
   <b g="4">50%</b>  { <b g="2">opacity</b>: <b g="5">0.5</b>; }
   <b g="6">100%</b> { <b g="2">opacity</b>: <b g="7">1.0</b>; }
@@ -297,7 +273,6 @@
   <pre class="rule">
 .box_tabsize {
   -moz-tab-size: <b g="0">2</b>; <span class="comment">/* Firefox 4+ <span class="endcomment">*/</span></span>
-    -o-tab-size: <b g="0">2</b>; <span class="comment">/* Opera 10.60+ <span class="endcomment">*/</span></span>
        tab-size: <b g="0">2</b>;
 }</pre>
   <!--  <pre class="rule comment commentclose"><span class="comment">/* */</span></pre> -->
